@@ -1,0 +1,14 @@
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\log4net.config
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\Smart.Core.Log.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\Smart.Core.Log.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\Smart.Framework.Model.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\EntityFramework.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\log4net.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\EntityFramework.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\obj\Debug\Smart.Core.Log.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\obj\Debug\Smart.Core.Log.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\obj\Debug\Smart.Core.Log.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\log4net.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Log\bin\Debug\EntityFramework.SqlServer.xml

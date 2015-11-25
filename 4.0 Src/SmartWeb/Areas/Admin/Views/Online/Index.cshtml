@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3 class="header smaller lighter blue">在线客服</h3>
+<p>
+    <a class="btn" href="/Admin"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="/Admin/Online">刷新 </a>
+    <span>客户端缓存5分钟刷新一次，数据更新后5分钟后生效,因高度限制前端最多显示5名客服人员</span>
+</p>
+<div id="grid"></div>
+<script>
+    $(document).ready(function () {
+        var crudServiceBaseUrl = "/Admin/Online",
+            dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: crudServiceBaseUrl + "/GetOnlineList",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: crudServiceBaseUrl + "/UpdateOnline",
+                        dataType: "json",
+                        type: "POST"
+                    },
+                    destroy: {
+                        url: crudServiceBaseUrl + "/DeleteOnline",
+                        dataType: "json",
+                        type: "POST"
+                    },
+                    create: {
+                        url: crudServiceBaseUrl + "/AddOnline",
+                        type: "POST",
+                        dataType: "json",
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+                cache: false,
+                pageSize: 20,
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                            name: { editable: true },
+                            no_order: { editable: true, type: "number", validation: { required: true, min: 1 } },
+                            qq: { editable: true, nullable: true },
+                            msn: { editable: true, nullable: true },
+                            taobao: { editable: true, nullable: true },
+                            alibaba: { editable: true, nullable: true },
+                            skype: { editable: true, nullable: true }
+                        }
+                    }
+                }
+            });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 520,
+            toolbar: ["create", "save", "cancel"],
+            columns: [
+               { field: "id", title: "编号", width: "100px" },
+                { field: "name", title: "昵称", width: "160px" },
+                { field: "no_order", title: "排序", width: "110px" },
+                { field: "qq", title: "QQ", width: "120px" },
+                { field: "msn", title: "MSN", width: "120px" },
+                { field: "taobao", title: "TaoBao", width: "120px" },
+                { field: "alibaba", title: "Alibaba", width: "120px" },
+                { field: "skype", title: "Skype", width: "130px" },
+                { command: ["destroy"], title: "&nbsp;", width: "160px" }
+            ],
+            editable: true
+        });
+    });
+</script>

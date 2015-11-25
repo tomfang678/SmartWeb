@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Account/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<table>
+    <tr><td>用户名:</td><td><input type="text" id="userId" /></td></tr>
+    <tr><td>密码:</td><td><input type="password" id="password" /></td></tr>
+    <tr><td><button title="登录" onclick="login()">登录</button></td><td></td></tr>
+    <tr><td><input type="text" id="info" /></td><td></td></tr>
+</table>
+<script type="text/javascript">
+    function login() {
+        var name = document.getElementById("userId").value;
+        var pwd = document.getElementById("password").value;
+        $.post("/Auth/Login", { username: name, password: pwd }, function (data, state) {
+            $("info").val() = data.LoginName;
+        });
+    }
+</script>

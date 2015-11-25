@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    Smart.Framework.Model.sd_staff staff = new Smart.Framework.Model.sd_staff();
+    if (ViewData["staffDetail"] != null)
+    {
+        staff = ViewData["staffDetail"] as Smart.Framework.Model.sd_staff;
+    }
+}
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="post-entry post-entry-type-page post-entry-3799">
+                <div class="entry-content-wrapper clearfix">
+                    <section class="av_textblock_section">
+                        <div class="avia_textblock " itemprop="text">
+                            <h1 style="text-align: center;">金牌讲师</h1>
+                        </div>
+                    </section>
+                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock ">
+                        <span class="hr-inner"><span class="hr-inner-style"></span></span>
+                    </div>             
+                    <div class="container">
+                        <div class="col-md-3 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <h2>关于 @staff.name</h2>
+                            <img src="@staff.imgurl" class="img-responsive" />
+                        </div>
+                        <div class="col-md-9 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                            <h2></h2>
+                            @Html.Raw(staff.remark)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

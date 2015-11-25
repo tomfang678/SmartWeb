@@ -1,0 +1,4 @@
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framewrok.DBUtility\bin\Release\Smart.Framewrok.DBUtility.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framewrok.DBUtility\bin\Release\Smart.Framewrok.DBUtility.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framewrok.DBUtility\obj\Release\Smart.Framewrok.DBUtility.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framewrok.DBUtility\obj\Release\Smart.Framewrok.DBUtility.pdb

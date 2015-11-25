@@ -1,0 +1,10 @@
+﻿@{
+ViewBag.Title = "Index";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="stretch_full container_wrap alternate_color light_bg_color title_container" style="background-color: #1BBD36;"><div class="container"> <h4 style="color:#ffffff">@Html.MvcSiteMap().SiteMapTitle() </h4><div class="breadcrumb breadcrumbs avia-breadcrumbs"><div class="breadcrumb-trail" xmlns:v="#"> <span class="trail-before"> <span class="breadcrumb-title">当前位置:</span> </span><span typeof="v:Breadcrumb">@Html.MvcSiteMap().SiteMapPath()</span></div></div></div></div>@RenderBody()
+@*<ol class="breadcrumb">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Library</a></li>
+    <li class="active">Data</li>
+</ol>*@

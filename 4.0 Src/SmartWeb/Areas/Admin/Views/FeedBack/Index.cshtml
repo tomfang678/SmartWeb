@@ -1,0 +1,106 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3 class="header smaller lighter blue">访客留言</h3>
+<p>
+    <a class="btn" href="Admin/"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="/Admin/Feedback"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+</p>
+<div id="grid"></div>
+<div id="details"></div>
+<script>
+    var wnd, detailsTemplate;
+    $(document).ready(function () {
+        //var typeid = $("#typeid").val();
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    type: "post",
+                    url: "/Admin/FeedBack/Get",
+                    dataType: "json",
+                    contentType: "application/json"
+                },
+                destroy: {
+                    url: "/Admin/FeedBack/Delete",
+                    dataType: "json",
+                    type: "POST",
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                    else if (operation == "read") {
+                        var parameter = {
+                            page: options.page,
+                            pageSize: options.pageSize
+                        };
+                        return kendo.stringify(parameter);
+                    }
+                }
+            },
+            batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+            cache: false,
+            pageSize: 20,
+            serverPaging: true,
+            schema: {
+                data: function (d) {
+                    return d.Data;
+                },
+                total: function (d) {
+                    return d.TotalCount;
+                },
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { editable: false, type: "number", validation: { required: true, min: 0 } },
+                        name: { editable: false },
+                        contact: { editable: false },
+                        tel: { editable: false, validation: { required: true, min: 0 } },
+                        email: { editable: true },
+                        readok: { editable: true, type: "boolean" },
+                        addtime: { editable: false, type: "date" }
+                    }
+                }
+            }
+        });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 520,
+            toolbar: ["save", "cancel"],
+            columns: [
+            { command: ["destroy"], title: "&nbsp;", width: "100px" },
+   		    { field: "id", title: "编号", width: "70px" },
+            { field: "name", title: "姓名", width: "90px" },
+            { field: "contact", title: "问题", width: "300px" },
+            { field: "ip", title: "IP", width: "100px" },
+            //{ field: "readok", title: "已回复", width: "60px" },
+            { field: "tel", title: "电话", width: "100px" },
+            { field: "email", title: "邮件", width: "100px" },
+            { field: "addtime", title: "留言时间", width: "120px", format: "{0: yyyy/MM/dd}" }
+            ],
+            messages: {
+                commands: {
+                    destroy: "Delete"
+                }
+            },
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+    });
+</script>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E13F9DFE-97B4-4CB3-9A9F-B79FAEF7DBC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smart.Core.TemplateEngine</RootNamespace>
+    <AssemblyName>Smart.Core.TemplateEngine</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ITagHandler.cs" />
+    <Compile Include="ITemplateHandler.cs" />
+    <Compile Include="Parser\ArrayAccess.cs" />
+    <Compile Include="Parser\BinaryExpression.cs" />
+    <Compile Include="Parser\DoubleLiteral.cs" />
+    <Compile Include="Parser\Element.cs" />
+    <Compile Include="Parser\Expression.cs" />
+    <Compile Include="Parser\FCall.cs" />
+    <Compile Include="Parser\FieldAccess.cs" />
+    <Compile Include="Parser\IntLiteral.cs" />
+    <Compile Include="Parser\MethodCall.cs" />
+    <Compile Include="Parser\Name.cs" />
+    <Compile Include="Parser\ParseException.cs" />
+    <Compile Include="Parser\StringExpression.cs" />
+    <Compile Include="Parser\StringLiteral.cs" />
+    <Compile Include="Parser\Tag.cs" />
+    <Compile Include="Parser\TagAttribute.cs" />
+    <Compile Include="Parser\TagClose.cs" />
+    <Compile Include="Parser\TagIf.cs" />
+    <Compile Include="Parser\TemplateLexer.cs" />
+    <Compile Include="Parser\Text.cs" />
+    <Compile Include="Parser\Token.cs" />
+    <Compile Include="StaticTypeReference.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="Parser\TagParser.cs" />
+    <Compile Include="Parser\TemplateParser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateFunction.cs" />
+    <Compile Include="TemplateManager.cs" />
+    <Compile Include="TemplateRuntimeException.cs" />
+    <Compile Include="TokenKind.cs" />
+    <Compile Include="VariableScope.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smart.Framework.Utility\Smart.Framework.Utility.csproj">
+      <Project>{ffb7ad8a-a002-4267-8657-863f00b28bd3}</Project>
+      <Name>Smart.Framework.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\_body.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\_Footer.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\_Header.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

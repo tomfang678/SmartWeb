@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "学员分享";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div id="filegrid"></div>
+<script>
+    $(document).ready(function () {
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    type: "post",
+                    url: "/Admin/StudentShare/Get",
+                    dataType: "json",
+                    contentType: "application/json"
+                },
+                update: {
+                    type: "post",
+                    url: "/Admin/StudentShare/UpdateList",
+                    dataType: "json",
+                    contentType: "application/json"
+
+                },
+                destroy: {
+                    type: "post",
+                    url: "/Admin/StudentShare/Delete",
+                    dataType: "json",
+                    contentType: "application/json"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                    if (operation == "read") {
+                        var parameter = {
+                            page: options.page,
+                            pageSize: options.pageSize
+                        };
+                        return kendo.stringify(parameter);
+                    }
+                }
+            },
+            batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+            pageSize: 30,
+            schema: {
+                data: function (d) {
+                    return d;
+                },
+                total: function (d) {
+                    return d.TotalPage;
+                },
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                        title: { editable: true },
+                        name: { editable: true },
+                        company: { editable: true },
+                        studyclass: { editable: true },
+                        newstime: { editable: true, type: "date" },
+                        valid: { editable: true },
+                        orderno: { editable: true, type: "number", validation: { required: true, min: 1 } }
+                    }
+                }
+            },
+            serverPaging: true
+        });
+
+        $("#filegrid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 720,
+            toolbar: [{
+                template: '<a class="k-button" href="/Admin/StudentShare/Add" target="_self">添 加</a>'
+            }, "save", "cancel"],
+            columns: [
+                 {
+                     command: [
+                    { name: "修改", click: function (e) { var tr = $(e.target).closest("tr"); var data = this.dataItem(tr); location.href = "/Admin/StudentShare/Add?id=" + data.id; } },
+                    { name: "destroy" }], width: "200px"
+                 },
+               { field: "id", title: "编号", width: "80px" },
+               { field: "title", title: "标题", width: "260px" },
+               { field: "name", title: "学员", width: "90px" },
+               { field: "company", title: "公司", width: "90px" },
+               { field: "studyclass", title: "课程", width: "160px" },
+               { field: "newstime", title: "时间", width: "80px", format: "{0: yyyy-MM-dd}" },
+               { field: "valid", title: "是否有效", width: "70px" },
+               { field: "orderno", title: "排序", width: "70px" },
+            ],
+            editable: true
+        });
+    });
+</script>
+

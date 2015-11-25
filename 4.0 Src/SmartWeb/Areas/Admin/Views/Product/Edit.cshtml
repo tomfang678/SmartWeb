@@ -1,0 +1,148 @@
+﻿@using Smart.Framework.Model;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_product product = new sd_product();
+    if (ViewData["product"] != null)
+    {
+        product = ViewData["product"] as sd_product;
+    }
+
+}
+<h3 class="header smaller lighter blue">产品信息</h3>
+<p>
+    <a class="btn" href="/Admin/Product"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="/Admin/Product/Edit"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+    <a class="btn btn-success" href="/Admin/Product/Add"><i class="icon-edit align-top bigger-125"></i>添加</a>
+</p>
+<input type="hidden" id="productid" value="@product.id">
+<div class="other" id="addnews">
+    <table class="table table-hover">
+        <thead></thead>
+        <tbody id="flash">
+            <tr>
+                <td>
+                    <label for="productType" class="required">产品类别</label>
+                </td>
+                <td>
+                    <select name="productType" id="productType" style="width:300px" required data-required-msg="请选择类别">
+                        <option value="@product.categoryid">@product.categoryid</option>
+                        <option value="1">精品课程</option>
+                        <option value="2">客户案例</option>
+                    </select>
+                    <span class="k-invalid-msg" data-for="newsType"></span>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="title" class="required">中文名：</label></td>
+                <td>
+                    <input type="text" id="title" name="title" style="width:500px" class="k-textbox" placeholder="中文名" required validationmessage="请输入 {0}" value="@product.title" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ctitle">英文名：</label></td>
+                <td>
+                    <input type="text" id="ctitle" name="title" style="width:500px" class="k-textbox" placeholder="英文名" value="@product.ctitle" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="title" class="required">缩略图</label></td>
+                <td>
+                    <img id="img" src="@product.displayimg" alt="" style="width:150px;height:150px;" /><input name="files" id="files" type="file" />
+                    <input type="hidden" id="imgpath" value="@product.displayimg" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ctitle">价格：</label></td>
+                <td>
+                    <label for="ctitle">原价：</label><input id="price" type="text" name="价格" value="@product.price" />
+                    <label for="ctitle">促销价：</label><input id="discoutprice" type="text" name="价格" value="@product.discoutprice" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="ctitle">是否为项目：</label></td>
+                <td>
+                    <div id="trcase"><label for="ctitle">服务时间：</label> <label for="ctitle">开始：</label><input id="startdate" value="@product.projectstart" />-<label for="ctitle">结束：</label><input id="enddate" value="@product.projectend" /></div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="title" class="required">关键字</label></td>
+                <td><input type="text" id="keywords" style="width:700px" name="关键字" class="k-textbox" placeholder="请输入关键词" required validationmessage="请输入 {0}" value="@product.keywords" /></td>
+            </tr>
+            <tr>
+                <td><label for="title" class="required">简短描述：</label>
+                <td><textarea id="descript" name="keyword" class="k-textbox" placeholder="请输入关键词" style="width:700px;height:100px;">@Html.Raw(@product.description)</textarea></td>
+            </tr>
+            <tr><td colspan="2"><label for="title" class="required">职位详细内容：</label></td></tr>
+            <tr>
+                <td colspan="2">
+                    <script type="text/plain" id="contenteditor" style="width: 800px; height: 300px;">
+                        @Html.Raw(product.content)
+                    </script>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="title" class="required">设置</label></td>
+                <td>
+                    <ul>
+                        <li><label>立即发布</label><input id="access" type="checkbox" checked="checked" /><span style="color:red">选中该按钮标示该新闻已经通过审核，可以立即在首页新闻列表中显示</span></li>
+                        <li><label>置顶</label><input id="top_ok" type="checkbox" /></li>
+                        <li><label>排序</label><input id="no_order" type="text" value="0" /></li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6" style="text-align:center">
+                    <input id="save" type="button" value="修改" style="width:100px" />&nbsp;
+                    <input id="cancel" type="reset" value="取消" />&nbsp;
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<script type="text/javascript">
+    //实例化富文本编辑器
+    var umdes = UM.getEditor('contenteditor');
+    $("#startdate").kendoDatePicker({
+        start: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#enddate").kendoDatePicker({
+        start: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#price").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    $("#no_order").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    $("#discoutprice").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+</script>
+<script src="~/Areas/Admin/Script/plugin/fileupload.js"></script>
+<script src="~/Areas/Admin/Script/plugin/productEdit.js"></script>
+<style type="text/css">
+    #view {
+        width: 700px;
+        list-style: none;
+    }
+
+        #view li {
+            width: 200px;
+            height: 150px;
+            float: left;
+            margin-right: 10px;
+        }
+</style>

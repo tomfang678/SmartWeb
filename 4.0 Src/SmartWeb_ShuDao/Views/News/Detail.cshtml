@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    Smart.Framework.Model.sd_news news = new Smart.Framework.Model.sd_news();
+    if (ViewData["newDetail"] != null)
+    {
+        news = ViewData["newDetail"] as Smart.Framework.Model.sd_news;
+    }
+}
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="post-entry post-entry-type-page post-entry-3799">
+                <div class="entry-content-wrapper clearfix">
+                    <section class="av_textblock_section">
+                        <div class="avia_textblock " itemprop="text">
+                            <h1 style="text-align: center;">@news.title</h1>
+                        </div>
+                    </section>
+                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock ">
+                        <span class="hr-inner"><span class="hr-inner-style"></span></span>
+                    </div>
+                    @if (!string.IsNullOrEmpty(news.videourl))
+                    {
+                        <div id="youkuplayer" style="width: 99%; height: 400px"></div>
+                        <script type="text/javascript" src="http://player.youku.com/jsapi">
+                            player = new YKU.Player('youkuplayer', {
+                                styleid: '0',
+                                client_id: 'c0088f72b1fbee8a',
+                                vid: '@news.videourl'
+                            });
+                        </script>
+                    }
+                    <span>@Html.Raw(news.content)</span>    
+                    <!-- JiaThis Button BEGIN -->
+                    <div class="jiathis_style_32x32">
+                        <a class="jiathis_button_qzone"></a>
+                        <a class="jiathis_button_tsina"></a>
+                        <a class="jiathis_button_tqq"></a>
+                        <a class="jiathis_button_weixin"></a>
+                        <a class="jiathis_button_renren"></a>
+                    </div>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                    <!-- JiaThis Button END -->
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

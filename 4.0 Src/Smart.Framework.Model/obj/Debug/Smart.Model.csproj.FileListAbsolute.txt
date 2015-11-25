@@ -1,0 +1,8 @@
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\2.0 Buiness Logic Layer\Smart.Model\bin\Debug\Smart.Model.dll
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\2.0 Buiness Logic Layer\Smart.Model\bin\Debug\Smart.Model.pdb
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\2.0 Buiness Logic Layer\Smart.Model\obj\Debug\Smart.Model.dll
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\2.0 Buiness Logic Layer\Smart.Model\obj\Debug\Smart.Model.pdb
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\4.0 BLL\Smart.Model\bin\Debug\Smart.Model.dll
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\4.0 BLL\Smart.Model\bin\Debug\Smart.Model.pdb
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\4.0 BLL\Smart.Model\obj\Debug\Smart.Model.dll
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\4.0 BLL\Smart.Model\obj\Debug\Smart.Model.pdb

@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    //System.Data.DataTable dt = ViewData["visit"] as System.Data.DataTable;
+    //System.Data.DataTable dtnews = ViewData["topnews"] as System.Data.DataTable;
+    //List<MessageInfo> fedblist = new List<MessageInfo>();
+    //List<ResumeInfo> resuelist = new List<ResumeInfo>();
+    //List<AppointInfo> applist = new List<AppointInfo>();
+    //if (ViewData["appoint"] != null)
+    //{
+    //    applist = ViewData["appoint"] as List<AppointInfo>;
+    //}
+    //if (ViewData["feedback"] != null)
+    //{
+    //    fedblist = ViewData["feedback"] as List<MessageInfo>;
+    //}
+    //if (ViewData["resume"] != null)
+    //{
+    //    resuelist = ViewData["resume"] as List<ResumeInfo>;
+    //}
+}
+<div class="center_content">
+    <h5>今日在线预约<img src="~/Content/style/images/news.gif" /></h5>
+    <table id="rounded-corner" style="width:90%">
+        <thead>
+            <tr>
+                <th scope="col" class="rounded">姓名</th>
+                <th scope="col" class="rounded">手机</th>
+                <th scope="col" class="rounded">预约课程</th>
+                <th scope="col" class="rounded">时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (AppointInfo resu in applist)
+            {
+                <tr>
+                    <td>@resu.Name</td>
+                    <td>@resu.Phone</td>
+                    <td>@resu.ClassName</td>
+                    <td>@resu.AddTime</td>
+                </tr>
+            }*@
+        </tbody>
+        <tfoot><tr><td colspan="4"><a href="/Admin/AppointmentClass"><img src="~/Content/style/images/zoom.png" />更多...</a></td></tr></tfoot>
+    </table>
+    <h5>今日在线应聘<img src="~/Content/style/images/news.gif" /></h5>
+    <table id="rounded-corner" style="width:90%">
+        <thead>
+            <tr>
+                <th scope="col" class="rounded">姓名</th>
+                <th scope="col" class="rounded">邮件</th>
+                <th scope="col" class="rounded">电话</th>
+                <th scope="col" class="rounded">学历</th>
+                <th scope="col" class="rounded">应聘职位</th>
+                <th scope="col" class="rounded">时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (ResumeInfo resu in resuelist)
+            {
+                <tr>
+                    <td>@resu.username</td>
+                    <td>@resu.email</td>
+                    <td>@resu.phone</td>
+                    <td>@resu.education</td>
+                    <td>@resu.postation</td>
+                    <td>@resu.addtime.ToShortDateString()</td>
+                </tr>
+            }*@
+        </tbody>
+        <tfoot><tr><td colspan="6"><a href="/Admin/Resume"><img src="~/Content/style/images/zoom.png" />更多...</a></td></tr></tfoot>
+    </table>
+    <h5>今日访客留言<img src="~/Content/style/images/news.gif" /></h5>
+    <table id="rounded-corner" style="width:90%">
+        <thead>
+            <tr>
+                <th scope="col" class="rounded">姓名</th>
+                <th scope="col" class="rounded">Emial</th>
+                <th scope="col" class="rounded">电话</th>
+                <th scope="col" class="rounded">问题</th>
+                <th scope="col" class="rounded">时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (MessageInfo fdk in fedblist)
+            {
+                <tr>
+                    <td>@fdk.name</td>
+                    <td>@fdk.email</td>
+                    <td>@fdk.tel</td>
+                    <td>@if (fdk.contact.Length > 20)
+                    {@fdk.contact.Substring(1, 10);
+                    }
+                    else
+                    {@fdk.contact}</td>
+                    <td>@fdk.addtime.Value.ToShortDateString()</td>
+                </tr>
+            }*@
+        </tbody>
+        <tfoot><tr><td colspan="5"><a href="/Admin/Feedback"><img src="~/Content/style/images/zoom.png" />更多...</a></td></tr></tfoot>
+    </table>
+</div>
+<div class="clear"></div>

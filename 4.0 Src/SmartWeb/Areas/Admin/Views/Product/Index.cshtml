@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string category = "1";
+    if (ViewData["category"] != null)
+    {
+        category = ViewData["category"] as string;
+    }
+}
+<h3 class="header smaller lighter blue">产品中心</h3>
+<p>
+    <a class="btn" href="/Admin"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-primary" href="/Admin/Product"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+    <a class="btn btn-success" href="/Admin/Product/Add"><i class="icon-edit align-top bigger-125"></i>添加</a>
+</p>
+<input type="hidden" value="@category" id="category" />
+<div id="grid"></div>
+<div id="details"></div>
+<script>
+    var wnd, detailsTemplate;
+    $(document).ready(function () {
+        var category = $("#category").val();
+        var crudServiceBaseUrl = "/Admin/Product",
+            dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "post",
+                        url: crudServiceBaseUrl + "/GetProductList?Category=" + category,
+                        dataType: "json",
+                        contentType: "application/json"
+                    },
+                    destroy: {
+                        url: "/Admin/Product/Destroy",
+                        dataType: "json",
+                        type: "POST"
+                    },
+                    parameterMap: function (options, operation) {
+                        
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                        else if (operation == "read") {
+                            var parameter = {
+                                page: options.page,
+                                pageSize: options.pageSize
+                            };
+                            return kendo.stringify(parameter);
+                        }
+                    }
+                },
+                batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+                pageSize: 20,
+                schema: {
+                    data: function (d) {
+                        return d.Data;
+                    },
+                    total: function (d) {
+                        return d.TotalCount;
+                    },
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { editable: true, type: "number", validation: { required: true, min: 1 } },
+                            title: { editable: false, validation: { required: true, min: 1 } },
+                            description: { editable: true, nullable: true },
+                            keywords: { editable: true, nullable: true },
+                            addtime: { editable: false, type: "date" },
+                            content: { editable: true, nullable: true },
+                            access: { editable: true, nullable: true ,type:"boolean"},
+                            no_order: { editable: true, type: "number", validation: { required: true, min: 1 } }
+                        }
+                    }
+                },
+                serverPaging: true,
+                saveChanges: function (e) {
+                    var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                        'type': 'information ',
+                        'title': '提示',
+                        'buttons': [
+                        {
+                            caption: 'Ok', callback: function () {
+                                e.preventDefault();
+                            }
+                        },
+                        ]
+                    });
+                }
+            });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 520,
+            toolbar: [{
+                template: '<a class="k-button" href="/Admin/Product/Add" target="_self">添 加</a>'
+            },"save", "cancel"],
+            columns: [
+         {
+             command: [
+             {
+                 name: "修改",
+                 click: function (e) {
+                     // e.target is the DOM element representing the button
+                     var tr = $(e.target).closest("tr"); // get the current table row (tr)
+                     // get the data bound to the current table row
+                     var data = this.dataItem(tr);
+                     window.open("/Admin/Product/Edit?id=" + data.id);
+                 }
+             },
+                  { name: "destroy" }], width: "160px"
+         },
+              //{ field: "categoryid", title: "类别", width: "160px" },
+   		{ field: "id", title: "编号", width: "100px" },
+               { field: "title", title: "产品名称", width: "160px" },
+               //{ field: "ctitle", title: "英文名称", width: "100px" },
+                { field: "keywords", title: "关键字", width: "160px" },
+                { field: "addtime", title: "添加时间", width: "120px", format: "{0: yyyy/MM/dd}" },
+                { field: "access", title: "权限", width: "130px" },
+                { field: "no_order", title: "排序", width: "100px" }
+            ],
+            editable: true
+        });
+    });
+</script>

@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    List<Smart.Framework.Model.sd_news> list = new List<Smart.Framework.Model.sd_news>();
+    if (ViewData["news"] != null)
+    {
+        list = ViewData["news"] as List<Smart.Framework.Model.sd_news>;
+    }
+}
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="post-entry post-entry-type-page post-entry-3799">
+                <div class="entry-content-wrapper clearfix">
+                    <section class="av_textblock_section" >
+                        <div class="avia_textblock " itemprop="text">
+                            <h1 style="text-align: center;">新闻动态</h1>
+                        </div>
+                    </section>
+                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+                    <p></p><section class="av_textblock_section" >
+                        <div class="avia_textblock " itemprop="text">
+                                <ul class="blog_archieve" style="list-style:none">
+                                    @foreach (var item in list)
+                                    {
+                                        <li>
+                                            <a href="/News/Detail?id=@item.id">
+                                                <i class="fa fa-angle-double-right"></i>
+                                                <span>@item.title&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                <span class="pull-right">&nbsp; @item.addtime.ToShortDateString()&nbsp;&nbsp;</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>

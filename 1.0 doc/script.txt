@@ -1,0 +1,17 @@
+<link id="google_webfont_1" rel="stylesheet" type="text/css" href="http://fonts.useso.com/css?family=Open+Sans:400,600">
+    <link rel="stylesheet" id="dashicons-css" href="~/Content/dashicons.min.css" type="text/css" media="all">
+    <link rel="stylesheet" id="thickbox-css" href="~/Content/thickbox.css" type="text/css" media="all">
+    <link rel="stylesheet" id="wpdm-front-css" href="~/Content/front.css?ver=3.8.3" type="text/css" media="all">
+    <link rel="stylesheet" id="avia-grid-css" href="~/Content/grid.css" type="text/css" media="all">
+    <link rel="stylesheet" id="avia-base-css" href="~/Content/base.css" type="text/css" media="all">
+    <link rel="stylesheet" id="avia-layout-css" href="~/Content/layout.css" type="text/css" media="all">
+    <link rel="stylesheet" id="avia-scs-css" href="~/Content/shortcodes.css" type="text/css" media="all">
+    <link rel="stylesheet" id="avia-custom-css" href="~/Content/custom.css" type="text/css" media="all">
+    <link rel="stylesheet" id="avia-prettyP-css" href="~/Content/prettyPhoto.css?ver=1" type="text/css" media="screen">
+    <link rel="stylesheet" id="avia-media-css" href="~/Content/mediaelementplayer.css?ver=1" type="text/css" media="screen">
+    <link rel="stylesheet" id="avia-print-css" href="~/Content/print.css" type="text/css" media="print">
+    <link rel="stylesheet" id="avia-dynamic-css" href="~/Content/enfold_share_on_theme123.net.css?ver=1" type="text/css" media="all">
+    <link rel='stylesheet' id='layerslider-css' href='~/Content/LayerSlider/static/css/layerslider.css?ver=5.1.1' type='text/css' media='all' />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/cmp_style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>

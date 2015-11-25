@@ -1,0 +1,158 @@
+﻿@using Smart.Framework.Model;
+@using Smart.Framework.BLL;
+@{
+    ViewBag.Title = "BasicAdd";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string id = string.Empty;
+    sd_commondata datainfo = new sd_commondata();
+    if (ViewData["id"] != null)
+    {
+        id = ViewData["id"].ToString();
+        datainfo = ViewData["datainfo"] as sd_commondata;
+    }
+    List<sd_module> modulelist = new List<sd_module>();
+    if (ViewData["module"] != null)
+    {
+        modulelist = ViewData["module"] as List<sd_module>;
+    }
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <h3 class="header smaller lighter blue">基本设置</h3>
+    <p>
+        <a class="btn" href="/Admin/SystemInfo/BasicSetting"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+        <a class="btn btn-info" href="/Admin/SystemInfo/BasicSetting"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+        <a class="btn btn-success" href="/Admin/Systeminfo/BasicAdd"><i class="icon-edit align-top bigger-125"></i>添加</a>
+    </p>
+    <div class="other" id="tickets">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="moduleId">模块</label>
+                    </td>
+                    <td>
+                        <select id="module" style="width: 250px" onchange="ModuleSelected(this.options[this.options.selectedIndex].value)">
+                            @if (modulelist != null)
+                            {
+                                foreach (var item in modulelist)
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>名称</label>
+                    </td>
+                    <td>
+                        <input type="text" id="modulename" style="width: 250px" value="@datainfo.keys" />
+                        <input id="id" type="hidden" value="@id" />
+                        <input id="addtime" type="hidden" value="@datainfo.addtime" />
+                    </td>
+                </tr>
+                @*<tr>
+                        <td>
+                            <label for="moduleId">内容时间</label>
+                        </td>
+                        <td>
+                            <input id="datepicker" value="@DateTime.Now.ToShortDateString()" style="width:99%;" />
+                        </td>
+                    </tr>*@
+                <tr>
+                    <td>
+                        <label for="content" class="required">内容：</label>
+                    </td>
+                    <td>
+                   <script type="text/plain" id="content" style="width:99%; height: 300px;">@Html.Raw(datainfo.value)</script>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="content" class="required">审核</label>
+                    </td>
+                    <td>
+                        <input type="checkbox" id="ischeck" value="审核" checked="checked" />
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" style="text-align:center">
+                        <button class="btn btn-success" id="save">发布 </button>
+                        <button class="btn" id="cancel"> 取消</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    //实例化编辑器
+    var umdes = UM.getEditor('content');
+    var moduleid = 0;
+    //$(document).ready(function () {
+    //    $("#datepicker").kendoDatePicker();
+    //});
+    //模块下拉列表
+    function ModuleSelected(e) {
+        $.get("/Admin/SystemInfo/GetModuleByParentId?id=" + e + "", function (data, status) {
+            var tt = "";
+            $.each(data, function (k, v) {
+                tt += " <option value=" + v.id + ">" + v.keys + "</option>";
+            })
+            $("#modulename").empty().append(tt);
+        });
+    }
+
+    $(document).ready(function () {
+        var validator = $("#tickets").kendoValidator().data("kendoValidator");
+        $("#save").click(function () {
+            if (validator.validate()) {
+                var url = "";
+                var id = $("#id").val() == "" ? 0 : $("#id").val();
+                alert(($("#ischeck").attr("checked") == "checked"));
+                var ischecked = (($("#ischeck").attr("checked") == "checked") ? true : false);
+                var obj = [];
+                obj = {
+                    id: id,
+                    moduleid: moduleid,
+                    keys: $("#modulename").val(),
+                    value: $("#content").html(),
+                    ischeck: ischecked,
+                    addtime: $("#addtime").val()
+                };
+                var str = JSON.stringify(obj);
+                var url;
+                if ($("#id").val() != "") {
+                    url = "/Admin/SystemInfo/Update";
+                } else {
+                    url = "/Admin/SystemInfo/Add";
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    datatype: "json",
+                    data: { models: str },
+                    success: function (data, statu) {
+                        if (statu == "success") {
+                            alert("操作成功");
+                            location.href = "/Admin/SystemInfo/BasicSetting";
+                        } else {
+                            alert('出现异常，操作失败！');
+                        }
+                    },
+                    error: function (mesg) {
+                        alert('出现异常' + mesg.toLocaleString());
+                    }
+                });
+            } else {
+                status.text("添加失败")
+                    .removeClass("valid")
+                    .addClass("invalid");
+            }
+        });
+    });
+</script>

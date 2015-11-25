@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{757159A7-4AA0-405A-9AC3-437F30B5DAC9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smart.Account.BLL</RootNamespace>
+    <AssemblyName>Smart.Account.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smart.Account.Contract\Smart.Account.Contract.csproj">
+      <Project>{e2027894-dd5d-4b2b-9b56-b2a3293390f1}</Project>
+      <Name>Smart.Account.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Account.DAL\Smart.Account.DAL.csproj">
+      <Project>{3a38dd94-8d91-4501-9416-3c7bc9b5f195}</Project>
+      <Name>Smart.Account.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Core.Cache\Smart.Core.Cache.csproj">
+      <Project>{7fba37d3-6e47-49ad-9cd4-22e61f25d341}</Project>
+      <Name>Smart.Core.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Core.Config\Smart.Core.Config.csproj">
+      <Project>{fa88dc08-3ef7-4ca8-be94-97d6761efd87}</Project>
+      <Name>Smart.Core.Config</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Core.Log\Smart.Core.Log.csproj">
+      <Project>{da26eb6d-7964-4669-a199-f1894fad3409}</Project>
+      <Name>Smart.Core.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.BLL\Smart.Framework.BLL.csproj">
+      <Project>{b205f752-7883-42c6-9b81-cf2930eb1385}</Project>
+      <Name>Smart.Framework.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.Contract\Smart.Framework.Contract.csproj">
+      <Project>{7d2847fe-2f8e-45cb-ba5c-3eb13c521298}</Project>
+      <Name>Smart.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.DAL.SqlServer\Smart.Framework.DAL.SqlServer.csproj">
+      <Project>{f2ddd270-9be5-4811-8031-e70e702eeff2}</Project>
+      <Name>Smart.Framework.DAL.SqlServer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.DALFactory\Smart.Framework.DALFactory.csproj">
+      <Project>{b24c3a57-67cf-4c82-9299-ffe4a03cd66b}</Project>
+      <Name>Smart.Framework.DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.DAL\Smart.Framework.DAL.csproj">
+      <Project>{99bca5fe-11e8-41b6-9d50-538e088a1f88}</Project>
+      <Name>Smart.Framework.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.Model\Smart.Framework.Model.csproj">
+      <Project>{5cd89d52-9221-4665-92a8-2d243279ad9a}</Project>
+      <Name>Smart.Framework.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.Utility\Smart.Framework.Utility.csproj">
+      <Project>{ffb7ad8a-a002-4267-8657-863f00b28bd3}</Project>
+      <Name>Smart.Framework.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

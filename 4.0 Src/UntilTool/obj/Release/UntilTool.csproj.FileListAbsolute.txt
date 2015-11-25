@@ -1,0 +1,10 @@
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\bin\Release\UntilTool.exe
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\bin\Release\UntilTool.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\bin\Release\Smart.Framework.Utility.dll
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\bin\Release\Smart.Framework.Utility.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\obj\Release\UntilTool.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\obj\Release\UntilTool.Form1.resources
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\obj\Release\UntilTool.Properties.Resources.resources
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\obj\Release\UntilTool.csproj.GenerateResource.Cache
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\obj\Release\UntilTool.exe
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\UntilTool\obj\Release\UntilTool.pdb

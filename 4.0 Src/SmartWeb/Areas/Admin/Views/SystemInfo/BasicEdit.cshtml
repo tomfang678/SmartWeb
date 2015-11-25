@@ -1,0 +1,134 @@
+﻿@using Smart.Framework.Model;
+@{
+    ViewBag.Title = "BasicEdit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_commondata commondata = new sd_commondata();
+    if (ViewData["commondata"] != null)
+    {
+        commondata = ViewData["commondata"] as sd_commondata;
+    }
+    string ischecked = string.Empty;
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <h3 class="header smaller lighter blue">基本设置</h3>
+    <a href="/Admin/SystemInfo/BasicSetting" class="bt_green"></a>
+    <div class="other" id="tickets">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <label>标题：</label><input id="id" type="hidden" value="@commondata.id" /><input id="moduleid" type="hidden" value="@commondata.moduleid" />
+                        <input id="modulename" type="text" style="width: 60%" readonly="readonly" value="@commondata.keys" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="moduleid">时间：</label><input id="datepicker" value="@DateTime.Now.ToShortDateString()"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="content" class="required">审核</label>
+                    </td>
+                    <td>
+                        @if (commondata.ischeck == true)
+                        {
+                            <input type="checkbox" id="ischeck" value="审核" checked="checked" />
+                        }
+                        else
+                        {  <input type="checkbox" id="ischeck" value="审核" />
+                        }
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="content" class="required">内容：</label>
+                    </td>
+                    <td>
+                        <script type="text/plain" id="content" style="width:90%; height: 300px;"> @Html.Raw(commondata.value)</script>
+                    </td>
+                </tr>
+               
+            </tbody>
+        </table>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //实例化编辑器
+    var umdes = UM.getEditor('content');
+    $(document).ready(function () {
+        $("#datepicker").kendoDatePicker({
+            format: "yyyy-MM-dd"
+        });
+    });
+    $(document).ready(function () {
+        var validator = $("#tickets").kendoValidator().data("kendoValidator");
+        $("#save").click(function () {
+            if (validator.validate()) {
+                var url = "";
+                var id = $("#id").val() == "" ? 0 : $("#id").val();
+                var ischecked = (($("#ischeck").attr("checked") == "checked") ? true : false);
+                var obj = [];
+                obj = {
+                    id: id,
+                    moduleid: $("#moduleid").val(),
+                    keys: $("#modulename").val(),
+                    value: $("#content").html(),
+                    ischeck: ischecked,
+                    newstime: $("#datepicker").val()
+                };
+                var str = JSON.stringify(obj);
+                var url;
+                if ($("#id").val() != "0") {
+                    url = "/Admin/SystemInfo/Update";
+                } else {
+                    url = "/Admin/SystemInfo/Add";
+                }
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    datatype: "json",
+                    data: { models: str },
+                    success: function (data, statu) {
+                        if (statu == "success") {
+                            var t = $.Zebra_Dialog('<strong>恭喜！</strong>, 执行成功', {
+                                'type': 'information ',
+                                'title': '提示'
+                            });
+                        } else {
+                            $.Zebra_Dialog('<strong>Sorry！</strong>,  执行失败', {
+                                'type': 'error ',
+                                'title': '异常提示'
+                            });
+                        }
+                    },
+                    error: function (mesg) {
+                        $.Zebra_Dialog('<strong>Sorry！</strong>,  ' + mesg.toLocaleString() + '', {
+                            'type': 'error ',
+                            'title': '异常提示'
+                        });
+                    }
+                });
+            } else {
+                status.text("添加失败")
+                    .removeClass("valid")
+                    .addClass("invalid");
+            }
+        });
+    });
+</script>

@@ -1,0 +1,164 @@
+﻿@using Smart.Framework.Model
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var news = new sd_news();
+    if (ViewData["news"] != null)
+    {
+        news = ViewData["news"] as sd_news;
+    }
+    List<sd_newstype> typelist = new Smart.Framework.BLL.NewsType().FindALL() as List<sd_newstype>;
+}
+<h3 class="header smaller lighter blue">新闻编辑</h3>
+<a class="btn" href="/Admin/News"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+<a class="btn" href="/Admin/News/"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+<table class="table table-hover">
+    <tr>
+        <td>
+            <label class="col-sm-1 control-label no-padding-right" for="id"> 编号</label>
+            <div class="col-sm-9">
+                <input type="text" id="id" value="@news.id" readonly="" class="col-xs-10 col-sm-7" />
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label class="col-sm-1 control-label no-padding-right" for="id"> 新闻类型</label>
+            <div class="col-sm-9">
+                <select name="newsType" id="newsType" class="col-xs-10 col-sm-7">
+                    @news.newstype
+                    @foreach (var item in typelist)
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                </select>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 新闻标题</label>
+
+            <div class="col-sm-9">
+                <input type="text" id="newtitle" value="@news.title" placeholder="新闻标题" class="col-xs-10 col-sm-7" />
+
+                <span class="help-inline col-xs-12 col-sm-5">
+                    <label class="middle">
+                        <input class="ace" type="checkbox" id="access" checked="@news.access" />
+                        <span class="lbl"> 是否启用</span>
+                        <label class="middle">
+                            <input class="ace" id="top_ok" type="checkbox" checked="@news.top_ok" />
+                            <span class="lbl"> 置顶</span>
+                        </label>
+                    </label>
+                </span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right" for="id"> 新闻时间</label>
+                <div class="col-sm-9">
+                    <input type="text" id="datepicker" value="@news.date" />
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right" for="form-field-2">缩略图</label>
+                <div class="col-sm-9">
+                    <img id="img" src="@news.imgurl" alt="" />
+                    <input type="hidden" id="imgpath" value="@news.imgurl" />
+                    <input name="files" id="files" type="file" />
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right" for="no_order"> 排序</label>
+                <div class="col-sm-9">
+                    <input id="no_order" type="text" value="@news.no_order" class="col-xs-10 col-sm-7" />
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 视频地址</label>
+                <div class="col-sm-9">
+                    <input id="vediourl" type="text" value="@news.videourl" class="col-xs-10 col-sm-7" />
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 搜索关键词</label>
+                <div class="col-sm-9">
+                    <input type="text" id="keywords" value="@news.keywords" placeholder="Password" class="col-xs-10 col-sm-7" />
+                    <span class="help-inline col-xs-12 col-sm-7">
+                        <span class="middle"></span>
+                    </span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 描述</label>
+
+                <div class="col-sm-9">
+                    <textarea id="descripteditor" style="width:99%;height:100px;">@news.description</textarea>
+                    <span class="help-inline col-xs-12 col-sm-7">
+                        <span class="middle"></span>
+                    </span>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="form-group">
+                <label class="col-sm-1 control-label no-padding-right" for="form-field-2"> 内容</label>
+
+                <div class="col-sm-9">
+                    <script type="text/plain" id="contenteditor" style="width:99%; height: 300px;">@Html.Raw(news.content) </script>
+                    <span class="help-inline col-xs-12 col-sm-7">
+                        <span class="middle"></span>
+                    </span>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+<div class="clearfix form-actions">
+    <div class="col-md-offset-3 col-md-9">
+        <button class="btn btn-info" type="button" id="save">
+            <i class="icon-ok bigger-110"></i>
+            提交
+        </button>
+
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn" type="reset" id="cancel">
+            <i class="icon-undo bigger-110"></i>
+            取消
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#datepicker").kendoDatePicker({
+        format: "yyyy-MM-dd"
+    });
+    //实例化编辑器
+    var umdes = UM.getEditor('contenteditor');
+</script>
+<script src="~/Areas/Admin/Script/plugin/fileupload.js"></script>
+<script src="~/Areas/Admin/Script/plugin/newsedit.js"></script>

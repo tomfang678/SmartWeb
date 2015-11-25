@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    Smart.Framework.Model.sd_case sd_case = new Smart.Framework.Model.sd_case();
+    if (ViewData["caseDetail"] != null)
+    {
+        sd_case = ViewData["caseDetail"] as Smart.Framework.Model.sd_case;
+    }
+}
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="post-entry post-entry-type-page post-entry-3799">
+                <div class="entry-content-wrapper clearfix">
+                    <section class="av_textblock_section" >
+                        <div class="avia_textblock " itemprop="text">
+                            <h1 style="text-align: center;">@sd_case.title</h1>
+                        </div>
+                    </section>
+                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+                    <p></p><section class="av_textblock_section" >
+                        <div class="avia_textblock " itemprop="text">
+                            <p>
+                                @Html.Raw(sd_case.content)
+                            </p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

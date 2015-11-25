@@ -1,0 +1,117 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-title ui-widget-content ui-corner-all">
+    <h3 class="header smaller lighter blue">公司简介</h3>
+    <p>
+        <a class="btn" href="/Admin"><i class="icon-ok align-top bigger-125"></i> 返回 </a>
+        <a class="btn btn-primary" href="/Admin/About"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+    </p>
+    <div class="other" id="tickets">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody id="flash">
+                <tr>
+                    <td>
+                        <label for="address">公司地址：</label>
+                    </td>
+                    <td>
+                        <input type="text" id="address" name="address" style="width:40%;" />
+                        <input type="hidden" id="aboutid" />
+                        <input type="hidden" id="addtime" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="phone" class="required">公司电话：</label></td>
+                    <td>
+                        <input type="text" id="phone" name="phone" style="width:40%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="fax">公司传真：</label></td>
+                    <td>
+                        <input type="text" id="fax" name="fax" style="width:40%;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="descript" class="required">摘要：</label>
+                    </td>
+                    <td>
+                        <textarea id="descripteditor" rows="10" cols="30" style="width:99%;height:100px;"></textarea>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <label for="content" class="required">详细内容：</label>
+                    </td>
+                    <td>
+                        <script type="text/plain" id="contenteditor" style="width: 99%; height: 300px;"></script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="space-4"></div>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="Save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //实例化编辑器
+    var umcnt = UM.getEditor('contenteditor');
+</script>
+<script type="text/javascript">
+    $.getJSON("/Admin/About/GetCompanyAboutList", function (data, state) {
+        if (data || data.data > 0) {
+            $.each(data, function (Index, model) {
+                $("#aboutid").val(model.id);
+                $("#addtime").val(model.addtime);
+                $("#address").val(model.address);
+                $("#phone").val(model.phone);
+                $("#fax").val(model.fax);
+                $("#descripteditor").val(model.shortDesc);
+                $("#contenteditor").empty().append(model.content);
+            });
+        }
+    });
+    $(document).ready(function () {
+        $("#Save").click(function () {
+            var obj = { id: $("#aboutid").val(), address: $("#address").val(), phone: $("#phone").val(), fax: $("#fax").val(), shortDesc: $("#descripteditor").val(), content: $("#contenteditor").html(), addtime: $("#addtime").val() };
+            $.ajax({
+                type: "POST",
+                url: "/Admin/About/UpdateAbout",
+                datatype: "json",
+                data: { models: JSON.stringify(obj) },
+                success: function (data) {
+                    if (data) {
+                        alert("保存成功！");
+                    } else {
+                        alert("保存失败！");
+                    }
+                    location.href = "/Admin/About/";
+                },
+                error: function (mesg) {
+                    alert(mesg.responseText);
+                }
+            });
+        });
+    });
+
+
+</script>

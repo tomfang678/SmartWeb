@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "AddFlash";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>添加Flash</h2>
+<ul>
+    <li><label>图片路径</label><input type="text" id="imgurl" /></li>
+    <li><label>链接地址</label><input type="text" id="url" /></li>
+    <li><label>样式</label><input type="text" id="imgclass" /></li>
+    <li><label>显示</label><input type="checkbox" id="isShow" /></li>
+    <li><label>内容描述</label><textarea id="descript"></textarea></li>
+</ul>
+<input type="button" id="AddFlash" value="添加" />
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#AddFlash").click(function () {
+            var obj = [];
+            obj = { url: $("#url").val(), descript: $("#descript").val(), imgurl: $("#imgurl").val(), imgclass: $("#imgclass").val(), isShow: $("#isShow").val };
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Flash/AddFlash",
+                datatype: "json",
+                data: obj,
+                success: function (data) {
+                    $.each(data, function (Index, model) {
+                        $("#aboutid").val(model.id);
+                        $("#address").val(model.address);
+                        $("#phone").val(model.phone);
+                        $("#fax").val(model.fax);
+                        $("#descripteditor").append(model.shortDesc);
+                        $("#contenteditor").append(model.content);
+                    });
+                },
+                error: function (mesg) {
+                    alert(mesg);
+                }
+            });
+        })
+    });
+</script>

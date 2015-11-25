@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    var list = ViewBag.curriculumlist;
+}
+
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="post-entry post-entry-type-page post-entry-3799">
+                <div class="entry-content-wrapper clearfix">
+                    <section class="av_textblock_section">
+                        <div class="avia_textblock " itemprop="text">
+                            <h1 style="text-align: center;">课程安排</h1>
+                        </div>
+                    </section>
+                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+                    @*<table class="table">
+                            @foreach (var item in list)
+                            {
+
+                                <tr class="about"><td><i style="font-weight:bold"> @item.course</i> &nbsp; &nbsp; 讲师：@item.teacher &nbsp; &nbsp; &nbsp;地点：@item.address &nbsp; &nbsp;上课时间： @item.startdate-@item.enddate   <a href="/Curriculum/Detail?id=@item.id"><span class="badge">详细 ...</span></a></td></tr>
+                            }
+                        </table>*@
+                    <ul class="blog_archieve" style="list-style:none">
+                        @foreach (var item in list)
+                        {
+
+                            <li> <i class="fa fa-angle-double-right"></i> @item.course &nbsp; &nbsp; 讲师：@item.teacher &nbsp; &nbsp; &nbsp;地点：@item.address &nbsp; &nbsp;上课时间： @item.startdate-@item.enddate  <a href="/Curriculum/Detail?id=@item.id"><span class="badge">详细 ...</span></a></li>
+                        }
+                    </ul>
+
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

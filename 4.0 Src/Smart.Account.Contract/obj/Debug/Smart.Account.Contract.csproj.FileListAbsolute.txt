@@ -1,0 +1,4 @@
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.Contract\bin\Debug\Smart.Account.Contract.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.Contract\bin\Debug\Smart.Account.Contract.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.Contract\obj\Debug\Smart.Account.Contract.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.Contract\obj\Debug\Smart.Account.Contract.pdb

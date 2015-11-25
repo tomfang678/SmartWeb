@@ -1,0 +1,2 @@
+"use strict"
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && 'ontouchstart' in document.documentElement){document.documentElement.className += ' avia_mobile ';}else{document.documentElement.className += ' avia_desktop ';}document.documentElement.className += ' js_active ';(function(){var prefix = ['-webkit-','-moz-', '-ms-', ""];for (var i in prefix){ if(prefix[i]+'transform' in document.documentElement.style) document.documentElement.className += " avia_transform "; }})();

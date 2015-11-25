@@ -1,0 +1,212 @@
+﻿@{
+    var online = this.ApplicationInstance.Application["OnLine"];
+    var count = this.ApplicationInstance.Application["Count"];
+}
+<style type="text/css">
+    #slide {
+        width: 940px;
+        height: 330px;
+        overflow: hidden;
+        padding: 0;
+        position: relative;
+        z-index: 10;
+    }
+
+        #slide ul {
+            height: 100%;
+            position: absolute;
+        }
+
+        #slide li {
+            float: left;
+            width: 940px;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            background: rgba(0,0,0,0);
+            color: #fff;
+        }
+
+            #slide li img {
+                width: 60%;
+                height: 100%;
+            }
+
+        #slide .slide-con {
+            position: absolute;
+            top: 0;
+            right: 0;
+            overflow: hidden;
+            width: 34%;
+            height: 100%;
+            background: #08c;
+            padding: 0 3%;
+        }
+
+            #slide .slide-con h2 {
+                font-size: 20px;
+                line-height: 25px;
+                color: #fff;
+                padding: 40px 0 15px 0;
+                border-bottom: 1px solid #ccc;
+                margin-bottom: 20px;
+            }
+
+                #slide .slide-con h2 a {
+                    color: #fff;
+                }
+
+            #slide .slide-con p {
+                font-size: 14px;
+            }
+
+        #slide .detail {
+            margin-top: 10px;
+            padding: 5px 0;
+            display: block;
+            float: left;
+            color: #fff;
+        }
+
+        #slide .btnBg {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+            background: #000;
+        }
+
+        #slide .btn {
+            display: none;
+            position: absolute;
+            width: 100%;
+            background: #000;
+            text-align: center;
+            opacity: .5;
+            filter: alpha(opacity=50);
+            right: 0;
+            bottom: 0;
+        }
+
+            #slide .btn span {
+                display: inline-block;
+                _display: inline;
+                _zoom: 1;
+                width: 25px;
+                height: 10px;
+                _font-size: 0;
+                margin-left: 5px;
+                cursor: pointer;
+                background: #fff;
+            }
+
+                #slide .btn span.select {
+                    background: #0088cc;
+                }
+
+        #slide .preNext {
+            width: 45px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            margin-top: -22.5px;
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAxQTFRFAAAA6Ojo/f39////uWe0ggAAAAR0Uk5T////AEAqqfQAAAEkSURBVHja7JhBFsMgCEQ1vf+du+trExgGTaeLjtsAP08RRsborMdrje8tQwwxxBBDDDHEkH+FTAyZtzAqyLyXEW/XPuUzQnwmu5STf3Lwe5Szd5ZdO5SLb5rC65SrZ35PVimBH7iMa5TIC934FUroA8tKnxJ74NrVpST2RYHsUTLrqgp3KKltWep5Sm5Z9xOWAuyIpsVRkBXTGRkKtKHab03BFlyPryjFd1JI4CjVP7BqBcUpd5OWRHmk+sR43ZXFInKvIe7iaAeR3x0FOY9fQSTbpTl4TQprLqOmrGgKpKbUa5qWpv1qhIRGEmnEnUamagS35umgeQRpnnOah6nmia0ZFmjGHpoBjmYUpRmqacaDqwrSEEMMMcQQQwwxxJD39RRgAGi9DIlUh+TMAAAAAElFTkSuQmCC) no-repeat 0 0;
+            cursor: pointer;
+            /* animate */
+            -webkit-transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            transition: all 0.5s ease;
+        }
+
+        #slide .pre {
+            left: -45px;
+        }
+
+        #slide .next {
+            right: -45px;
+            background-position: right top;
+        }
+
+        #slide:hover > .pre {
+            left: 0;
+        }
+
+        #slide:hover > .next {
+            right: 0;
+        }
+</style>
+<link href="~/assets/css/news.css" rel="stylesheet" />
+<script src="~/assets/css/common.js"></script>
+<!-- Banner -->
+@*<section id="banner">
+        <div>
+        </div>
+    </section>*@
+<section style="margin-top:100px">
+    <div class="content">
+        <div id="slide">
+            <ul style="left: 0px; width: 4700px;">
+                <li>
+                    <a href="http://news.neusoft.edu.cn/2015/1030/5140.shtml"><img src="http://upload.neusoft.edu.cn/2015/1030/thumb_564_330_1446187980488.jpg" alt=""></a>
+                    <div class="slide-con">
+                        <h2><a href="http://news.neusoft.edu.cn/2015/1030/5140.shtml">我校2014—2015学年实践教学成果...</a></h2>
+                        <p>10月28日，我校2014—2015学年实践教学成果展亮相各系教学楼。与去年相比，今年教学成果展不仅包括今年实践学期课程的优秀项目，还包括学生学科竞赛获奖作品、校企合作项目...</p>
+                        <a href="http://news.neusoft.edu.cn/2015/1030/5140.shtml" class="detail">详细内容&gt;&gt;</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="http://news.neusoft.edu.cn/2015/1029/5138.shtml"><img src="http://upload.neusoft.edu.cn/2015/0709/thumb_564_330_1436424192834.jpg" alt=""></a>
+                    <div class="slide-con">
+                        <h2><a href="http://news.neusoft.edu.cn/2015/1029/5138.shtml">2016届毕业生秋季校园双选会</a></h2>
+                        <p>为搭建毕业生与企业的沟通桥梁，促进2016届毕业生就业，11月7日举行大连东软信息学院2016届毕业生秋季校园双选会。</p>
+                        <a href="http://news.neusoft.edu.cn/2015/1029/5138.shtml" class="detail">详细内容&gt;&gt;</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="http://news.neusoft.edu.cn/2015/1027/5135.shtml"><img src="http://upload.neusoft.edu.cn/2015/1027/thumb_564_330_1445916004353.jpg" alt=""></a>
+                    <div class="slide-con">
+                        <h2><a href="http://news.neusoft.edu.cn/2015/1027/5135.shtml">我校首届国际文化节嗨翻东软校园</a></h2>
+                        <p>10月23日中午，由我校英语系举办的首届国际文化节“下一站，世界”亮相校园，引来众多东软师生参与其中。美国驻中国大使馆领事 LeeA Hilgartner应邀参加了活动。我校副校长...</p>
+                        <a href="http://news.neusoft.edu.cn/2015/1027/5135.shtml" class="detail">详细内容&gt;&gt;</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="http://news.neusoft.edu.cn/2015/1027/5123.shtml"><img src="http://upload.neusoft.edu.cn/2015/1023/thumb_564_330_1445590863849.jpg" alt=""></a>
+                    <div class="slide-con">
+                        <h2><a href="http://news.neusoft.edu.cn/2015/1027/5123.shtml">我校承办《中国大学生就业杂志》...</a></h2>
+                        <p>10月22日上午，由教育部全国高等学校学生信息咨询与就业指导中心主办，大连东软信息学院承办的“《中国大学生就业》杂志理事会2015年度会议”在大连昱圣苑国际酒店召开。中...</p>
+                        <a href="http://news.neusoft.edu.cn/2015/1027/5123.shtml" class="detail">详细内容&gt;&gt;</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="http://news.neusoft.edu.cn/2015/1026/5128.shtml"><img src="http://upload.neusoft.edu.cn/2015/1026/thumb_564_330_1445844129693.jpg" alt=""></a>
+                    <div class="slide-con">
+                        <h2><a href="http://news.neusoft.edu.cn/2015/1026/5128.shtml">2014-2015学年实践教学成果展</a></h2>
+                        <p>为展示实践教学改革效果，交流实践教学改革经验，教务部于2015年10月-12月举办2014-2015学年实践教学成果展，展示地点为各系部教学楼，欢迎全校师生莅临参观、交流与指导！</p>
+                        <a href="http://news.neusoft.edu.cn/2015/1026/5128.shtml" class="detail">详细内容&gt;&gt;</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="btnBg" style="opacity: 0.5;"></div><div class="btn"><span class="select" style="opacity: 1;"></span><span style="opacity: 0.4;" class=""></span><span style="opacity: 0.4;" class=""></span><span style="opacity: 0.4;" class=""></span><span style="opacity: 0.4;" class=""></span></div><div class="preNext pre" style="opacity: 0.8;"></div><div class="preNext next" style="opacity: 0.8;"></div>
+        </div>
+    </div>
+</section>
+<section id="main" class="container">
+    <h1>广告</h1>
+    <ul>
+        <li>在线：@online</li>
+        <li>总数：@count</li>
+    </ul>
+</section>
+<script src="~/assets/js/slider.js"></script>
+<script>
+    jQuery(document).ready(function ($) {
+        $("#slide .preNext").css("opacity", '.8').hover(function () {
+            $(this).stop(true, false).animate({ "opacity": "1" }, 300);
+        }, function () {
+            $(this).stop(true, false).animate({ "opacity": ".8" }, 300);
+        });
+    });
+</script>

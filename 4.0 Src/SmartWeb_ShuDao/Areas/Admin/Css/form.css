@@ -1,0 +1,57 @@
+﻿
+.k-textbox {
+    width: 11.8em;
+}
+
+#tickets {
+    width: 800px;
+    height: 600px;
+    /*margin: 10px auto;*/
+    /*padding: 10px 20px 20px 170px;*/
+}
+
+    #tickets h3 {
+        font-weight: normal;
+        font-size: 1.4em;
+        border-bottom: 1px solid #ccc;
+    }
+
+    #tickets ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #tickets li {
+        margin: 10px 0 0 0;
+    }
+
+.k-textbox {
+    width: 260px;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    text-align: left;
+}
+
+.required {
+    font-weight: bold;
+}
+
+.accept, .status {
+    padding-left: 90px;
+}
+
+.valid {
+    color: green;
+}
+
+.invalid {
+    color: red;
+}
+
+span.k-tooltip {
+    margin-left: 6px;
+}

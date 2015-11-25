@@ -1,0 +1,71 @@
+﻿@using Smart.Framework.Model
+@using Smart.Framework.BLL
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    List<sd_curriculum> list = new Curriculum().GetCurriculum();
+}
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="entry-content-wrapper clearfix">
+                <section class="av_textblock_section">
+                    <div class="avia_textblock " itemprop="text">
+                        <h1 style="text-align: center;">预约&amp;咨询</h1>
+                    </div>
+                </section>
+                <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+            </div>
+            @if (list.Count > 0)
+            {
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h5>近期课程安排</h5></div>
+
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            @foreach (var item in list)
+                            {
+                                <li class="list-group-item">
+                                    <i style="font-weight:bold"> @item.course</i> &nbsp; &nbsp; 讲师：@item.teacher &nbsp; &nbsp; &nbsp;地点：@item.address &nbsp; &nbsp;上课时间： @item.startdate-@item.enddate   <a href="/Curriculum/Detail?id=@item.id"><span class="badge">详细 ...</span></a>
+                                </li>
+                            }
+                        </ul>
+                        <a class="btn btn_default" href="/Curriculum">更多...</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>暂时还没有课程安排</p>
+            }
+            <div class="panel panel-default">
+                <div class="panel-heading">预约报名</div>
+            </div>
+            @*<div class="panel-body">*@
+            <table class="table table-hover">
+                <tr>
+                    <td><span>预约课程:</span></td>
+                    <td>
+                        <select name="classname" id="classname" style="width:60%">
+                            <option>商业登顶之道</option>
+                            <option>企业顶层设计的方法与路径</option>
+                            <option>企业医生养成的方法与路径</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr><td><span>姓名：</span></td><td> <input type="text" id="name" name="您的姓名" style="width:60%" placeholder="请输入您的姓名" /> </td></tr>
+                <tr><td><span>手机：</span></td><td><input type="text" id="phone" placeholder="手机" style="width:60%" /></td></tr>
+                <tr><td><span>QQ：</span></td><td><input type="text" id="qq" placeholder="QQ" style="width:60%" /></td></tr>
+                <tr><td><span>邮箱：</span></td><td><input type="text" id="email" style="width:60%" name="邮箱" class="k-textbox" placeholder="e.g. myname@example.com" required data-email-msg="您输入的邮件格式不正确" /></td></tr>
+                <tr class="avia_textblock " itemprop="text"><td><span>其他留言：</span><td><textarea id="remark" placeholder="留言请限制在500字以内" style="width:90%; height:100%;" maxlength="500"></textarea></td></tr>
+                <tr>
+                    <td colspan="6" align="center">
+                        <button type="button" id="save" onclick="up()" class="btn btn-primary">报 &nbsp;名</button>
+                        <button type="button" id="save" onclick="up()" class="btn btn-primary">撤&nbsp;销 </button>
+                    </td>
+                </tr>
+            </table>
+            @*</div>*@
+        </main>
+    </div>
+    <script src="~/Scripts/Common/appointment.js"></script>

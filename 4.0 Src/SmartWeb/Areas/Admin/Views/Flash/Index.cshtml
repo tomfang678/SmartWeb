@@ -1,0 +1,173 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    #flash tr td img {
+        width: 200px;
+        height: 66px;
+    }
+</style>
+<div class="page-title ui-widget-content ui-corner-all">
+    <h2>背景动画</h2>
+    <div class="other">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th style="width:100px">序号</th>
+                    <th>背景图</th>
+                    <th>动画样式</th>
+                    <th>显示状态</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="flash"></tbody>
+            @*<tr>
+        <td >新增
+            <ul id="view">
+                <li id="newimg">
+                </li>
+                <li>
+                    <input name="files" id="files" type="file" />
+                </li>
+            </ul>
+        </td>
+        <td><input type="text" id="imgurl" /></td>
+        <td>
+            <select name="urlpath" id="urlpath" required data-required-msg="请选择动画样式">
+                <option value="/Home">首页</option>
+                <option value="/About">关于我们</option>
+                <option value="/Case">客户案例</option>
+                <option value="/Product">解决方案</option>
+                <option value="/Job">招聘信息</option>
+                <option value="/News">公司新闻</option>
+                <option value="/Download">资料下载</option>
+                <option value="#">无</option>
+            </select>
+        </td>
+        <td>
+            <select name="imgclass" id="imgclass" required data-required-msg="请选择动画样式">
+                <option value="cube">(cube)立方体旋转</option>
+                <option value="cubeRandom">(cubeRandom)随机</option>
+                <option value="block">(block)块状旋转</option>
+                <option value="cubeStop">(cubeStop)立方体停止</option>
+            </select>
+        </td>
+        <td><input type="checkbox" id="isShow" /></td>
+    </tr>
+    <tr>
+        <td colspan="5" rowspan="2">
+            <textarea id="descript" style="height:35px"></textarea>
+            <input type="button" id="AddFlash" value="保存" />
+        </td>
+    </tr>*@
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Admin/Flash/GetFlashList",
+            datatype: "json",
+            success: function (data) {
+                var img = "<tr>";
+                $.each(data, function (Index, model) {
+                    img += "<td><span>" + Index + "</span></td>";
+                    img += "<td><img src='" + model.imgurl + "' alert='' /></td>";
+                    img += "<td><span>" + model.imgclass + "</span></td>";
+                    img += "<td><span>" + model.isShow + "</span></td>";
+                    img += "<td><a href='/Admin/Flash/Edit' >添加</a>&nbsp;&nbsp;&nbsp;<a href='/Admin/Flash/Edit?flashid=" + model.id + "' >修改</a>&nbsp;&nbsp;&nbsp;<a href='/Admin/Flash/Delete?flashid=" + model.id + "' >删除</a></td>";
+                    img += "</tr>";
+                });
+                $("#flash").append(img);
+            },
+            error: function (mesg) {
+                alert(mesg);
+            }
+        });
+        $("#titleflash").kendoUpload({
+            async: {
+                saveUrl: "/Admin/Flash/FileSave",
+                removeUrl: "/Admin/Flash/FileRemove",
+                autoUpload: true
+            },
+            upload: onUpload,
+            success: titleFlashUploadSuccess,
+            error: onError
+        });
+        function titleFlashUploadSuccess(e) {
+            
+            if (e.operation == "upload") {
+                ;
+                var path = JSON.parse(e.XMLHttpRequest.response);
+                $("#tl_flash").attr("src", path[0]);
+            }
+        }
+        var filepath = "";
+        var filesize;
+        var filename;
+        var filetype;
+        var downloadpath;
+        $("#files").kendoUpload({
+            async: {
+                saveUrl: "/Admin/Flash/FileSave",
+                removeUrl: "/Admin/Flash/FileRemove",
+                autoUpload: true
+            },
+            upload: onUpload,
+            success: onSuccess,
+            error: onError
+        });
+        function onSuccess(e) {
+            if (e.operation == "upload") {
+                filesize = e.files[0].size;
+                filename = e.files[0].name;
+                downloadpath = JSON.parse(e.XMLHttpRequest.response);
+                filepath += JSON.parse(e.XMLHttpRequest.response) + "|";
+                $("#newimg").append("<img src='" + downloadpath[0] + "' alert='' style='width: 350px;height: 150px;'>");
+                //$("#imgurl").attr("value", downloadpath[0]);
+                //$("#imgpath").attr("value", downloadpath[0]);
+            }
+            if (e.operation == "remove") {
+                $("#newimg").remove();
+            }
+        }
+        function onError(e) {
+            // Array with information about the uploaded files
+            var files = e.files;
+            if (e.operation == "upload") {
+                alert("Failed to upload " + files.length + " files");
+            }
+        }
+        function onUpload(e) {
+            var files = e.files;
+            $.each(files, function () {
+                if (this.extension.toLowerCase() == ".exe" || this.extension.toLowerCase() == ".msi" || this.extension.toLowerCase() == ".dll" || this.extension.toLowerCase() == ".bat") {
+                    alert("该格式非法，禁止上传")
+                    e.preventDefault();
+                }
+            })
+        };
+        $("#AddFlash").click(function () {
+            var isshow = false;
+            ;
+            if ($("#isShow").val() == "on") { isshow = true; };
+            var obj = [];
+            obj = { url: $("#urlpath").val(), descript: $("#descript").text(), imgurl: $("#imgurl").val(), imgclass: $("#imgclass").val(), isShow: isshow };
+            $.ajax({
+                type: "POST",
+                url: "/Admin/Flash/AddFlash",
+                datatype: "json",
+                data: { model: JSON.stringify(obj) },
+                success: function (data) {
+                    alert("添加成功");
+                    location.reload();
+                },
+                error: function (mesg) {
+                    alert(mesg.responseText);
+                }
+            });
+        })
+    });
+</script>

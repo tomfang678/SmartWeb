@@ -1,0 +1,162 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string newstype = ViewData["newstype"] as string;
+}
+<h3 class="header smaller lighter blue">新闻中心</h3>
+<p>
+    <a class="btn" href="/Admin/News?newstype=5">公司信息 </a>
+    <a class="btn btn-primary" href="/Admin/News?newstype=4">行业新闻</a>
+    <a class="btn btn-info" href="/Admin/News?newstype=8">通知公告</a>
+    <a class="btn btn-success" href="/Admin/News?newstype=0">所有</a>
+    <a class="btn" href="/Admin"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn" href="/Admin/News?newstype=0" ><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+    <a class="btn btn-success" href="/Admin/News/AddNews"><i class="icon-edit align-top bigger-125"></i>添加</a>
+</p>
+
+<input type="hidden" value="@newstype" id="newstype" />
+<div id="grid"></div>
+<div id="details"></div>
+<script>
+    //var umdes = UM.getEditor('contenteditor');
+    var wnd, detailsTemplate;
+    $(document).ready(function () {
+        var type = $("#newstype").val();
+        var crudServiceBaseUrl = "",
+            dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "POST",
+                        url: "/Admin/News/GetNewsList?NewsType=" + type,
+                        dataType: "json",
+                        contentType: "application/json"
+                    },
+                    update: {
+                        url: "/Admin/News/UpdateNews",
+                        dataType: "json",
+                        type: "POST",
+                    },
+                    destroy: {
+                        url: "/Admin/News/DeleteNews",
+                        dataType: "json",
+                        type: "POST",
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        } else if (operation == "read") {
+                            var parameter = {
+                                page: options.page,
+                                pageSize: options.pageSize
+                            };
+                            return kendo.stringify(parameter);
+                        }
+                    }
+                },
+                batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+                cache: false,
+                pageSize: 15,
+                schema: {
+                    data: function (d) {
+                        return d.Data;
+                    },
+                    total: function (d) {
+                        return d.TotalCount;
+                    },
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                            newstype: { editable: true, nullable: true },
+                            title: { editable: true, validation: { required: true } },
+                            keywords: { editable: true, nullable: true },
+                            no_order: { editable: true, type: "number", validation: { required: true, min: 0 }, nullable: true },
+                            hits: { editable: false, nullable: true },
+                            addtime: { editable: false, type: "date" },
+                            updatetime: { editable: false, type: "date" },
+                            top_ok: { editable: false, type: "boolean" },
+                            access: { editable: true, type: "boolean" },
+                            description: { editable: true, nullable: true },
+                            content: { editable: true, nullable: true },
+                            date: { editable: true, type: "date" }
+                        }
+                    }
+                },
+                serverPaging: true
+            });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 550,
+            toolbar: [{
+                template: '<a class="k-button" href="/Admin/News/AddNews"  target="_self">添 加</a>'
+            }, "save", "cancel"],
+            columns: [
+                { field: "id", title: "No.", width: "40px" },
+                { field: "title", title: "标题", width: "300px" },
+                { field: "addtime", title: "添加时间", width: "70px", format: "{0: yyyy/MM/dd}" },
+                { field: "hits", title: "点击次数", width: "80px" },
+                { field: "no_order", title: "排序", width: "50px" },
+                {
+                    command: [
+                   { text: "预览", click: showDetails, },
+                   { name: "修改", click: function (e) { var tr = $(e.target).closest("tr"); var data = this.dataItem(tr); location.href = "/Admin/News/Edit?newsid=" + data.id; } },
+                   { name: "destroy" }], width: "200px"
+                }
+            ],
+            messages: {
+                commands: {
+                    destroy: "Delete"
+                }
+            },
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+        wnd = $("#details")
+                      .kendoWindow({
+                          title: "新闻",
+                          modal: true,
+                          visible: false,
+                          resizable: false,
+                          width: 700
+                      }).data("kendoWindow");
+
+        detailsTemplate = kendo.template($("#template").html());
+
+        function showDetails(e) {
+            e.preventDefault();
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            wnd.content(detailsTemplate(dataItem));
+            wnd.center().open();
+        }
+    });
+</script>
+<script type="text/x-kendo-template" id="template">
+    <div id="details-container">
+        <h2>#= title #</h2>
+        <em>新闻类别：#= newstype #</em>&nbsp;&nbsp;
+        <em>关键字: #= keywords #</em> &nbsp;&nbsp;<br />
+        <em> #= kendo.toString(addtime, "yyyy/MM/dd") #</em>&nbsp;&nbsp;
+        <em>描述：#= description #</em>&nbsp;&nbsp;
+        <dl>
+            <dt> #= content #</dt>
+        </dl>
+    </div>
+</script>
+<script type="text/javascript">
+    $("#1").addClass(" active open");
+</script>

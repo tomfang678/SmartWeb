@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    string typeid = "1";
+    if (ViewData["typeid"] != null)
+    {
+        typeid = ViewData["typeid"] as string;
+    }
+}
+<input type="hidden" value="@typeid" id="typeid" />
+<div id="grid"></div>
+@*<div id="details"></div>*@
+<script>
+    var wnd, detailsTemplate;
+    $(document).ready(function () {
+        var typeid = $("#typeid").val();
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    type: "post",
+                    url: "/Admin/StaffStar/Get?typeid=" + typeid,
+                    dataType: "json",
+                    contentType: "application/json"
+                },
+                destroy: {
+                    url: "/Admin/StaffStar/Delete",
+                    dataType: "json",
+                    type: "POST",
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                    else if (operation == "read") {
+                        var parameter = {
+                            page: options.page,
+                            pageSize: options.pageSize
+                        };
+                        return kendo.stringify(parameter);
+                    }
+                }
+            },
+            batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+            cache: false,
+            pageSize: 20,
+            serverPaging: true,
+            schema: {
+                data: function (d) {
+                    return d.Data;
+                },
+                total: function (d) {
+                    return d.TotalPage;
+                },
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { editable: true, type: "number", validation: { required: true, min: 0 } },
+                        title: { editable: false },
+                        orderno: { editable: true, type: "number", validation: { required: true, min: 0 } },
+                        stafftype: { editable: true, type: "number", validation: { required: true, min: 0 } },
+                        isvalide: { editable: false, type: "boolean" },
+                        selecttime: { editable: false, type: "date" },
+                        addtime: { editable: false, type: "date" }
+                    }
+                }
+            }
+        });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 520,
+            toolbar: [{
+                template: '<a class="k-button" href="/Admin/StaffStar/Add" target="_self">添 加</a>'
+            }, "save", "cancel"],
+            columns: [
+            {
+                command: [
+              { name: "修改", click: function (e) { var tr = $(e.target).closest("tr"); var data = this.dataItem(tr); window.open("/Admin/StaffStar/Add?id=" + data.id); } },
+              { name: "destroy" }], width: "200px"
+            },
+            //{ field: "stafftype", title: "类别", width: "160px" },
+   		    { field: "id", title: "编号", width: "100px" },
+            { field: "title", title: "标题", width: "190px" },
+            { field: "addtime", title: "添加时间", width: "120px", format: "{0: yyyy/MM/dd}" },
+            { field: "isvalide", title: "权限", width: "130px" },
+            { field: "orderno", title: "排序", width: "100px" }
+            ],
+            messages: {
+                commands: {
+                    destroy: "Delete"
+                }
+            },
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+    });
+</script>

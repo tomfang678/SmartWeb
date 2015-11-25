@@ -1,0 +1,75 @@
+﻿@{
+    Smart.Framework.Model.Shcedule sch = ViewData["ScheduleList"] as Smart.Framework.Model.Shcedule;
+}
+<div id='av_section_2' class='avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll avia-full-stretch  avia-builder-el-12  el_after_av_section  el_before_av_section  container_wrap fullsize' style='background-repeat: no-repeat;background-attachment: scroll; background-position: top left; ' data-section-bg-repeat='stretch'>
+    <div class='container'>
+        <div class='template-page content  twelve alpha units'>
+            <div class='post-entry post-entry-type-page post-entry-1040'>
+                <div class='entry-content-wrapper clearfix'>
+                    <section class="av_textblock_section">
+                        <div class='avia_textblock ' itemprop="text">
+                            <h1 style="text-align: center;"><span>近期公开班</span></h1>
+                        </div>
+                    </section>
+                    <div class='hr hr-short hr-center  avia-builder-el-14  el_after_av_textblock  el_before_av_table '><span class='hr-inner'><span class='hr-inner-style'></span></span></div>
+                    <div class='avia-table main_color avia-pricing-table-container avia-table-1  avia-builder-el-15  el_after_av_hr  el_before_av_button ' itemscope="itemscope" itemtype="http://schema.org/Table">
+                        <div class='pricing-table-wrap'>
+                            <ul class='pricing-table '>
+                                <li class='avia-heading-row'><div class='first-table-item'><font color="white">近期课程</font></div><span class='pricing-extra'></span></li>
+                                @if (sch != null)
+                                {
+                                    foreach (var item in sch.RecentlList)
+                                    {
+                                        <li class=''>
+                                            <a href="/Curriculum/Detail?id=@item.id">
+                                                @item.course &nbsp; @item.startdate<br />
+                                                @item.teacher &nbsp; @item.address
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class='pricing-table-wrap'>
+                            <ul class='pricing-table '>
+                                <li class='avia-heading-row'><div class='first-table-item'><h3><font color="white">即将开课</font></h3></div><span class='pricing-extra'></span></li>
+                                @if (sch != null)
+                                {
+                                    foreach (var item in sch.SoonList)
+                                    {
+                                        <li class=''>
+                                            <a href="/Curriculum/Detail?id=@item.id">
+                                                @item.course &nbsp; @item.startdate<br />
+                                                @item.teacher &nbsp; @item.address
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class='pricing-table-wrap'>
+                            <ul class='pricing-table '>
+                                <li class='avia-heading-row'><div class='first-table-item'><font color="white">已成功结束课程</font></div><span class='pricing-extra'></span></li>
+                                @if (sch != null)
+                                {
+                                    foreach (var item in sch.EndList)
+                                    {
+                                        <li class=''>
+                                            <a href="/Curriculum/Detail?id=@item.id">
+                                                @item.course &nbsp; @item.startdate<br />
+                                                @item.teacher &nbsp; @item.address
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- close content main div -->
+    </div>
+    <div class='avia-button-wrap avia-button-center  avia-builder-el-16  el_after_av_table  avia-builder-el-last '>
+        <a href='/News' class='avia-button avia-icon_select-yes avia-color-silver avia-size-medium avia-position-center '><span class='avia_button_icon' aria-hidden='true' data-av_icon='...' data-av_iconfont='entypo-fontello'></span></a>
+    </div>
+</div>

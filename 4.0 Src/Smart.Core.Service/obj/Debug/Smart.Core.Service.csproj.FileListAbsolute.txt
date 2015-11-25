@@ -1,0 +1,5 @@
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Service\bin\Debug\Smart.Core.Service.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Service\bin\Debug\Smart.Core.Service.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Service\obj\Debug\Smart.Core.Service.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Service\obj\Debug\Smart.Core.Service.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Service\obj\Debug\Smart.Core.Service.csprojResolveAssemblyReference.cache

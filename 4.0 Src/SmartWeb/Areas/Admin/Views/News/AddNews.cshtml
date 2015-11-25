@@ -1,0 +1,131 @@
+﻿@using Smart.Framework.Model;
+@using Smart.Framework.BLL;
+@{
+    ViewBag.Title = "AddNews";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<sd_newstype> dt = new List<sd_newstype>();
+    if (ViewData["type"] != null)
+    {
+        dt = ViewData["type"] as List<sd_newstype>;
+    }
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="other" id="addnews">
+        <h3 class="header smaller lighter blue">添加新闻</h3>
+        <a class="btn" href="/Admin/News"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+        <a class="btn" href="/Admin/News/AddNews"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody id="flash">
+                <tr>
+                    <td><label for="newsType" class="required">类别：</label></td>
+                    <td>
+                        <select name="newsType" id="newsType" required data-required-msg="请选择新闻类别">
+                            @foreach (var row in dt)
+                            {
+                                <option value="@row.id">@row.name</option>
+                            }
+                        </select>
+                        <a href="/Admin/NewsType"><i class="icon-tag"></i></a>
+                        <span class="k-invalid-msg" data-for="newsType"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">标题：</label></td>
+                    <td>
+                        <input type="text" id="newtitle" name="title" style="width:80%" class="k-textbox" placeholder="标题" required validationmessage="请输入 {0}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="datepicker" class="required">新闻时间：</label></td>
+                    <td>
+                        <input id="datepicker" value="@DateTime.Now.ToShortDateString()" style="width:150px;" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="datepicker" class="required">排序：</label></td>
+                    <td>
+                        <input type="text" id="no_order" name="title" value="0" style="width:80%" class="k-textbox" placeholder="排序" />
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td><label for="datepicker" class="required">视频地址：</label></td>
+                    <td>
+                        <input type="text" id="vediourl" name="title" style="width:80%" class="k-textbox" placeholder="视频地址" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">搜索关键词</label></td>
+                    <td><input type="text" id="keywords" style="width:80%" name="keyword" class="k-textbox" placeholder="请输入关键词" required validationmessage="请输入 {0}" /></td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">设置：</label></td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <span class="help-inline col-xs-12 col-sm-5">
+                                    <label class="middle">
+                                        <input class="ace" type="checkbox" id="access" checked="" />
+                                        <span class="lbl"> 审核通过并显示</span>
+                                        <label class="middle">
+                                            <input class="ace" id="top_ok" type="checkbox" checked="" />
+                                            <span class="lbl"> 置顶</span>
+                                        </label>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">缩略图：</label></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td><i class="icon-picture"></i><img id="img" alt="" /><input type="hidden" id="imgpath" /></td>
+                                <td><input name="files" id="files" type="file" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">描述：</label>
+                    <td><textarea id="descripteditor" name="keyword" class="k-textbox" placeholder="请输入关键词" style="width:90%;height:100px;"></textarea></td>
+                </tr>
+                <tr>
+                <tr><td colspan="2"><label for="title" class="required">内容：</label></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <script type="text/plain" id="contenteditor" style="width: 90%; height: 300px;"></script>
+                    </td>
+                </tr>
+            </tbody>   
+        </table>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //实例化编辑器
+    var umdes = UM.getEditor('contenteditor');
+    $(document).ready(function () {
+        $("#datepicker").kendoDatePicker({
+            format: "yyyy-MM-dd"
+        });
+    });
+</script>
+<script src="~/Areas/Admin/Script/plugin/fileupload.js"></script>
+<script src="~/Areas/Admin/Script/plugin/news.js"></script>

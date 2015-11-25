@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    List<Smart.Framework.Model.sd_job> list = new List<Smart.Framework.Model.sd_job>();
+    if (ViewData["job"] != null)
+    {
+        list = ViewData["job"] as List<Smart.Framework.Model.sd_job>;
+    }
+}
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="post-entry post-entry-type-page post-entry-3799">
+                <div class="entry-content-wrapper clearfix">
+                    <section class="av_textblock_section" itemscope="itemscope" itemtype="http://schema.org/CreativeWork">
+                        <div class="avia_textblock " itemprop="text">
+                            <h1 style="text-align: center;">诚挚的邀请您成为我们的一员</h1>
+                        </div>
+                    </section>
+                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+                    <p></p><section class="av_textblock_section" itemscope="itemscope" itemtype="http://schema.org/CreativeWork">
+                        <div class="avia_textblock " itemprop="text">
+                            <ul class="blog_archieve" style="list-style:none">
+                                @foreach (var item in list)
+                                {
+                                    <li>
+                                        <a href="/Recruitment/Detail?id=@item.id"><i class="fa fa-angle-double-right"></i>
+                                        <span>@item.position&nbsp;&nbsp;— &nbsp;&nbsp;@item.place</span>
+                                       <span class="pull-right">&nbsp; @item.addtime.ToShortDateString()&nbsp;&nbsp;</span></a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </section>
+                    <div style="height:30px" class="hr hr-invisible  avia-builder-el-4  el_after_av_textblock  el_before_av_button "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+                    <div class="avia-button-wrap avia-button-center  avia-builder-el-5  el_after_av_hr  avia-builder-el-last "><a href="/Recruitment/SendResume" class="avia-button avia-icon_select-yes avia-color-theme-color avia-size-large avia-position-center "><span class="avia_button_icon" aria-hidden="true" data-av_icon="" data-av_iconfont="entypo-fontello">上传简历</span></a></div>
+
+                </div>
+            </div>
+        </main><!-- close content main element -->
+    </div>
+</div>

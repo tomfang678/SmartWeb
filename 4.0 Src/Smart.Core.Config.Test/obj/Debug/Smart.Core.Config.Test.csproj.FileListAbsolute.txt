@@ -1,0 +1,16 @@
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Smart.Core.Config.Test.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Smart.Core.Config.Test.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\obj\Debug\Smart.Core.Config.Test.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\obj\Debug\Smart.Core.Config.Test.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\obj\Debug\Smart.Core.Config.Test.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Smart.Core.Config.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Smart.Framework.Utility.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Smart.Core.Config.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Smart.Framework.Utility.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Config\AdminMenuConfig.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Config\CacheConfig.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Config\DaoConfig.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Config\Log4net.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Config\SettingConfig.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Config\SystemConfig.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Config.Test\bin\Debug\Config\UploadConfig.xml

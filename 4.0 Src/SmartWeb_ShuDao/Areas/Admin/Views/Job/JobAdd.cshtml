@@ -1,0 +1,181 @@
+﻿@using Smart.Framework.Model;
+    @{
+    ViewBag.Title = "JobAdd";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_job job = new sd_job();
+    if (ViewData["job"] != null)
+    {
+        job = ViewData["job"] as sd_job;
+    }
+    }
+    <div class="page-title ui-widget-content ui-corner-all">
+        <h3 class="header smaller lighter blue">招聘信息</h3>
+        <p>
+            <a class="btn" href="/Admin/Job"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+            <a class="btn btn-info" href="/Admin/Job/JobAdd"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+            <a class="btn btn-success" href="/Admin/Job/JobAdd"><i class="icon-edit align-top bigger-125"></i>添加</a>
+        </p>
+        <div class="other" id="addnews">
+            <table class="table table-hover">
+                <thead></thead>
+                <tbody id="flash">
+                    <tr>
+                        <td><label for="count">编号</label></td>
+                        <td>@job.id<input type="hidden" id="jobid" readonly="readonly" value="@job.id"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="postation">招聘职位</label>
+                        </td>
+                        <td>  <input id="postation" type="text" name="招聘职位" class="k-textbox" placeholder="请输入关键词" required validationmessage="请输入 {0}" style="width:90%" value="@job.position" /></td>
+                    <tr>
+                        <td><label for="place">工作地点</label></td>
+                        <td>
+                            <select id="place" name="place">
+                                <option selected="selected">@job.place</option>
+                                <option selected="selected">上海</option>
+                                <option selected="selected">北京</option>
+                                <option selected="selected">深圳</option>
+                                <option selected="selected">广州</option>
+                                <option selected="selected">武汉</option>
+                                <option selected="selected">杭州</option>
+                                <option selected="selected">南京</option>
+                                <option selected="selected">苏州</option>
+                                <option selected="selected">无锡</option>
+                                <option selected="selected">广西</option>
+                            </select>
+                            <span class="k-invalid-msg" data-for="newsType"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="count">招聘人数</label></td>
+                        <td>
+                            <input id="count"  type="number" name="count" value="@job.count" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="deal">工资待遇</label></td>
+                        <td>
+                            <input id="deal" type="number" name="deal" value="@job.deal" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="useful_life">有效时间（天）</label></td>
+                        <td>
+                            <input type="number" name="useful_life" id="useful_life" value="30" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">邮箱</label></td>
+                        <td>
+                            <input type="text" name="email" id="email" value="@job.email" />
+                        </td>
+                    </tr>
+                    @*<tr>
+                            <td><label for="title">关键字</label></td>
+                            <td><input type="text" id="keywords" style="width:80%" name="关键字" class="k-textbox"  /></td>
+                        </tr>*@
+                    <tr>
+                        <td><label for="title" class="required">摘要：</label>
+                        <td><textarea id="descripteditor" name="keyword" class="k-textbox" placeholder="请输入关键词" style="width:99%;height:100px;">@Html.Raw(job.shortdescript)</textarea></td>
+                    </tr>
+                    <tr><td colspan="2"><label for="title" class="required">职位详细内容：</label></td></tr>
+                    <tr>
+                        <td colspan="2">
+                            <script type="text/plain" id="contenteditor" style="width: 99%; height: 300px;">@Html.Raw(job.content)</script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="title" class="required">设置</label></td>
+                        <td>
+                            <ul>
+                                <li><label>立即发布</label><input id="access" type="checkbox" checked="checked" /><span style="color:red">选中该按钮标示该新闻已经通过审核，可以立即在首页新闻列表中显示</span></li>
+                                <li><label>置顶</label><input id="top_ok" type="checkbox" /></li>
+                                <li><label>排序</label><input id="no_order" type="text" value="0" /></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-3 col-md-9">
+                    <button class="btn btn-info" type="button" id="save">
+                        <i class="icon-ok bigger-110"></i>
+                        提交
+                    </button>
+
+                    &nbsp; &nbsp; &nbsp;
+                    <button class="btn" type="reset" id="cancel">
+                        <i class="icon-undo bigger-110"></i>
+                        取消
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //实例化编辑器
+        var umdes = UM.getEditor('contenteditor');
+    </script>
+    <script>
+        var validator = $("#addnews").kendoValidator().data("kendoValidator"), status = $(".status");
+        $(document).ready(function () {
+            $("#save").click(function () {
+                if (validator.validate()) {
+                    var jid = $("#jobid").val() == "" ? "0" : $("#jobid").val();
+                    var obj = [];
+                    obj = {
+                        id: jid,
+                        position: $("#postation").val(),
+                        count: $("#count").val(),
+                        place: $("#place").val(),
+                        deal: $("#deal").val(),
+                        useful_life: $("#useful_life").val(),
+                        ShortDescript: $("#descripteditor").val(),
+                        content: $("#contenteditor").html(),
+                        email: $("#email").val(),
+                        no_order: $("#no_order").val(),
+                        access: $("#access").val() == "on" ? 1 : 0,
+                        top_ok: $("#top_ok").val() == "on" ? 1 : 0
+                    };
+                    var str = JSON.stringify(obj);
+                    var ulr, msg;
+                    if (jid != "0") {
+                        ulr = "/Admin/Job/UpdateJob";
+                        msg = "修改成功！";
+                    } else {
+                        ulr = "/Admin/Job/JobRelease";
+                        msg = "发布成功！";
+                    }
+                    $.ajax({
+                        type: "POST",
+                        url: ulr,
+                        datatype: "json",
+                        data: { models: str },
+                        success: function (data, statu) {
+                            if (statu == "success") {
+                                var result = $.Zebra_Dialog('<strong>恭喜！</strong>' + msg, {
+                                    'type': 'information ',
+                                    'title': '提示',
+                                    'buttons': [
+                                { caption: 'Ok', callback: function () { location.reload(); } },
+                                    ]
+                                });
+                            } else {
+                                $.Zebra_Dialog('出现异常，操作失败！', {
+                                    'type': 'error ',
+                                    'title': '异常提示'
+                                });
+                            }
+                        },
+                        error: function (mesg) {
+                            $.Zebra_Dialog('<strong>Sorry！</strong>操作失败' + mesg, {
+                                'type': 'error ',
+                                'title': '异常提示'
+                            });
+                        }
+                    });
+                }
+            })
+        });
+    </script>

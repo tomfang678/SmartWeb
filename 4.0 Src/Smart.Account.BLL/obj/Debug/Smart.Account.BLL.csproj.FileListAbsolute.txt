@@ -1,0 +1,4 @@
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.BLL\bin\Debug\Smart.Account.BLL.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.BLL\bin\Debug\Smart.Account.BLL.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.BLL\obj\Debug\Smart.Account.BLL.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.BLL\obj\Debug\Smart.Account.BLL.pdb

@@ -1,0 +1,275 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="alert alert-block alert-success">
+        <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button><i class="icon-ok green"></i>欢迎使用<strong class="green"> 树道国际后台管理系统 <small>(v1.0)</small></strong>
+    </div>
+    <div class="space-6"></div>
+    <div class="col-sm-7 infobox-container">
+        <div class="infobox infobox-green  ">
+            <div class="infobox-icon">
+                <i class="icon-comments"></i>
+            </div>
+
+            <div class="infobox-data">
+                <span class="infobox-data-number">32</span>
+                <div class="infobox-content">2个评论</div>
+            </div>
+            <div class="stat stat-success">8%</div>
+        </div>
+
+        <div class="infobox infobox-blue  ">
+            <div class="infobox-icon">
+                <i class="icon-twitter"></i>
+            </div>
+
+            <div class="infobox-data">
+                <span class="infobox-data-number">11</span>
+                <div class="infobox-content">新粉丝</div>
+            </div>
+
+            <div class="badge badge-success">
+                +32%
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+
+        <div class="infobox infobox-pink  ">
+            <div class="infobox-icon">
+                <i class="icon-shopping-cart"></i>
+            </div>
+
+            <div class="infobox-data">
+                <span class="infobox-data-number">8</span>
+                <div class="infobox-content">新订单</div>
+            </div>
+            <div class="stat stat-important">4%</div>
+        </div>
+
+        <div class="infobox infobox-red  ">
+            <div class="infobox-icon">
+                <i class="icon-beaker"></i>
+            </div>
+
+            <div class="infobox-data">
+                <span class="infobox-data-number">7</span>
+                <div class="infobox-content">调查</div>
+            </div>
+        </div>
+
+        <div class="infobox infobox-orange2  ">
+            <div class="infobox-chart">
+                <span class="sparkline" data-values="196,128,202,177,154,94,100,170,224"></span>
+            </div>
+
+            <div class="infobox-data">
+                <span class="infobox-data-number">6,251</span>
+                <div class="infobox-content">页面查看次数</div>
+            </div>
+
+            <div class="badge badge-success">
+                7.2%
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+
+        <div class="infobox infobox-blue2  ">
+            <div class="infobox-progress">
+                <div class="easy-pie-chart percentage" data-percent="42" data-size="46">
+                    <span class="percent">42</span>%
+                </div>
+            </div>
+
+            @*<div class="infobox-data">
+                    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://"); document.write(unescape("%3Cspan id='cnzz_stat_icon_1255994303'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255994303%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+                    <span class="infobox-text">查看码201518</span>
+                    <div class="infobox-content">
+                    </div>
+                </div>*@
+        </div>
+        <div class="vspace-sm"></div>
+        <div class="space-6"></div>
+        <a href="/Admin/News/AddNews" class="btn btn-app btn-primary">
+            <i class="icon-edit bigger-230"></i>
+            新闻编辑
+        </a>
+        <a href="/Admin/Job/JobAdd" class="btn btn-app btn-error">
+            <i class="icon-edit bigger-230"></i>
+            招聘动态
+        </a>
+        <a href="/Admin/Case/Add" class="btn btn-app btn-success">
+            <i class="icon-edit bigger-230"></i>
+            客户案例
+        </a>
+        <a href="/Admin/Staff/Add" class="btn btn-app btn-warning">
+            <i class="icon-edit bigger-230"></i>
+            团队管理
+        </a>
+        <a href="/Admin/FileUpload/Add" class="btn btn-app btn-info">
+            <i class="icon-edit bigger-230"></i>
+            资料上传
+        </a>
+    </div>
+    <div class="vspace-sm"></div>
+    <div class="col-sm-5">
+        <div class="widget-box">
+            <div class="widget-header widget-header-flat widget-header-small">
+                <h5>
+                    <i class="icon-signal"></i>
+                    访问来源
+                </h5>
+
+                <div class="widget-toolbar no-border">
+                    <button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown">
+                        本周
+                        <i class="icon-angle-down icon-on-right bigger-110"></i>
+                    </button>
+
+                    <ul class="dropdown-menu pull-right dropdown-125 dropdown-lighter dropdown-caret">
+                        <li class="active">
+                            <a href="#" class="blue">
+                                <i class="icon-caret-right bigger-110">&nbsp;</i>
+                                本周
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
+                                上周
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
+                                本月
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="icon-caret-right bigger-110 invisible">&nbsp;</i>
+                                上月
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="widget-body">
+                <div class="widget-main">
+                    <div id="piechart-placeholder"></div>
+
+                    <div class="hr hr8 hr-double"></div>
+
+                    <div class="clearfix">
+                        <div class="grid3">
+                            <span class="grey">
+                                <i class="icon-facebook-sign icon-2x blue"></i>
+                                &nbsp; likes
+                            </span>
+                            <h4 class="bigger pull-right">1,255</h4>
+                        </div>
+
+                        <div class="grid3">
+                            <span class="grey">
+                                <i class="icon-twitter-sign icon-2x purple"></i>
+                                &nbsp; tweets
+                            </span>
+                            <h4 class="bigger pull-right">941</h4>
+                        </div>
+
+                        <div class="grid3">
+                            <span class="grey">
+                                <i class="icon-pinterest-sign icon-2x red"></i>
+                                &nbsp; pins
+                            </span>
+                            <h4 class="bigger pull-right">1,050</h4>
+                        </div>
+                    </div>
+                </div><!-- /widget-main -->
+            </div><!-- /widget-body -->
+        </div><!-- /widget-box -->
+    </div><!-- /span -->
+
+    <div class="col-sm-6">
+        <div class="widget-box ">
+            <div class="widget-header">
+                <h4 class="lighter smaller"><i class="icon-comment blue"></i>访客留言</h4>
+                <a href="/Admin/Feedback">more...</a>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main no-padding">
+                    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;">
+                        <div class="dialogs" style="overflow: hidden; width: auto; height: 300px;" id="msg">
+                        </div>
+                        <div class="slimScrollBar ui-draggable" style="width: 7px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 252.808988764045px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div>
+                    </div>
+                    @*<form>
+                            <div class="form-actions">
+                                <div class="input-group">
+                                    <input placeholder="Type your message here ..." type="text" class="form-control" name="message">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-sm btn-info no-radius" type="button">
+                                            <i class="icon-share-alt"></i>
+                                            发送
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </form>*@
+                </div><!-- /widget-main -->
+            </div><!-- /widget-body -->
+        </div><!-- /widget-box -->
+    </div>
+    <div class="col-sm-6">
+        <div class="widget-box ">
+            <div class="widget-header">
+                <h4 class="lighter smaller"><i class="icon-list blue"></i> 简历</h4>
+                <a href="/Admin/Resume">more...</a>
+            </div>
+            <div class="widget-body">
+                <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 300px;">
+                    <div class="dialogs" style="overflow: hidden; width: auto; height: 300px;" id="resume">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /row -->
+</div>
+<script src="~/assets/js/biz/common.js"></script>
+<script>
+    var PageSize, TotalPage, TotalCount;
+    $.getJSON("/Admin/FeedBack/GetMsg", { page: "1", pageSize: "15" }, function (data, state) {
+        createList(data.Data);
+        pageSize = data.PageSize;
+    });
+    //构造列表
+    function createList(Data) {
+        $("#msg").empty();
+        if (Data || Data.data > 0) {
+            var html = "";
+            $.each(Data, function (index, value) {
+                html = "<div class='itemdiv dialogdiv'><div class='user'> <h5>" + value.name + "</h5></div><div class='body'><div class='time'><i class='icon-time'></i><span class='green'>" + date2str(parseDate(value.addtime), 'yyyy-MM-dd hh:mm:ss') + "</span></div><div class='name'><a href='#'>ip: " + value.ip + "</a></div> <div class='text'>" + value.info + "</div><div class='tools'><a href='/Admin/Feedback' class='btn btn-minier btn-info'><i class='icon-only icon-share-alt'></i> </a></div></div></div>";
+                $("#msg").append(html);
+            });
+        }
+    }
+</script>
+<script>
+    var PageSize, TotalPage, TotalCount;
+    $.getJSON("/Admin/Resume/GetResume", { page: "1", pageSize: "15" }, function (data, state) {
+        $("#resume").empty();
+        if (data.Data || data.Data.data > 0) {
+            var html = "";
+            $.each(data.Data, function (index, value) {
+                html = "<div class='itemdiv dialogdiv'><div class='body'><div class='time'><i class='icon-time'></i><span class='green'>" + date2str(parseDate(value.addtime), 'yyyy-MM-dd hh:mm:ss') + "</span></div><div class='name'><a href='#'>" + value.username + " phone:" + value.phone + " email:" + value.email + "</a></div> <div class='text'>【应聘】" + value.postation + "【学历】" + value.education + value.workyears + "工作经验</div><div class='tools'><a href='/Admin/Resume' class='btn btn-minier btn-info'><i class='icon-only icon-share-alt'></i> </a></div></div></div>";
+                $("#resume").append(html);
+            });
+        }
+    });
+</script>

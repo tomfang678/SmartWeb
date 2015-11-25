@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3 class="header smaller lighter blue">简历中心</h3>
+<p>
+    <a class="btn" href="/Admin"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="/Admin/Resume"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+</p>
+<div id="filegrid"></div>
+<script>
+    $(document).ready(function () {
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    type: "POST",
+                    url: "/Admin/Resume/Get",
+                    dataType: "json",
+                    contentType: "application/json"
+                },
+                update: {
+                    url: "/Admin/Resume/UpdateByList",
+                    dataType: "json",
+                    type: "POST"
+                },
+                destroy: {
+                    url: "/Admin/Resume/Delete",
+                    dataType: "json",
+                    type: "POST"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                    else if (operation == "read") {
+                        var parameter = {
+                            page: options.page,
+                            pageSize: options.pageSize
+                        };
+                        return kendo.stringify(parameter);
+                    }
+                }
+            },
+            batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+            cache: false,
+            pageSize: 20,
+            schema: {
+                data: function (d) {
+                    return d.Data;
+                },
+                total: function (d) {
+                    return d.TotalPage;
+                },
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                        username: { editable: false },
+                        sex: { editable: false },
+                        chinsex: { editable: false },
+                        phone: { editable: false },
+                        email: { editable: false },
+                        education: { editable: false },
+                        position: { editable: false },
+                        workyears: { editable: false, type: "number" },
+                        addtime: { editable: false, type: "date" },
+                        isread: { editable: true, type: "boolean" },
+                        talentpoolo: { editable: true, type: "number" }
+                    }
+                }
+            },
+            serverPaging: true
+        });
+
+        $("#filegrid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            sortable: {
+                mode: "multiple",
+                allowUnsort: true
+            },
+            filterable: {
+                mode: "row"
+            },
+            height: 520,
+            toolbar: ["save", "cancel"],
+            columns: [
+                 {
+                     command: [
+                    { name: "详细", click: function (e) { var tr = $(e.target).closest("tr"); var data = this.dataItem(tr); location.href = "/Admin/Resume/Detail?id=" + data.id; } },
+                    { name: "destroy" }], width: "200px"
+                 },
+               { field: "id", title: "编号", width: "60px" },
+                { field: "username", title: "姓名", width: "100px" },
+                 { field: "chinsex", title: "性别", width: "60px" },
+                 { field: "phone", title: "手机", width: "120px" },
+                 { field: "email", title: "email", width: "120px" },
+                 { field: "phone", title: "手机", width: "120px" },
+                 { field: "education", title: "教育程度", width: "180px" },
+                 { field: "position", title: "面试职位", width: "180px" },
+                 { field: "workyears", title: "工作年限", width: "70px" },
+                 { field: "talentpoolo", title: "放进人才库", width: "70px" },
+                 { field: "isread", title: "是否已阅", width: "70px" },
+                 { field: "addtime", title: "投递时间", width: "100px", format: "{0: yyyy/MM/dd}" }
+            ],
+            messages: {
+                commands: {
+                    destroy: "Delete"
+                }
+            },
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+    });
+</script>  

@@ -1,0 +1,14 @@
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\log4net.config
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\Smart.Framewrok.Logging.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\Smart.Framewrok.Logging.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\log4net.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\Smart.Framework.DALFactory.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\Smart.Framework.Model.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\EntityFramework.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\Smart.Framework.DALFactory.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\log4net.xml
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Release\EntityFramework.xml
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\obj\Release\Smart.Framewrok.Logging.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\obj\Release\Smart.Framewrok.Logging.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\obj\Release\Smart.Framewrok.Logging.pdb

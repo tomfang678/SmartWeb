@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "VisDetail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    System.Data.DataTable visdt = ViewData["dt"] as System.Data.DataTable;
+}
+<table class="table table-hover">
+    <tr><td colspan="4"><h4>详细信息</h4></td><td ><a href="/Admin/Home" class="bt_green"><span class="bt_green_lft"></span><strong>返回</strong><span class="bt_green_r"></span></a>
+</td></tr>
+    <tr>
+        <th>编号</th>
+        <th>访问模块</th>
+        <th>IP</th>
+        <th>访问时间</th>
+        <th>浏览页面</th>
+    </tr>
+    @foreach (System.Data.DataRow row in visdt.Rows)
+    {
+    <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+        <td>@row["id"]</td>
+        <td>@row["module"]</td>
+        <td>@row["ip"]</td>
+        <td>@row["visittime"]</td>
+        <td>@row["remark"]</td>
+    </tr>
+    }
+</table>
+<style type="text/css">
+    table.hovertable {
+        font-family: verdana,arial,sans-serif;
+        font-size: 11px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+        width:100%;
+    }
+
+        table.hovertable th {
+            background-color: #c3dde0;
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+
+        table.hovertable tr {
+            background-color: #d4e3e5;
+        }
+
+        table.hovertable td {
+            border-width: 1px;
+            padding: 8px;
+            border-style: solid;
+            border-color: #a9c6c9;
+        }
+</style>

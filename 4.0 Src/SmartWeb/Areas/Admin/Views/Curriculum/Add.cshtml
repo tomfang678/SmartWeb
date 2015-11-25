@@ -1,0 +1,112 @@
+﻿@using Smart.Framework.Model;
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_curriculum curriculum = new sd_curriculum();
+    if (ViewData["curriculum"] != null)
+    {
+        curriculum = ViewData["curriculum"] as sd_curriculum;
+    }
+    string starttime = "", endtime = "";
+    if (!string.IsNullOrEmpty(curriculum.classtime))
+    {
+        starttime = curriculum.classtime.Split('-')[0];
+        endtime = curriculum.classtime.Split('-')[1];
+    }
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <h3>课程表</h3>
+    <div class="other" id="addnews">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody id="flash">
+                <tr>
+                    <td><label for="cclid">编号</label></td>
+                    <td colspan="5">@curriculum.id<input type="hidden" id="cclid" readonly="readonly" value="@curriculum.id"><span style="color:#ff0000">&nbsp; (显示为0表示系统会自动生成)</span></td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="course" class="required">课程</label>
+                    </td>
+                    <td colspan="2">  <input id="course" type="text" name="课程" class="k-textbox" placeholder="请输入课程名称" required validationmessage="请输入 {0}" style="width:90%;" value="@curriculum.course" /></td>
+                    <td>
+                        <label for="teacher" class="required">讲师</label>
+                    </td>
+                    <td colspan="2">  <input id="teacher" type="text" name="讲师" class="k-textbox" placeholder="请输入讲师" required validationmessage="请输入 {0}" style="width:250px;" value="@curriculum.teacher" /></td>
+                </tr>
+
+                <tr>
+                    <td><label for="date" class="required">上课日期</label></td>
+                    <td colspan="2"> <input id="startdate" value="@curriculum.startdate" style="width:120px;" />-<input id="enddate" value="@curriculum.enddate" style="width:120px;" /></td>
+                    <td><label for="start">时间</label></td>
+                    <td colspan="2"><input id="start" type="text" name="开始" value="@starttime" />-<input id="end" type="text" name="结束" value="@endtime" /></td>
+                </tr>
+                <tr>
+                    <td><label for="daterange">共计天数</label></td>
+                    <td colspan="2"><input id="daterange" type="text" name="价格" value="@curriculum.daterange" />(天)</td>
+                    <td><label for="start">价格</label></td>
+                    <td colspan="2"><input id="price" type="text" name="价格" value="@curriculum.price" />（元）</td>
+                </tr>
+                <tr>
+                    <td><label for="studentnum">上课人数</label></td>
+                    <td colspan="2"><input id="studentnum" type="text" name="人数" value="@curriculum.studentnum" />（人）</td>
+                    <td><label for="address" class="required">上课地点</label></td>
+                    <td colspan="2"><input type="text" id="address" style="width:200px" value="@curriculum.address" /></td>
+                </tr>
+                <tr>
+                    <td><label for="summary">摘要：</label>
+                    <td colspan="5"><textarea id="descripteditor" name="keyword" class="k-textbox" placeholder="请输入关键词" style="width:99%;height:100px;">@curriculum.remark</textarea></td>
+                </tr>
+                <tr><td colspan="6"><label for="contents">详细描述：</label></td></tr>
+                <tr>
+                    <td colspan="6">
+                        <script type="text/plain" id="contenteditor" style="width: 99%; height: 300px;">
+                            @Html.Raw(curriculum.contents)
+                        </script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#startdate").kendoDatePicker({
+        start: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#enddate").kendoDatePicker({
+        start: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#start").kendoTimePicker();
+    $("#end").kendoTimePicker();
+    $("#daterange").kendoNumericTextBox({
+    });
+    $("#price").kendoNumericTextBox({
+    });
+    $("#totaldate").kendoNumericTextBox({
+    });
+    $("#studentnum").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        max: 100000,
+        step: 1
+    });
+</script>
+<script src="~/Areas/Admin/Script/plugin/curriculum.js"></script>

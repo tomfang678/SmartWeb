@@ -1,0 +1,43 @@
+﻿@using Smart.Framework.Model
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    Smart.Framework.Model.sd_curriculum curl = ViewBag.curriculumDetail;
+}
+
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="post-entry post-entry-type-page post-entry-3799">
+                <div class="entry-content-wrapper clearfix">
+                    <section class="av_textblock_section">
+                        <div class="avia_textblock " itemprop="text">
+                            <h1 style="text-align: center;">课程安排详细</h1>
+                        </div>
+                    </section>
+                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+                </div>
+                @if (curl != null)
+                {
+                    <table class="table">
+                        <tr class="active">
+                            <td colspan="4"><h4>@curl.course</h4></td>
+                        </tr>
+                        <tr><td colspan="4"><img src="@curl.imgurl" alt="" /> </td></tr>
+                        <tr>
+                            <td>讲师:@curl.teacher</td>
+                            <td>上课时间:@curl.startdate-@curl.enddate</td>
+                            <td>地点:@curl.address</td>
+                            <td>价格:@curl.price</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">
+                                <span> @Html.Raw(curl.contents)</span>
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </main>
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "课程表";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div id="filegrid">
+</div>
+<script>
+    $(document).ready(function () {
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    type: "post",
+                    url: "/Admin/Curriculum/Get",
+                    dataType: "json",
+                    contentType: "application/json"
+                },
+                update: {
+                    url: "/Admin/Curriculum/UpdateList",
+                    dataType: "json",
+                    type: "post"
+                },
+                destroy: {
+                    url: "/Admin/Curriculum/Delete",
+                    dataType: "json",
+                    type: "post"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                    if (operation == "read") {
+                        var parameter = {
+                            page: options.page,
+                            pageSize: options.pageSize
+                        };
+                        return kendo.stringify(parameter);
+                    }
+                }
+            },
+            batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+            pageSize: 30,
+            schema: {
+                data: function (d) {
+                    return d;
+                },
+                total: function (d) {
+                    return d.TotalPage;
+                },
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                        course: { editable: true },
+                        classtime: { editable: true },
+                        startdate: { editable: true, type: "date" },
+                        enddate: { editable: true, type: "date" },
+                        teacher: { editable: true },
+                        remark: { editable: true },
+                        price: { editable: true },
+                        studentnum: { editable: true, type: "number", validation: { required: true, min: 1 } },
+                        contents: { editable: true },
+                        addtime: { editable: true, type: "date" },
+                        daterange: { editable: true }
+
+                    }
+                },
+            },
+            serverPaging: true
+        });
+
+        $("#filegrid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 520,
+            toolbar: [{
+                template: '<a class="k-button" href="/Admin/Curriculum/Add" target="_self">添 加</a>'
+            }, "save", "cancel"],
+            columns: [
+                 {
+                     command: [
+                    { name: "修改", click: function (e) { var tr = $(e.target).closest("tr"); var data = this.dataItem(tr); location.href = "/Admin/Curriculum/Add?id=" + data.id; } },
+                    { name: "destroy" }], width: "200px"
+                 },
+               { field: "id", title: "编号", width: "80px" },
+               { field: "course", title: "课程", width: "160px" },
+                { field: "startdate", title: "开始日期", width: "80px", format: "{0: yyyy-MM-dd}" },
+               { field: "enddate", title: "结束日期", width: "80px", format: "{0: yyyy-MM-dd}" },
+                 { field: "classtime", title: "上课时间", width: "120px" },
+                 { field: "daterange", title: "总天数", width: "60px" },
+                 { field: "price", title: "价格(￥)", width: "70px" },
+                 { field: "teacher", title: "讲师", width: "90px" },
+                 { field: "studentnum", title: "学生数", width: "70px" }
+            ],
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+    });
+</script>

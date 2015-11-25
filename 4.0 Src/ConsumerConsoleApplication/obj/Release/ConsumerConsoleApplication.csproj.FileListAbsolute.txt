@@ -1,0 +1,9 @@
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\bin\Release\ConsumerConsoleApplication.exe
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\bin\Release\ConsumerConsoleApplication.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\bin\Release\Apache.NMS.ActiveMQ.dll
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\bin\Release\Apache.NMS.dll
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\bin\Release\Apache.NMS.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\bin\Release\Apache.NMS.ActiveMQ.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\obj\Release\ConsumerConsoleApplication.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\obj\Release\ConsumerConsoleApplication.exe
+D:\project\SmartWeb\v1.0\SmartSolution\6.0 Test\ConsumerConsoleApplication\obj\Release\ConsumerConsoleApplication.pdb

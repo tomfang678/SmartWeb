@@ -1,0 +1,31 @@
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.dll
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.pdb
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\5.0 Plugin\Framework\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.dll
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\5.0 Plugin\Framework\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.pdb
+E:\Project Src\SmartWeb\v1.0\SmartSoluthion\5.0 Plugin\Framework\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.csprojResolveAssemblyReference.cache
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.dll.config
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.dll
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.pdb
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.dll
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.dll
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.xml
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.xml
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.dll
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.dll.config
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.xml
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.dll
+D:\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.pdb

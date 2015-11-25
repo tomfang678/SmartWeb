@@ -1,0 +1,7 @@
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Debug\Smart.Framwork.Logging.dll
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Debug\Smart.Framwork.Logging.pdb
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Debug\log4net.dll
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Debug\log4net.xml
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\obj\Debug\Smart.Framwork.Logging.dll
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\obj\Debug\Smart.Framwork.Logging.pdb
+F:\Project\project\SmartWeb\v1.0\SmartSolution\5.0 Plugin\Framework\Smart.Framwork.Logging\bin\Debug\log4net.config

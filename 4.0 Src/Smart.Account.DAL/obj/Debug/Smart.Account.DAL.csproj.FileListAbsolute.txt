@@ -1,0 +1,4 @@
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.DAL\bin\Debug\Smart.Account.DAL.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.DAL\bin\Debug\Smart.Account.DAL.pdb
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.DAL\obj\Debug\Smart.Account.DAL.dll
+D:\project\SmartWeb\v2.0\4.0 Src\Smart.Account.DAL\obj\Debug\Smart.Account.DAL.pdb

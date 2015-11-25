@@ -1,0 +1,1720 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="shudaodbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_about' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_about">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="shortDesc" Type="text" />
+          <Property Name="content" Type="text" />
+          <Property Name="address" Type="nvarchar" MaxLength="500" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="fax" Type="varchar" MaxLength="50" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="other" Type="text" />
+          <Property Name="moduleid" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_admin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_admin">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="admin_type" />
+            <PropertyRef Name="admin_id" />
+            <PropertyRef Name="admin_name" />
+            <PropertyRef Name="admin_sex" />
+            <PropertyRef Name="admin_login" />
+            <PropertyRef Name="checkid" />
+            <PropertyRef Name="cookie" />
+            <PropertyRef Name="admin_shortcut" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="admin_type" Type="text" Nullable="false" />
+          <Property Name="admin_id" Type="char" MaxLength="15" Nullable="false" />
+          <Property Name="admin_pass" Type="char" MaxLength="64" />
+          <Property Name="admin_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="admin_sex" Type="tinyint" Nullable="false" />
+          <Property Name="admin_email" Type="varchar" MaxLength="150" />
+          <Property Name="admin_login" Type="int" Nullable="false" />
+          <Property Name="admin_modify_ip" Type="varchar" MaxLength="20" />
+          <Property Name="admin_modify_date" Type="datetime" />
+          <Property Name="admin_register_date" Type="datetime" />
+          <Property Name="admin_approval_date" Type="datetime" />
+          <Property Name="admin_group" Type="int" />
+          <Property Name="usertype" Type="int" />
+          <Property Name="checkid" Type="int" Nullable="false" />
+          <Property Name="cookie" Type="text" Nullable="false" />
+          <Property Name="admin_shortcut" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_appointmentClass' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_appointmentClass">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="AddTime" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="ClassName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tel" Type="varchar" MaxLength="50" />
+          <Property Name="QQ" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="50" />
+          <Property Name="Remark" Type="varchar" MaxLength="50" />
+          <Property Name="AddTime" Type="datetime" Nullable="false" />
+          <Property Name="isSeed" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_category' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_category">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="parent" Type="int" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_commondata' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_commondata">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="keys" />
+            <PropertyRef Name="moduleid" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="ischeck" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="keys" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="value" Type="nvarchar(max)" />
+          <Property Name="moduleid" Type="int" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="newstime" Type="datetime" />
+          <Property Name="ischeck" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_companyevent' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_companyevent">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="year" />
+            <PropertyRef Name="isparent" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+          <Property Name="newstime" Type="datetime" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="content" Type="text" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="isparent" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_curriculum' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_curriculum">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="course" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="hits" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="course" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="imgurl" Type="varchar" MaxLength="100" />
+          <Property Name="classtime" Type="varchar" MaxLength="50" />
+          <Property Name="startdate" Type="datetime" />
+          <Property Name="enddate" Type="datetime" />
+          <Property Name="teacher" Type="nvarchar" MaxLength="50" />
+          <Property Name="remark" Type="varchar" MaxLength="500" />
+          <Property Name="studentnum" Type="int" />
+          <Property Name="contents" Type="text" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="hits" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="daterange" Type="nvarchar" MaxLength="50" />
+          <Property Name="updatetime" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_download' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_download">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="keywords" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="text" />
+          <Property Name="content" Type="text" />
+          <Property Name="no_order" Type="int" />
+          <Property Name="downloadurl" Type="varchar" MaxLength="255" />
+          <Property Name="filesize" Type="varchar" MaxLength="100" />
+          <Property Name="hits" Type="int" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="access" Type="int" />
+          <Property Name="top_ok" Type="int" />
+          <Property Name="downloadaccess" Type="int" />
+          <Property Name="filename" Type="varchar" MaxLength="255" />
+          <Property Name="filetype" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_flash' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_flash">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="imgurl" />
+            <PropertyRef Name="createtime" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="URL" Type="varchar" MaxLength="200" />
+          <Property Name="descript" Type="varchar" MaxLength="500" />
+          <Property Name="imgurl" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="imgclass" Type="varchar" MaxLength="200" />
+          <Property Name="isShow" Type="bit" />
+          <Property Name="createtime" Type="datetime" Nullable="false" />
+          <Property Name="updatetime" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_job' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_job">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="count" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="useful_life" />
+            <PropertyRef Name="access" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="position" Type="varchar" MaxLength="200" />
+          <Property Name="count" Type="int" Nullable="false" />
+          <Property Name="place" Type="varchar" MaxLength="200" />
+          <Property Name="deal" Type="varchar" MaxLength="200" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="useful_life" Type="int" Nullable="false" />
+          <Property Name="content" Type="text" />
+          <Property Name="access" Type="int" Nullable="false" />
+          <Property Name="top_ok" Type="int" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="filename" Type="varchar" MaxLength="255" />
+          <Property Name="no_order" Type="int" />
+          <Property Name="shortdescript" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_log' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="ip" Type="varchar" MaxLength="50" />
+          <Property Name="operation" Type="varchar" MaxLength="50" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="remark" Type="nvarchar" MaxLength="500" />
+          <Property Name="other" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_message' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="tel" Type="varchar" MaxLength="255" />
+          <Property Name="email" Type="varchar" MaxLength="255" />
+          <Property Name="contact" Type="varchar" MaxLength="255" />
+          <Property Name="info" Type="text" />
+          <Property Name="ip" Type="varchar" MaxLength="255" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="readok" Type="bit" />
+          <Property Name="useinfo" Type="text" />
+          <Property Name="lang" Type="varchar" MaxLength="50" />
+          <Property Name="access" Type="int" />
+          <Property Name="customerid" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_module' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_module">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="orderno" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="parentid" Type="int" />
+          <Property Name="orderno" Type="int" Nullable="false" />
+          <Property Name="url" Type="varchar" MaxLength="200" />
+          <Property Name="adminurl" Type="varchar" MaxLength="200" />
+          <Property Name="summary" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_news' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_news">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="no_order" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="top_ok" />
+            <PropertyRef Name="newstype" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="200" />
+          <Property Name="keywords" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="text" />
+          <Property Name="content" Type="text" />
+          <Property Name="no_order" Type="int" Nullable="false" />
+          <Property Name="img_ok" Type="int" />
+          <Property Name="imgurl" Type="varchar" MaxLength="255" />
+          <Property Name="imgurls" Type="varchar" MaxLength="255" />
+          <Property Name="issue" Type="varchar" MaxLength="100" />
+          <Property Name="hits" Type="int" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="access" Type="bit" />
+          <Property Name="top_ok" Type="bit" Nullable="false" />
+          <Property Name="filename" Type="varchar" MaxLength="255" />
+          <Property Name="newstype" Type="int" Nullable="false" />
+          <Property Name="date" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_newstype' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_newstype">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="remark" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_online' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_online">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="no_order" Type="int" />
+          <Property Name="qq" Type="text" />
+          <Property Name="msn" Type="varchar" MaxLength="100" />
+          <Property Name="taobao" Type="varchar" MaxLength="100" />
+          <Property Name="alibaba" Type="varchar" MaxLength="100" />
+          <Property Name="skype" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_product">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="access" />
+            <PropertyRef Name="top_ok" />
+            <PropertyRef Name="categoryid" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="200" />
+          <Property Name="ctitle" Type="varchar" MaxLength="200" />
+          <Property Name="keywords" Type="varchar" MaxLength="200" />
+          <Property Name="description" Type="text" />
+          <Property Name="content" Type="text" />
+          <Property Name="no_order" Type="int" />
+          <Property Name="imgurl" Type="varchar" MaxLength="255" />
+          <Property Name="imgurls" Type="varchar" MaxLength="255" />
+          <Property Name="displayimg" Type="text" />
+          <Property Name="com_ok" Type="int" />
+          <Property Name="hits" Type="int" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="issue" Type="varchar" MaxLength="100" />
+          <Property Name="access" Type="bit" Nullable="false" />
+          <Property Name="top_ok" Type="bit" Nullable="false" />
+          <Property Name="filename" Type="varchar" MaxLength="255" />
+          <Property Name="categoryid" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="discoutprice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="projectstart" Type="datetime" />
+          <Property Name="projectend" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_resume' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_resume">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="username" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="age" />
+            <PropertyRef Name="education" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="postation" />
+            <PropertyRef Name="speciality" />
+            <PropertyRef Name="talentpool" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="isread" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="sex" Type="tinyint" Nullable="false" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="education" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="qq" Type="varchar" MaxLength="20" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="remark" Type="nvarchar(max)" />
+          <Property Name="files" Type="varchar" MaxLength="100" />
+          <Property Name="postation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="workyears" Type="int" />
+          <Property Name="speciality" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="flg" Type="bit" />
+          <Property Name="talentpool" Type="int" Nullable="false" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="isread" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_staff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_staff">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="isaccess" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="sex" Type="tinyint" Nullable="false" />
+          <Property Name="imgurl" Type="varchar" MaxLength="200" />
+          <Property Name="remark" Type="text" />
+          <Property Name="link" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="education" Type="varchar" MaxLength="50" />
+          <Property Name="professional" Type="varchar" MaxLength="100" />
+          <Property Name="summary" Type="nvarchar" MaxLength="500" />
+          <Property Name="position" Type="varchar" MaxLength="50" />
+          <Property Name="addtime" Type="datetime" />
+          <Property Name="updatetime" Type="datetime" />
+          <Property Name="state" Type="varchar" MaxLength="20" />
+          <Property Name="isaccess" Type="int" Nullable="false" />
+          <Property Name="homeshow" Type="bit" />
+          <Property Name="entrytime" Type="datetime" />
+          <Property Name="conversiontime" Type="datetime" />
+          <Property Name="idcard" Type="varchar" MaxLength="50" />
+          <Property Name="department" Type="varchar" MaxLength="50" />
+          <Property Name="orderno" Type="int" />
+          <Property Name="doctorgroup" Type="bit" />
+          <Property Name="managergroup" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_staffstar' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_staffstar">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="addtime" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="staffid" Type="varchar" MaxLength="500" />
+          <Property Name="story" Type="nvarchar(max)" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="selecttime" Type="datetime" />
+          <Property Name="orderno" Type="int" />
+          <Property Name="isvalide" Type="bit" />
+          <Property Name="imgurl" Type="varchar" MaxLength="100" />
+          <Property Name="shortdesc" Type="nvarchar" MaxLength="500" />
+          <Property Name="hits" Type="int" />
+          <Property Name="stafftype" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_studentshare' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_studentshare">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="addtime" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="company" Type="nvarchar" MaxLength="100" />
+          <Property Name="studyclass" Type="nvarchar" MaxLength="50" />
+          <Property Name="says" Type="nvarchar(max)" />
+          <Property Name="newstime" Type="datetime" />
+          <Property Name="addtime" Type="datetime" Nullable="false" />
+          <Property Name="imgurl" Type="nvarchar" MaxLength="100" />
+          <Property Name="orderno" Type="int" />
+          <Property Name="valid" Type="bit" />
+          <Property Name="hits" Type="int" />
+          <Property Name="vediourl" Type="varchar" MaxLength="100" />
+          <Property Name="title" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'shudaodb.dbo.sd_visits' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="sd_visits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="module" Type="nvarchar" MaxLength="100" />
+          <Property Name="ip" Type="varchar" MaxLength="50" />
+          <Property Name="visittime" Type="datetime" />
+          <Property Name="remark" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="shudaodbModelStoreContainer">
+          <EntitySet Name="sd_about" EntityType="Self.sd_about" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_about].[id] AS [id], 
+    [sd_about].[shortDesc] AS [shortDesc], 
+    [sd_about].[content] AS [content], 
+    [sd_about].[address] AS [address], 
+    [sd_about].[phone] AS [phone], 
+    [sd_about].[fax] AS [fax], 
+    [sd_about].[addtime] AS [addtime], 
+    [sd_about].[updatetime] AS [updatetime], 
+    [sd_about].[other] AS [other], 
+    [sd_about].[moduleid] AS [moduleid]
+    FROM [dbo].[sd_about] AS [sd_about]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_admin" EntityType="Self.sd_admin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_admin].[id] AS [id], 
+    [sd_admin].[admin_type] AS [admin_type], 
+    [sd_admin].[admin_id] AS [admin_id], 
+    [sd_admin].[admin_pass] AS [admin_pass], 
+    [sd_admin].[admin_name] AS [admin_name], 
+    [sd_admin].[admin_sex] AS [admin_sex], 
+    [sd_admin].[admin_email] AS [admin_email], 
+    [sd_admin].[admin_login] AS [admin_login], 
+    [sd_admin].[admin_modify_ip] AS [admin_modify_ip], 
+    [sd_admin].[admin_modify_date] AS [admin_modify_date], 
+    [sd_admin].[admin_register_date] AS [admin_register_date], 
+    [sd_admin].[admin_approval_date] AS [admin_approval_date], 
+    [sd_admin].[admin_group] AS [admin_group], 
+    [sd_admin].[usertype] AS [usertype], 
+    [sd_admin].[checkid] AS [checkid], 
+    [sd_admin].[cookie] AS [cookie], 
+    [sd_admin].[admin_shortcut] AS [admin_shortcut]
+    FROM [dbo].[sd_admin] AS [sd_admin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_appointmentClass" EntityType="Self.sd_appointmentClass" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_appointmentClass].[Id] AS [Id], 
+    [sd_appointmentClass].[ClassName] AS [ClassName], 
+    [sd_appointmentClass].[Name] AS [Name], 
+    [sd_appointmentClass].[Position] AS [Position], 
+    [sd_appointmentClass].[Phone] AS [Phone], 
+    [sd_appointmentClass].[Tel] AS [Tel], 
+    [sd_appointmentClass].[QQ] AS [QQ], 
+    [sd_appointmentClass].[Email] AS [Email], 
+    [sd_appointmentClass].[Address] AS [Address], 
+    [sd_appointmentClass].[Remark] AS [Remark], 
+    [sd_appointmentClass].[AddTime] AS [AddTime], 
+    [sd_appointmentClass].[isSeed] AS [isSeed]
+    FROM [dbo].[sd_appointmentClass] AS [sd_appointmentClass]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_category" EntityType="Self.sd_category" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_category].[id] AS [id], 
+    [sd_category].[name] AS [name], 
+    [sd_category].[parent] AS [parent], 
+    [sd_category].[remark] AS [remark]
+    FROM [dbo].[sd_category] AS [sd_category]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_commondata" EntityType="Self.sd_commondata" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_commondata].[id] AS [id], 
+    [sd_commondata].[keys] AS [keys], 
+    [sd_commondata].[value] AS [value], 
+    [sd_commondata].[moduleid] AS [moduleid], 
+    [sd_commondata].[addtime] AS [addtime], 
+    [sd_commondata].[updatetime] AS [updatetime], 
+    [sd_commondata].[newstime] AS [newstime], 
+    [sd_commondata].[ischeck] AS [ischeck]
+    FROM [dbo].[sd_commondata] AS [sd_commondata]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_companyevent" EntityType="Self.sd_companyevent" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_companyevent].[id] AS [id], 
+    [sd_companyevent].[year] AS [year], 
+    [sd_companyevent].[newstime] AS [newstime], 
+    [sd_companyevent].[title] AS [title], 
+    [sd_companyevent].[content] AS [content], 
+    [sd_companyevent].[addtime] AS [addtime], 
+    [sd_companyevent].[updatetime] AS [updatetime], 
+    [sd_companyevent].[isparent] AS [isparent]
+    FROM [dbo].[sd_companyevent] AS [sd_companyevent]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_curriculum" EntityType="Self.sd_curriculum" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_curriculum].[id] AS [id], 
+    [sd_curriculum].[course] AS [course], 
+    [sd_curriculum].[imgurl] AS [imgurl], 
+    [sd_curriculum].[classtime] AS [classtime], 
+    [sd_curriculum].[startdate] AS [startdate], 
+    [sd_curriculum].[enddate] AS [enddate], 
+    [sd_curriculum].[teacher] AS [teacher], 
+    [sd_curriculum].[remark] AS [remark], 
+    [sd_curriculum].[studentnum] AS [studentnum], 
+    [sd_curriculum].[contents] AS [contents], 
+    [sd_curriculum].[addtime] AS [addtime], 
+    [sd_curriculum].[hits] AS [hits], 
+    [sd_curriculum].[address] AS [address], 
+    [sd_curriculum].[price] AS [price], 
+    [sd_curriculum].[daterange] AS [daterange], 
+    [sd_curriculum].[updatetime] AS [updatetime]
+    FROM [dbo].[sd_curriculum] AS [sd_curriculum]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_download" EntityType="Self.sd_download" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_download].[id] AS [id], 
+    [sd_download].[title] AS [title], 
+    [sd_download].[keywords] AS [keywords], 
+    [sd_download].[description] AS [description], 
+    [sd_download].[content] AS [content], 
+    [sd_download].[no_order] AS [no_order], 
+    [sd_download].[downloadurl] AS [downloadurl], 
+    [sd_download].[filesize] AS [filesize], 
+    [sd_download].[hits] AS [hits], 
+    [sd_download].[updatetime] AS [updatetime], 
+    [sd_download].[addtime] AS [addtime], 
+    [sd_download].[access] AS [access], 
+    [sd_download].[top_ok] AS [top_ok], 
+    [sd_download].[downloadaccess] AS [downloadaccess], 
+    [sd_download].[filename] AS [filename], 
+    [sd_download].[filetype] AS [filetype]
+    FROM [dbo].[sd_download] AS [sd_download]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_flash" EntityType="Self.sd_flash" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_flash].[id] AS [id], 
+    [sd_flash].[URL] AS [URL], 
+    [sd_flash].[descript] AS [descript], 
+    [sd_flash].[imgurl] AS [imgurl], 
+    [sd_flash].[imgclass] AS [imgclass], 
+    [sd_flash].[isShow] AS [isShow], 
+    [sd_flash].[createtime] AS [createtime], 
+    [sd_flash].[updatetime] AS [updatetime]
+    FROM [dbo].[sd_flash] AS [sd_flash]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_job" EntityType="Self.sd_job" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_job].[id] AS [id], 
+    [sd_job].[position] AS [position], 
+    [sd_job].[count] AS [count], 
+    [sd_job].[place] AS [place], 
+    [sd_job].[deal] AS [deal], 
+    [sd_job].[addtime] AS [addtime], 
+    [sd_job].[useful_life] AS [useful_life], 
+    [sd_job].[content] AS [content], 
+    [sd_job].[access] AS [access], 
+    [sd_job].[top_ok] AS [top_ok], 
+    [sd_job].[email] AS [email], 
+    [sd_job].[filename] AS [filename], 
+    [sd_job].[no_order] AS [no_order], 
+    [sd_job].[shortdescript] AS [shortdescript]
+    FROM [dbo].[sd_job] AS [sd_job]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_log" EntityType="Self.sd_log" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_log].[id] AS [id], 
+    [sd_log].[ip] AS [ip], 
+    [sd_log].[operation] AS [operation], 
+    [sd_log].[addtime] AS [addtime], 
+    [sd_log].[remark] AS [remark], 
+    [sd_log].[other] AS [other]
+    FROM [dbo].[sd_log] AS [sd_log]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_message" EntityType="Self.sd_message" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_message].[id] AS [id], 
+    [sd_message].[name] AS [name], 
+    [sd_message].[tel] AS [tel], 
+    [sd_message].[email] AS [email], 
+    [sd_message].[contact] AS [contact], 
+    [sd_message].[info] AS [info], 
+    [sd_message].[ip] AS [ip], 
+    [sd_message].[addtime] AS [addtime], 
+    [sd_message].[readok] AS [readok], 
+    [sd_message].[useinfo] AS [useinfo], 
+    [sd_message].[lang] AS [lang], 
+    [sd_message].[access] AS [access], 
+    [sd_message].[customerid] AS [customerid]
+    FROM [dbo].[sd_message] AS [sd_message]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_module" EntityType="Self.sd_module" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_module].[id] AS [id], 
+    [sd_module].[name] AS [name], 
+    [sd_module].[addtime] AS [addtime], 
+    [sd_module].[updatetime] AS [updatetime], 
+    [sd_module].[parentid] AS [parentid], 
+    [sd_module].[orderno] AS [orderno], 
+    [sd_module].[url] AS [url], 
+    [sd_module].[adminurl] AS [adminurl], 
+    [sd_module].[summary] AS [summary]
+    FROM [dbo].[sd_module] AS [sd_module]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_news" EntityType="Self.sd_news" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_news].[id] AS [id], 
+    [sd_news].[title] AS [title], 
+    [sd_news].[keywords] AS [keywords], 
+    [sd_news].[description] AS [description], 
+    [sd_news].[content] AS [content], 
+    [sd_news].[no_order] AS [no_order], 
+    [sd_news].[img_ok] AS [img_ok], 
+    [sd_news].[imgurl] AS [imgurl], 
+    [sd_news].[imgurls] AS [imgurls], 
+    [sd_news].[issue] AS [issue], 
+    [sd_news].[hits] AS [hits], 
+    [sd_news].[updatetime] AS [updatetime], 
+    [sd_news].[addtime] AS [addtime], 
+    [sd_news].[access] AS [access], 
+    [sd_news].[top_ok] AS [top_ok], 
+    [sd_news].[filename] AS [filename], 
+    [sd_news].[newstype] AS [newstype], 
+    [sd_news].[date] AS [date]
+    FROM [dbo].[sd_news] AS [sd_news]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_newstype" EntityType="Self.sd_newstype" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_newstype].[id] AS [id], 
+    [sd_newstype].[name] AS [name], 
+    [sd_newstype].[remark] AS [remark]
+    FROM [dbo].[sd_newstype] AS [sd_newstype]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_online" EntityType="Self.sd_online" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_online].[id] AS [id], 
+    [sd_online].[name] AS [name], 
+    [sd_online].[no_order] AS [no_order], 
+    [sd_online].[qq] AS [qq], 
+    [sd_online].[msn] AS [msn], 
+    [sd_online].[taobao] AS [taobao], 
+    [sd_online].[alibaba] AS [alibaba], 
+    [sd_online].[skype] AS [skype]
+    FROM [dbo].[sd_online] AS [sd_online]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_product" EntityType="Self.sd_product" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_product].[id] AS [id], 
+    [sd_product].[title] AS [title], 
+    [sd_product].[ctitle] AS [ctitle], 
+    [sd_product].[keywords] AS [keywords], 
+    [sd_product].[description] AS [description], 
+    [sd_product].[content] AS [content], 
+    [sd_product].[no_order] AS [no_order], 
+    [sd_product].[imgurl] AS [imgurl], 
+    [sd_product].[imgurls] AS [imgurls], 
+    [sd_product].[displayimg] AS [displayimg], 
+    [sd_product].[com_ok] AS [com_ok], 
+    [sd_product].[hits] AS [hits], 
+    [sd_product].[updatetime] AS [updatetime], 
+    [sd_product].[addtime] AS [addtime], 
+    [sd_product].[issue] AS [issue], 
+    [sd_product].[access] AS [access], 
+    [sd_product].[top_ok] AS [top_ok], 
+    [sd_product].[filename] AS [filename], 
+    [sd_product].[categoryid] AS [categoryid], 
+    [sd_product].[price] AS [price], 
+    [sd_product].[discoutprice] AS [discoutprice], 
+    [sd_product].[projectstart] AS [projectstart], 
+    [sd_product].[projectend] AS [projectend]
+    FROM [dbo].[sd_product] AS [sd_product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_resume" EntityType="Self.sd_resume" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_resume].[id] AS [id], 
+    [sd_resume].[username] AS [username], 
+    [sd_resume].[sex] AS [sex], 
+    [sd_resume].[age] AS [age], 
+    [sd_resume].[education] AS [education], 
+    [sd_resume].[phone] AS [phone], 
+    [sd_resume].[qq] AS [qq], 
+    [sd_resume].[email] AS [email], 
+    [sd_resume].[remark] AS [remark], 
+    [sd_resume].[files] AS [files], 
+    [sd_resume].[postation] AS [postation], 
+    [sd_resume].[workyears] AS [workyears], 
+    [sd_resume].[speciality] AS [speciality], 
+    [sd_resume].[flg] AS [flg], 
+    [sd_resume].[talentpool] AS [talentpool], 
+    [sd_resume].[addtime] AS [addtime], 
+    [sd_resume].[isread] AS [isread]
+    FROM [dbo].[sd_resume] AS [sd_resume]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_staff" EntityType="Self.sd_staff" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_staff].[id] AS [id], 
+    [sd_staff].[name] AS [name], 
+    [sd_staff].[sex] AS [sex], 
+    [sd_staff].[imgurl] AS [imgurl], 
+    [sd_staff].[remark] AS [remark], 
+    [sd_staff].[link] AS [link], 
+    [sd_staff].[address] AS [address], 
+    [sd_staff].[phone] AS [phone], 
+    [sd_staff].[education] AS [education], 
+    [sd_staff].[professional] AS [professional], 
+    [sd_staff].[summary] AS [summary], 
+    [sd_staff].[position] AS [position], 
+    [sd_staff].[addtime] AS [addtime], 
+    [sd_staff].[updatetime] AS [updatetime], 
+    [sd_staff].[state] AS [state], 
+    [sd_staff].[isaccess] AS [isaccess], 
+    [sd_staff].[homeshow] AS [homeshow], 
+    [sd_staff].[entrytime] AS [entrytime], 
+    [sd_staff].[conversiontime] AS [conversiontime], 
+    [sd_staff].[idcard] AS [idcard], 
+    [sd_staff].[department] AS [department], 
+    [sd_staff].[orderno] AS [orderno], 
+    [sd_staff].[doctorgroup] AS [doctorgroup], 
+    [sd_staff].[managergroup] AS [managergroup]
+    FROM [dbo].[sd_staff] AS [sd_staff]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_staffstar" EntityType="Self.sd_staffstar" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_staffstar].[id] AS [id], 
+    [sd_staffstar].[title] AS [title], 
+    [sd_staffstar].[staffid] AS [staffid], 
+    [sd_staffstar].[story] AS [story], 
+    [sd_staffstar].[addtime] AS [addtime], 
+    [sd_staffstar].[selecttime] AS [selecttime], 
+    [sd_staffstar].[orderno] AS [orderno], 
+    [sd_staffstar].[isvalide] AS [isvalide], 
+    [sd_staffstar].[imgurl] AS [imgurl], 
+    [sd_staffstar].[shortdesc] AS [shortdesc], 
+    [sd_staffstar].[hits] AS [hits], 
+    [sd_staffstar].[stafftype] AS [stafftype]
+    FROM [dbo].[sd_staffstar] AS [sd_staffstar]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_studentshare" EntityType="Self.sd_studentshare" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_studentshare].[id] AS [id], 
+    [sd_studentshare].[name] AS [name], 
+    [sd_studentshare].[company] AS [company], 
+    [sd_studentshare].[studyclass] AS [studyclass], 
+    [sd_studentshare].[says] AS [says], 
+    [sd_studentshare].[newstime] AS [newstime], 
+    [sd_studentshare].[addtime] AS [addtime], 
+    [sd_studentshare].[imgurl] AS [imgurl], 
+    [sd_studentshare].[orderno] AS [orderno], 
+    [sd_studentshare].[valid] AS [valid], 
+    [sd_studentshare].[hits] AS [hits], 
+    [sd_studentshare].[vediourl] AS [vediourl], 
+    [sd_studentshare].[title] AS [title]
+    FROM [dbo].[sd_studentshare] AS [sd_studentshare]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="sd_visits" EntityType="Self.sd_visits" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [sd_visits].[id] AS [id], 
+    [sd_visits].[module] AS [module], 
+    [sd_visits].[ip] AS [ip], 
+    [sd_visits].[visittime] AS [visittime], 
+    [sd_visits].[remark] AS [remark]
+    FROM [dbo].[sd_visits] AS [sd_visits]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="shudaodbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sd_about">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="shortDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="other" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="moduleid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sd_admin">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="admin_type" />
+            <PropertyRef Name="admin_id" />
+            <PropertyRef Name="admin_name" />
+            <PropertyRef Name="admin_sex" />
+            <PropertyRef Name="admin_login" />
+            <PropertyRef Name="checkid" />
+            <PropertyRef Name="cookie" />
+            <PropertyRef Name="admin_shortcut" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="admin_type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_id" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="admin_pass" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+          <Property Name="admin_name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_sex" Type="Byte" Nullable="false" />
+          <Property Name="admin_email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="admin_login" Type="Int32" Nullable="false" />
+          <Property Name="admin_modify_ip" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="admin_modify_date" Type="DateTime" Precision="3" />
+          <Property Name="admin_register_date" Type="DateTime" Precision="3" />
+          <Property Name="admin_approval_date" Type="DateTime" Precision="3" />
+          <Property Name="admin_group" Type="Int32" />
+          <Property Name="usertype" Type="Int32" />
+          <Property Name="checkid" Type="Int32" Nullable="false" />
+          <Property Name="cookie" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="admin_shortcut" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sd_appointmentClass">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="ClassName" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Phone" />
+            <PropertyRef Name="AddTime" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="ClassName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isSeed" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="sd_category">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="parent" Type="Int32" />
+          <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sd_commondata">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="keys" />
+            <PropertyRef Name="moduleid" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="ischeck" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="keys" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="moduleid" Type="Int32" Nullable="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="newstime" Type="DateTime" Precision="3" />
+          <Property Name="ischeck" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sd_companyevent">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="year" />
+            <PropertyRef Name="isparent" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="newstime" Type="DateTime" Precision="3" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="isparent" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sd_curriculum">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="course" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="hits" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="course" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="imgurl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="classtime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="startdate" Type="DateTime" Precision="3" />
+          <Property Name="enddate" Type="DateTime" Precision="3" />
+          <Property Name="teacher" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="studentnum" Type="Int32" />
+          <Property Name="contents" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hits" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="daterange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sd_download">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="keywords" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="no_order" Type="Int32" />
+          <Property Name="downloadurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="filesize" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hits" Type="Int32" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="access" Type="Int32" />
+          <Property Name="top_ok" Type="Int32" />
+          <Property Name="downloadaccess" Type="Int32" />
+          <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="filetype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sd_flash">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="imgurl" />
+            <PropertyRef Name="createtime" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="descript" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="imgurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="imgclass" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="isShow" Type="Boolean" />
+          <Property Name="createtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sd_job">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="count" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="useful_life" />
+            <PropertyRef Name="access" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="position" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="count" Type="Int32" Nullable="false" />
+          <Property Name="place" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="deal" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="useful_life" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="access" Type="Int32" Nullable="false" />
+          <Property Name="top_ok" Type="Int32" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="no_order" Type="Int32" />
+          <Property Name="shortdescript" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sd_log">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="operation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="other" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sd_message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contact" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="info" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ip" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="readok" Type="Boolean" />
+          <Property Name="useinfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="lang" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="access" Type="Int32" />
+          <Property Name="customerid" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sd_module">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="orderno" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="parentid" Type="Int32" />
+          <Property Name="orderno" Type="Int32" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="adminurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="summary" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sd_news">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="no_order" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="top_ok" />
+            <PropertyRef Name="newstype" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="keywords" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="no_order" Type="Int32" Nullable="false" />
+          <Property Name="img_ok" Type="Int32" />
+          <Property Name="imgurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imgurls" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="issue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="hits" Type="Int32" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="access" Type="Boolean" />
+          <Property Name="top_ok" Type="Boolean" Nullable="false" />
+          <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="newstype" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sd_newstype">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sd_online">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="no_order" Type="Int32" />
+          <Property Name="qq" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="msn" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="taobao" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="alibaba" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="skype" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sd_product">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="access" />
+            <PropertyRef Name="top_ok" />
+            <PropertyRef Name="categoryid" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ctitle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="keywords" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="no_order" Type="Int32" />
+          <Property Name="imgurl" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="imgurls" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="displayimg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="com_ok" Type="Int32" />
+          <Property Name="hits" Type="Int32" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="issue" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="access" Type="Boolean" Nullable="false" />
+          <Property Name="top_ok" Type="Boolean" Nullable="false" />
+          <Property Name="filename" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="categoryid" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="discoutprice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="projectstart" Type="DateTime" Precision="3" />
+          <Property Name="projectend" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sd_resume">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="username" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="age" />
+            <PropertyRef Name="education" />
+            <PropertyRef Name="phone" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="postation" />
+            <PropertyRef Name="speciality" />
+            <PropertyRef Name="talentpool" />
+            <PropertyRef Name="addtime" />
+            <PropertyRef Name="isread" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sex" Type="Byte" Nullable="false" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="education" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="qq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="files" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="postation" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="workyears" Type="Int32" />
+          <Property Name="speciality" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="flg" Type="Boolean" />
+          <Property Name="talentpool" Type="Int32" Nullable="false" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="isread" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sd_staff">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="sex" />
+            <PropertyRef Name="isaccess" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="sex" Type="Byte" Nullable="false" />
+          <Property Name="imgurl" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="education" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="professional" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="summary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="addtime" Type="DateTime" Precision="3" />
+          <Property Name="updatetime" Type="DateTime" Precision="3" />
+          <Property Name="state" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="isaccess" Type="Int32" Nullable="false" />
+          <Property Name="homeshow" Type="Boolean" />
+          <Property Name="entrytime" Type="DateTime" Precision="3" />
+          <Property Name="conversiontime" Type="DateTime" Precision="3" />
+          <Property Name="idcard" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="orderno" Type="Int32" />
+          <Property Name="doctorgroup" Type="Boolean" />
+          <Property Name="managergroup" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="sd_staffstar">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="addtime" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="staffid" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="story" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="selecttime" Type="DateTime" Precision="3" />
+          <Property Name="orderno" Type="Int32" />
+          <Property Name="isvalide" Type="Boolean" />
+          <Property Name="imgurl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="shortdesc" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="hits" Type="Int32" />
+          <Property Name="stafftype" Type="Int32" />
+        </EntityType>
+        <EntityType Name="sd_studentshare">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="addtime" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="company" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="studyclass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="says" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="newstime" Type="DateTime" Precision="3" />
+          <Property Name="addtime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="imgurl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="orderno" Type="Int32" />
+          <Property Name="valid" Type="Boolean" />
+          <Property Name="hits" Type="Int32" />
+          <Property Name="vediourl" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sd_visits">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="module" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="visittime" Type="DateTime" Precision="3" />
+          <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="shudaodbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sd_about" EntityType="Self.sd_about" />
+          <EntitySet Name="sd_admin" EntityType="Self.sd_admin" />
+          <EntitySet Name="sd_appointmentClass" EntityType="Self.sd_appointmentClass" />
+          <EntitySet Name="sd_category" EntityType="Self.sd_category" />
+          <EntitySet Name="sd_commondata" EntityType="Self.sd_commondata" />
+          <EntitySet Name="sd_companyevent" EntityType="Self.sd_companyevent" />
+          <EntitySet Name="sd_curriculum" EntityType="Self.sd_curriculum" />
+          <EntitySet Name="sd_download" EntityType="Self.sd_download" />
+          <EntitySet Name="sd_flash" EntityType="Self.sd_flash" />
+          <EntitySet Name="sd_job" EntityType="Self.sd_job" />
+          <EntitySet Name="sd_log" EntityType="Self.sd_log" />
+          <EntitySet Name="sd_message" EntityType="Self.sd_message" />
+          <EntitySet Name="sd_module" EntityType="Self.sd_module" />
+          <EntitySet Name="sd_news" EntityType="Self.sd_news" />
+          <EntitySet Name="sd_newstype" EntityType="Self.sd_newstype" />
+          <EntitySet Name="sd_online" EntityType="Self.sd_online" />
+          <EntitySet Name="sd_product" EntityType="Self.sd_product" />
+          <EntitySet Name="sd_resume" EntityType="Self.sd_resume" />
+          <EntitySet Name="sd_staff" EntityType="Self.sd_staff" />
+          <EntitySet Name="sd_staffstar" EntityType="Self.sd_staffstar" />
+          <EntitySet Name="sd_studentshare" EntityType="Self.sd_studentshare" />
+          <EntitySet Name="sd_visits" EntityType="Self.sd_visits" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="shudaodbModelStoreContainer" CdmEntityContainer="shudaodbEntities">
+          <EntitySetMapping Name="sd_about">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_about">
+              <MappingFragment StoreEntitySet="sd_about">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="shortDesc" ColumnName="shortDesc" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="fax" ColumnName="fax" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="other" ColumnName="other" />
+                <ScalarProperty Name="moduleid" ColumnName="moduleid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_admin">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_admin">
+              <MappingFragment StoreEntitySet="sd_admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="admin_type" ColumnName="admin_type" />
+                <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+                <ScalarProperty Name="admin_pass" ColumnName="admin_pass" />
+                <ScalarProperty Name="admin_name" ColumnName="admin_name" />
+                <ScalarProperty Name="admin_sex" ColumnName="admin_sex" />
+                <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+                <ScalarProperty Name="admin_login" ColumnName="admin_login" />
+                <ScalarProperty Name="admin_modify_ip" ColumnName="admin_modify_ip" />
+                <ScalarProperty Name="admin_modify_date" ColumnName="admin_modify_date" />
+                <ScalarProperty Name="admin_register_date" ColumnName="admin_register_date" />
+                <ScalarProperty Name="admin_approval_date" ColumnName="admin_approval_date" />
+                <ScalarProperty Name="admin_group" ColumnName="admin_group" />
+                <ScalarProperty Name="usertype" ColumnName="usertype" />
+                <ScalarProperty Name="checkid" ColumnName="checkid" />
+                <ScalarProperty Name="cookie" ColumnName="cookie" />
+                <ScalarProperty Name="admin_shortcut" ColumnName="admin_shortcut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_appointmentClass">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_appointmentClass">
+              <MappingFragment StoreEntitySet="sd_appointmentClass">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+                <ScalarProperty Name="isSeed" ColumnName="isSeed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_category">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_category">
+              <MappingFragment StoreEntitySet="sd_category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="parent" ColumnName="parent" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_commondata">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_commondata">
+              <MappingFragment StoreEntitySet="sd_commondata">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="keys" ColumnName="keys" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="moduleid" ColumnName="moduleid" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="newstime" ColumnName="newstime" />
+                <ScalarProperty Name="ischeck" ColumnName="ischeck" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_companyevent">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_companyevent">
+              <MappingFragment StoreEntitySet="sd_companyevent">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="newstime" ColumnName="newstime" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="isparent" ColumnName="isparent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_curriculum">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_curriculum">
+              <MappingFragment StoreEntitySet="sd_curriculum">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="course" ColumnName="course" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="classtime" ColumnName="classtime" />
+                <ScalarProperty Name="startdate" ColumnName="startdate" />
+                <ScalarProperty Name="enddate" ColumnName="enddate" />
+                <ScalarProperty Name="teacher" ColumnName="teacher" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="studentnum" ColumnName="studentnum" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="hits" ColumnName="hits" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="daterange" ColumnName="daterange" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_download">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_download">
+              <MappingFragment StoreEntitySet="sd_download">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="no_order" ColumnName="no_order" />
+                <ScalarProperty Name="downloadurl" ColumnName="downloadurl" />
+                <ScalarProperty Name="filesize" ColumnName="filesize" />
+                <ScalarProperty Name="hits" ColumnName="hits" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="top_ok" ColumnName="top_ok" />
+                <ScalarProperty Name="downloadaccess" ColumnName="downloadaccess" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="filetype" ColumnName="filetype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_flash">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_flash">
+              <MappingFragment StoreEntitySet="sd_flash">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="descript" ColumnName="descript" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="imgclass" ColumnName="imgclass" />
+                <ScalarProperty Name="isShow" ColumnName="isShow" />
+                <ScalarProperty Name="createtime" ColumnName="createtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_job">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_job">
+              <MappingFragment StoreEntitySet="sd_job">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="place" ColumnName="place" />
+                <ScalarProperty Name="deal" ColumnName="deal" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="useful_life" ColumnName="useful_life" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="top_ok" ColumnName="top_ok" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="no_order" ColumnName="no_order" />
+                <ScalarProperty Name="shortdescript" ColumnName="shortdescript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_log">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_log">
+              <MappingFragment StoreEntitySet="sd_log">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="other" ColumnName="other" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_message">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_message">
+              <MappingFragment StoreEntitySet="sd_message">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="contact" ColumnName="contact" />
+                <ScalarProperty Name="info" ColumnName="info" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="readok" ColumnName="readok" />
+                <ScalarProperty Name="useinfo" ColumnName="useinfo" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_module">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_module">
+              <MappingFragment StoreEntitySet="sd_module">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="parentid" ColumnName="parentid" />
+                <ScalarProperty Name="orderno" ColumnName="orderno" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="adminurl" ColumnName="adminurl" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_news">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_news">
+              <MappingFragment StoreEntitySet="sd_news">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="no_order" ColumnName="no_order" />
+                <ScalarProperty Name="img_ok" ColumnName="img_ok" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="imgurls" ColumnName="imgurls" />
+                <ScalarProperty Name="issue" ColumnName="issue" />
+                <ScalarProperty Name="hits" ColumnName="hits" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="top_ok" ColumnName="top_ok" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="newstype" ColumnName="newstype" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_newstype">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_newstype">
+              <MappingFragment StoreEntitySet="sd_newstype">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_online">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_online">
+              <MappingFragment StoreEntitySet="sd_online">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="no_order" ColumnName="no_order" />
+                <ScalarProperty Name="qq" ColumnName="qq" />
+                <ScalarProperty Name="msn" ColumnName="msn" />
+                <ScalarProperty Name="taobao" ColumnName="taobao" />
+                <ScalarProperty Name="alibaba" ColumnName="alibaba" />
+                <ScalarProperty Name="skype" ColumnName="skype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_product">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_product">
+              <MappingFragment StoreEntitySet="sd_product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="ctitle" ColumnName="ctitle" />
+                <ScalarProperty Name="keywords" ColumnName="keywords" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="no_order" ColumnName="no_order" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="imgurls" ColumnName="imgurls" />
+                <ScalarProperty Name="displayimg" ColumnName="displayimg" />
+                <ScalarProperty Name="com_ok" ColumnName="com_ok" />
+                <ScalarProperty Name="hits" ColumnName="hits" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="issue" ColumnName="issue" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="top_ok" ColumnName="top_ok" />
+                <ScalarProperty Name="filename" ColumnName="filename" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="discoutprice" ColumnName="discoutprice" />
+                <ScalarProperty Name="projectstart" ColumnName="projectstart" />
+                <ScalarProperty Name="projectend" ColumnName="projectend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_resume">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_resume">
+              <MappingFragment StoreEntitySet="sd_resume">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="qq" ColumnName="qq" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="files" ColumnName="files" />
+                <ScalarProperty Name="postation" ColumnName="postation" />
+                <ScalarProperty Name="workyears" ColumnName="workyears" />
+                <ScalarProperty Name="speciality" ColumnName="speciality" />
+                <ScalarProperty Name="flg" ColumnName="flg" />
+                <ScalarProperty Name="talentpool" ColumnName="talentpool" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="isread" ColumnName="isread" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_staff">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_staff">
+              <MappingFragment StoreEntitySet="sd_staff">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="education" ColumnName="education" />
+                <ScalarProperty Name="professional" ColumnName="professional" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="updatetime" ColumnName="updatetime" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="isaccess" ColumnName="isaccess" />
+                <ScalarProperty Name="homeshow" ColumnName="homeshow" />
+                <ScalarProperty Name="entrytime" ColumnName="entrytime" />
+                <ScalarProperty Name="conversiontime" ColumnName="conversiontime" />
+                <ScalarProperty Name="idcard" ColumnName="idcard" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="orderno" ColumnName="orderno" />
+                <ScalarProperty Name="doctorgroup" ColumnName="doctorgroup" />
+                <ScalarProperty Name="managergroup" ColumnName="managergroup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_staffstar">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_staffstar">
+              <MappingFragment StoreEntitySet="sd_staffstar">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="staffid" ColumnName="staffid" />
+                <ScalarProperty Name="story" ColumnName="story" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="selecttime" ColumnName="selecttime" />
+                <ScalarProperty Name="orderno" ColumnName="orderno" />
+                <ScalarProperty Name="isvalide" ColumnName="isvalide" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="shortdesc" ColumnName="shortdesc" />
+                <ScalarProperty Name="hits" ColumnName="hits" />
+                <ScalarProperty Name="stafftype" ColumnName="stafftype" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_studentshare">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_studentshare">
+              <MappingFragment StoreEntitySet="sd_studentshare">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="studyclass" ColumnName="studyclass" />
+                <ScalarProperty Name="says" ColumnName="says" />
+                <ScalarProperty Name="newstime" ColumnName="newstime" />
+                <ScalarProperty Name="addtime" ColumnName="addtime" />
+                <ScalarProperty Name="imgurl" ColumnName="imgurl" />
+                <ScalarProperty Name="orderno" ColumnName="orderno" />
+                <ScalarProperty Name="valid" ColumnName="valid" />
+                <ScalarProperty Name="hits" ColumnName="hits" />
+                <ScalarProperty Name="vediourl" ColumnName="vediourl" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sd_visits">
+            <EntityTypeMapping TypeName="shudaodbModel.sd_visits">
+              <MappingFragment StoreEntitySet="sd_visits">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="module" ColumnName="module" />
+                <ScalarProperty Name="ip" ColumnName="ip" />
+                <ScalarProperty Name="visittime" ColumnName="visittime" />
+                <ScalarProperty Name="remark" ColumnName="remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

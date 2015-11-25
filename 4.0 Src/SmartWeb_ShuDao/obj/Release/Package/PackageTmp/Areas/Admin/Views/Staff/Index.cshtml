@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3 class="header smaller lighter blue">员工中心</h3>
+<p>
+    <a class="btn" href="/Admin"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-primary" href="/Admin/Staff"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+    <a class="btn btn-success" href="/Admin/Staff/Add"><i class="icon-edit align-top bigger-125"></i>添加</a>
+</p>
+<div id="filegrid"></div>
+<script>
+    $(document).ready(function () {
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    type: "POST",
+                    url: "/Admin/Staff/Get",
+                    dataType: "json",
+                    contentType: "application/json"
+                },
+                update: {
+                    url: "/Admin/Staff/UpdateByList",
+                    dataType: "json",
+                    type: "POST"
+                },
+                destroy: {
+                    url: "/Admin/Staff/Delete",
+                    dataType: "json",
+                    type: "POST"
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                    else if (operation == "read") {
+                        var parameter = {
+                            page: options.page,
+                            pageSize: options.pageSize
+                        };
+                        return kendo.stringify(parameter);
+                    }
+                }
+            },
+            batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+            cache: false,
+            pageSize: 20,
+            schema: {
+                data: function (d) {
+                    return d.Data;
+                },
+                total: function (d) {
+                    return d.TotalCount;
+                },
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                        name: { editable: true },
+                        sex: { editable: true },
+                        imgurl: { editable: true },
+                        remark: { editable: true },
+                        link: { editable: true },
+                        address: { editable: true },
+                        phone: { editable: true },
+                        education: { editable: true },
+                        professional: { editable: true },
+                        summary: { editable: true },
+                        position: { editable: true },
+                        addtime: { editable: true },
+                        updatetime: { editable: true },
+                        state: { editable: true },
+                        isaccess: { editable: true, type: "number" },
+                        homeshow: { editable: true, type: "boolean" },
+                        conversiontime: { editable: true, type: "date" },
+                        entrytime: { editable: true, type: "date" },
+                        idcard: { editable: true },
+                        department: { editable: true },
+                        orderno: { editable: true, type: "number" },
+                        doctorgroup: { editable: true, type: "boolean" },
+                        managergroup: { editable: true, type: "boolean" }
+                    }
+                }
+            },
+            serverPaging: true,
+
+        });
+
+        $("#filegrid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            sortable: {
+                mode: "multiple",
+                allowUnsort: true
+            },
+            filterable: {
+                mode: "row"
+            },
+            height: 520,
+            toolbar: [{
+                template: '<a class="k-button" href="/Admin/Staff/Add" target="_self">添 加</a>'
+            }, "save", "cancel"],
+            columns: [
+                 {
+                     command: [
+                    { name: "修改", click: function (e) { var tr = $(e.target).closest("tr"); var data = this.dataItem(tr); location.href = "/Admin/Staff/Add?id=" + data.id; } },
+                    { name: "destroy" }], width: "200px"
+                 },
+               { field: "id", title: "编号", width: "60px" },
+                { field: "name", title: "姓名", width: "100px" },
+                 { field: "sex", title: "性别", width: "60px" },
+                 { field: "department", title: "部门", width: "80px" },
+                 { field: "position", title: "职位", width: "80px" },
+                 //{ field: "entrytime", title: "入职时间", width: "90px", format: "{0: yyyy/MM/dd}" },
+                 //{ field: "conversiontime", title: "转正时间", width: "90px", format: "{0: yyyy/MM/dd}" },
+                 //{ field: "idcard", title: "证件号", width: "80px" },
+                 { field: "state", title: "在职状态", width: "70px" },
+                 { field: "homeshow", title: "首页显示", width: "70px" },
+                 { field: "doctorgroup", title: "专家讲师成员", width: "100px" },
+                 { field: "managergroup", title: "管理团队成员", width: "100px" },
+                 { field: "orderno", title: "排序", width: "50px" }
+            ],
+            messages: {
+                commands: {
+                    destroy: "Delete"
+                }
+            },
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+    });
+</script>  

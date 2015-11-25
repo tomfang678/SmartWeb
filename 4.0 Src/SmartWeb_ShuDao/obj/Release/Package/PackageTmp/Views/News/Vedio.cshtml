@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Vedio";
+    Layout = "~/Views/Shared/_Main.cshtml";
+
+    List<Smart.Framework.Model.sd_studentshare> list = new List<Smart.Framework.Model.sd_studentshare>();
+    if (ViewData["vedio"] != null)
+    {
+        list = ViewData["vedio"] as List<Smart.Framework.Model.sd_studentshare>;
+    }
+}
+
+
+<div class="container">
+    <div class="">
+        <div class="portfolio-items">
+            @*<ul class="media-list">*@
+            @foreach (var item in list)
+            {
+                @*<li class="media">
+                        <div class="media-left media-middle">
+                            <a href="/News/Detail?id=@item.id">
+                                <img class="media-object" src="@item.imgurl" alt="">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">@item.title</h4>
+                            <p>@item.studyclass</p>
+                        </div>
+                    </li>*@
+
+                <div class="portfolio-item apps col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <a href="/News/Detail?id=@item.id"></a> <img class="img-responsive" src="@item.imgurl" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><a href="#">@item.title</a></h3>
+                                <p>@item.studyclass</p>
+                                <a class="preview" href="/News/Detail?id=@item.id" rel="prettyPhoto"><i class="fa fa-eye"></i> View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            @*</ul>*@
+        </div>
+    </div>
+</div>

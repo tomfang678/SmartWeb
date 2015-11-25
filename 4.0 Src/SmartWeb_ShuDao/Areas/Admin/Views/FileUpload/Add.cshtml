@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3 class="header smaller lighter blue">资料上传</h3>
+<p>
+    <a class="btn" href="Admin/FileUpload/"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="/Admin/FileUpload/Add"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+    <a class="btn btn-success" href="/Admin/FileUpload/Add"><i class="icon-edit align-top bigger-125"></i>添加</a>
+</p>
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="other" id="uploadfile">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="title" class="required">显示标题：</label>
+                    </td>
+                    <td>
+                        <input type="text" id="title" name="title" style="width:40%" class="k-textbox" placeholder="中文名" required validationmessage="请输入 {0}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="keyword" class="required">关键词：</label></td>
+                    <td>
+                        <input type="text" id="关键词" style="width:40%" name="keyword" class="k-textbox" placeholder="输入关键词后便于搜索和查找" required validationmessage="请输入 {0}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="keyword" class="required">请选择要上传的资料：</label></td>
+                    <td>
+                        <div class="demo-section k-header">
+                            <input name="files" id="files" type="file" />
+                        </div>
+                        下载地址：
+                        <div id="filesInfo"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">关键字</label></td>
+                    <td><input type="text" id="keywords" style="width:80%" name="关键字" class="k-textbox" placeholder="请输入关键词" required validationmessage="请输入 {0}" /></td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">摘要：</label>
+                    <td><textarea id="descripteditor" name="keyword" class="k-textbox" placeholder="摘要" style="width:90%;height:100px;"></textarea></td>
+                </tr>
+                <tr><td colspan="2"><label for="title" class="required">详细内容：</label></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <script type="text/plain" id="contenteditor" style="width:99%; height: 300px;"></script>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">设置</label></td>
+                    <td>
+                        <ul>
+                            <li><label>立即发布</label><input id="access" type="checkbox" checked="checked" /><span style="color:red">选中该按钮标示该文件已经通过审核，可以立即在前台显示</span></li>
+                            <li><label>置顶</label><input id="top_ok" type="checkbox" /></li>
+                            <li><label>排序</label><input id="no_order" type="text" value="0" /></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="space-4"></div>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //实例化编辑器
+    var umdes = UM.getEditor('contenteditor');
+</script>
+<script>
+    $(document).ready(function () {
+        //**************************输入验证***********************************************************//
+        var validator = $("#uploadfile").kendoValidator().data("kendoValidator"), status = $(".status");
+        //**************************定义上传文件路径集合***********************************************************//
+        var filepath = "";
+        var filesize;
+        var filename;
+        var filetype;
+        var downloadpath;
+        $("#files").kendoUpload({
+            async: {
+                saveUrl: "/Admin/FileUpload/FileSave",
+                removeUrl: "/Admin/FileUpload/FileRemove",
+                autoUpload: true
+            },
+            upload: onUpload,
+            success: onSuccess
+        });
+        function onSuccess(e) {
+            if (e.operation == "upload") {
+                filesize = e.files[0].size;
+                filename = e.files[0].name;
+                filetype = e.files[0].extension;
+                downloadpath = e.response[0];
+
+                filepath += e.response[0] + "|";
+                $("#filesInfo").append("<br/>").append(downloadpath);
+            }
+        }
+        function onUpload(e) {
+            // Array with information about the uploaded files
+            var files = e.files;
+            // Check the extension of each file and abort the upload if it is not .jpg
+            $.each(files, function () {
+                if (this.extension.toLowerCase() == ".exe" || this.extension.toLowerCase() == ".msi" || this.extension.toLowerCase() == ".dll" || this.extension.toLowerCase() == ".bat") {
+                    alert("该格式非法，禁止上传")
+                    e.preventDefault();
+                }
+            })
+        };
+        //**************************Ajax保存产品信息***********************************************************//
+        $("#save").click(function () {
+            if (validator.validate()) {
+                var url = "/Admin/FileUpload/Index";
+                var productType = $("#productType").val();
+                var title = $("#title").val();
+                var keyword = $("#keyword").val();
+                var descript = $("#descripteditor").val();
+                var content = $("#contenteditor").html();
+                var access = $("access").val();
+                var top_ok = $("#top_ok").val();
+                var no_order = $("#no_order").val();
+                if (top_ok == true) {
+                    top_ok = 1;
+                }
+                else {
+                    top_ok = 0;
+                }
+                var t = {
+                    "productType": productType, "title": title, "keyword": keyword, "top_ok": top_ok, "descript": descript, "content": content, "access": access, "filesize": filesize,
+                    "filename": filename, "filetype": filetype, "filepath": filepath, "downloadurl": downloadpath
+                };
+
+                var jsonobject = JSON.stringify(t);
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/FileUpload/UploadFiles",
+                    data: { models: jsonobject },
+                    dataType: "json",
+                    success: function (data) {
+                        var result = $.Zebra_Dialog('<strong>恭喜！</strong>操作成功', {
+                            'type': 'information ',
+                            'title': '提示',
+                            'buttons': [
+                        { caption: 'Ok', callback: function () { location.href = url; } },
+                            ]
+                        });
+
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        $.Zebra_Dialog('<strong>Sorry！</strong>操作失败' + errorThrown.toString(), {
+                            'type': 'error ',
+                            'title': '异常提示'
+                        });
+                    }
+                });
+            } else {
+                status.text("添加失败")
+                    .removeClass("valid")
+                    .addClass("invalid");
+            }
+        });
+
+    });
+</script>

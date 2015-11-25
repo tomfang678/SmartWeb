@@ -1,0 +1,113 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>ERROR 404 - Not Found!</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="robots" content="noindex" />
+    <style type="text/css">
+        <!--
+        body {
+            color: #444444;
+            background-color: #EEEEEE;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-size: 80%;
+        }
+
+        h1 {
+        }
+
+        h2 {
+            font-size: 1.2em;
+        }
+
+        #page {
+            background-color: #FFFFFF;
+            width: 60%;
+            margin: 24px auto;
+            padding: 12px;
+        }
+
+        #header {
+            padding: 6px;
+            text-align: center;
+        }
+
+        .status3xx {
+            background-color: #475076;
+            color: #FFFFFF;
+        }
+
+        .status4xx {
+            background-color: #C55042;
+            color: #FFFFFF;
+        }
+
+        .status5xx {
+            background-color: #F2E81A;
+            color: #000000;
+        }
+
+        #content {
+            padding: 4px 0 24px 0;
+        }
+
+        #footer {
+            color: #666666;
+            background: #f9f9f9;
+            padding: 10px 20px;
+            border-top: 5px #efefef solid;
+            font-size: 0.8em;
+            text-align: center;
+        }
+
+            #footer a {
+                color: #999999;
+            }
+        -->
+    </style>
+</head>
+<body>
+    <div id="page">
+        <div id="header" class="status4xx">
+            <h1>ERROR 404 - Not Found!</h1>
+        </div>
+        <div id="content">
+            <h2>出现了以下异常:</h2>
+            <p>服务器上未能找到您所输入的Url.</p>
+            <p>请检查您所输入的URL地址.</p>
+            <p id="autoRedirect" style="display:none;">
+                系统将在
+                <span id="countDown" style="margin:0 10px 0 0;font-size:16px;color:red;font-weight:bold;"></span>
+                秒后自动 跳转至首页，请稍候...
+            </p>
+        </div>
+        <div id="footer">
+            <p>版权所有@<a href="http://shudao168.com/" rel="nofollow">树道企业管理咨询有限公司</a></p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //定义倒计时时间
+        var times = 6;
+        //定义跳转地址
+        var redirecturl = "http://shudao168.com/";
+        //执行倒计时函数
+        var doCountDown = function () {
+            if (times == 0) {
+                //倒计时结束
+                location.href = redirecturl;
+            }
+            //显示当前倒计数
+            document.getElementById("countDown").innerHTML = times;
+            times--;
+        }
+        //显示跳转信息
+        document.getElementById("autoRedirect").style.display = "";
+        //执行倒计时
+        doCountDown();
+        //设置倒计时的时间间隔
+        setInterval("doCountDown();", 1000);
+
+    </script>
+</body>
+</html>

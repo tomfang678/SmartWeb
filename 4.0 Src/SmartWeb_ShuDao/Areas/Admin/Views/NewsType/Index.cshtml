@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3 class="header smaller lighter blue">新闻类别</h3>
+<p>
+    <a class="btn" href="/Admin"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="/Admin/NewsType">刷新 </a>
+</p>
+<div id="filegrid"></div>
+<script>
+    $(document).ready(function () {
+        dataSource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: "/Admin/NewsType/Get",
+                    dataType: "json"
+                },
+                update: {
+                    url: "/Admin/NewsType/Update",
+                    dataType: "json",
+                    type: "POST"
+                },
+                destroy: {
+                    url: "/Admin/NewsType/Delete",
+                    dataType: "json",
+                    type: "POST"
+                },
+                create: {
+                    url: "/Admin/NewsType/Add",
+                    type: "POST",
+                    dataType: "json",
+                },
+                parameterMap: function (options, operation) {
+                    if (operation !== "read" && options.models) {
+                        return { models: kendo.stringify(options.models) };
+                    }
+                }
+            },
+            batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+            cache: false,
+            pageSize: 20,
+            schema: {
+                model: {
+                    id: "id",
+                    fields: {
+                        id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                        name: { editable: true },
+                        remark: { editable: true }
+                    }
+                }
+            }
+        });
+
+        $("#filegrid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 520,
+            toolbar: ["create", "save", "cancel"],
+            columns: [
+               { field: "id", title: "编号", width: "100px" },
+                { field: "name", title: "类别", width: "160px" },
+                 { field: "remark", title: "描述", width: "130px" },
+                { command: ["destroy"], title: "&nbsp;", width: "90px" }
+            ],
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+    });
+</script>

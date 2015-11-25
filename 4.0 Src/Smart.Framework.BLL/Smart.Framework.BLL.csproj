@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B205F752-7883-42C6-9B81-CF2930EB1385}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Smart.Framework.BLL</RootNamespace>
+    <AssemblyName>Smart.Framework.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FeedBack.cs" />
+    <Compile Include="Commondata.cs" />
+    <Compile Include="Categroy.cs" />
+    <Compile Include="StudentShare.cs" />
+    <Compile Include="Resume.cs" />
+    <Compile Include="Online.cs" />
+    <Compile Include="Authentication.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Download.cs" />
+    <Compile Include="Curriculum.cs" />
+    <Compile Include="Appointment.cs" />
+    <Compile Include="NewsType.cs" />
+    <Compile Include="NewsTypeEnum.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="Case.cs" />
+    <Compile Include="News.cs" />
+    <Compile Include="Recruitment.cs" />
+    <Compile Include="About.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Smart.Core.Cache\Smart.Core.Cache.csproj">
+      <Project>{7fba37d3-6e47-49ad-9cd4-22e61f25d341}</Project>
+      <Name>Smart.Core.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Core.Log\Smart.Core.Log.csproj">
+      <Project>{da26eb6d-7964-4669-a199-f1894fad3409}</Project>
+      <Name>Smart.Core.Log</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.Contract\Smart.Framework.Contract.csproj">
+      <Project>{7d2847fe-2f8e-45cb-ba5c-3eb13c521298}</Project>
+      <Name>Smart.Framework.Contract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.DALFactory\Smart.Framework.DALFactory.csproj">
+      <Project>{b24c3a57-67cf-4c82-9299-ffe4a03cd66b}</Project>
+      <Name>Smart.Framework.DALFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.Model\Smart.Framework.Model.csproj">
+      <Project>{5cd89d52-9221-4665-92a8-2d243279ad9a}</Project>
+      <Name>Smart.Framework.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Smart.Framework.Utility\Smart.Framework.Utility.csproj">
+      <Project>{ffb7ad8a-a002-4267-8657-863f00b28bd3}</Project>
+      <Name>Smart.Framework.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

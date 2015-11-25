@@ -1,0 +1,159 @@
+﻿@using Smart.Framework.Model
+@using Smart.Framework.BLL
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<sd_category> categroylist = new List<sd_category>();
+    categroylist = new Smart.Framework.BLL.Category().FindALL() as List<sd_category>;
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <h3 class="header smaller lighter blue">发布产品信息</h3>
+    <p>
+        <a class="btn" href="/Admin/Product"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+        <a class="btn btn-info" href="/Admin/Product/Add"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+        <a class="btn btn-success" href="/Admin/Product/Add"><i class="icon-edit align-top bigger-125"></i>添加</a>
+    </p>
+    <div class="other" id="addnews">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody id="flash">
+                <tr>
+                    <td>
+                        <img id="img" src="#" alt="" style="width:150px;height:150px;" />
+                    </td>
+                    <td>
+                        <input name="files" id="files" type="file" />
+                        <input type="hidden" id="imgpath" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="productType" class="required">产品类别</label>
+                    </td>
+                    <td>
+                        <select name="productType" id="productType" style="width:300px" required data-required-msg="请选择类别">
+                            @foreach (var item in categroylist)
+                            {
+                                <option value="@item.id">@item.name</option>
+                            }
+                        </select>
+                        <span class="k-invalid-msg" data-for="newsType"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">中文名：</label></td>
+                    <td>
+                        <input type="text" id="title" name="title" style="width:500px" class="k-textbox" placeholder="中文名" required validationmessage="请输入 {0}" />
+                        <input type="checkbox" id="chkename" />是否有英文名称
+                    </td>
+                </tr>
+                <tr id="englishname">
+                    <td><label for="ctitle">英文名：</label></td>
+                    <td>
+                        <input type="text" id="ctitle" name="title" style="width:500px" class="k-textbox" placeholder="英文名" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="ctitle">价格：</label></td>
+                    <td>
+                        <label for="ctitle">原价：</label><input id="price" type="text" name="价格" value="" />
+                        <label for="ctitle">促销价：</label><input id="discoprice" type="text" name="价格" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="ctitle">是否为项目：</label></td>
+                    <td>
+                        <input type="checkbox" id="iscase" />
+                        <div id="trcase"><label for="ctitle">服务时间：</label> <label for="ctitle">开始：</label><input id="startdate" value="" />-<label for="ctitle">结束：</label><input id="enddate" value="" /></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title">搜索关键词</label></td>
+                    <td><input type="text" id="keywords" style="width:80%" name="关键字" class="k-textbox" placeholder="请输入关键词" /></td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">摘要：</label>
+                    <td><textarea id="descripteditor" name="keyword" class="k-textbox" placeholder="请输入关键词" style="width:90%;height:100px;"></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="title" class="required">详细内容：</label>
+                        <script type="text/plain" id="contenteditor" style="width: 99%; height: 300px;"></script>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">设置</label></td>
+                    <td>
+                        <ul>
+                            <li><label>置顶</label><input id="top_ok" type="checkbox" /></li>
+                            <li><label>排序</label><input id="no_order" type="text" value="0" /></li>
+                            <li><label>立即发布</label><input id="access" type="checkbox" checked="checked" /><span style="color:red">选中该按钮表示已经通过审核，可以立即在首页中显示</span></li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#trcase").hide();
+    $("#englishname").hide();
+
+    $("#iscase").click(function () {
+        if ($("#iscase").prop("checked")) {
+            $("#trcase").show();
+        } else {
+            $("#trcase").hide();
+        }
+    });
+    $("#chkename").click(function () {
+        if ($("#chkename").prop("checked")) {
+            $("#englishname").show();
+        } else {
+            $("#englishname").hide();
+        }
+    });
+    $("#startdate").kendoDatePicker({
+        start: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#enddate").kendoDatePicker({
+        start: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#price").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    $("#no_order").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    $("#discoprice").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    //实例化富文本编辑器
+    var umdes = UM.getEditor('contenteditor');
+</script>
+<script src="~/Areas/Admin/Script/plugin/fileupload.js"></script>
+<script src="~/Areas/Admin/Script/plugin/prodcutAdd.js"></script>

@@ -1,0 +1,149 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    Smart.Framework.Model.sd_flash flash = new Smart.Framework.Model.sd_flash();
+    if (ViewData["flash"] != null)
+    {
+        flash = ViewData["flash"] as Smart.Framework.Model.sd_flash;
+    }
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <h2>Flash图片修改</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>编号</th>
+                <th>背景图</th>
+                <th>地址</th>
+                <th>url链接地址</th>
+                <th>动画</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody id="flash">
+            <tr>
+                <td><span id="id">@flash.id</span><input type="hidden" value="@flash.id" id="txtid" /></td>
+                <td><img id="flashimg" style="width:300px;height:99px" src="@flash.imgurl" /></td>
+                <td><input type="text" id="imgurl" style="width:100px" value="@flash.imgurl" />&nbsp;<input name="files" id="files" type="file" /></td>
+                <td><input type="text" id="url" style="width:100px" value="@flash.URL" /></td>
+                <td>
+                    @*<input type="text" id="imgclass" style="width:100px" value="@flash.imgclass" />>*@
+                    <select name="imgclass" id="imgclass" required data-required-msg="请选择动画样式">
+                        <option value="@flash.imgclass">@flash.imgclass</option>
+                        <option value="cube">立方体旋转</option>
+                        <option value="cubeRandom">随机</option>
+                        <option value="block">块状旋转</option>
+                        <option value="cubeStop">立方体停止</option>
+                    </select>
+                </td>
+                <td> <input id="isshow" type="checkbox" checked="@flash.isShow" /></td>
+            </tr>
+            <tr>
+                <td>描述:</td>
+                <td colspan="5">
+                    <textarea id="descript" style="width:600px;height:100px; text-align:left"> @flash.descript</textarea>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6">
+                    <input id="save" type="button" value="保存" style="width:100px" />&nbsp;
+                    @*<a href="/Admin/Flash">返回图片列表</a>*@
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        var oldimg = '@flash.imgurl';
+        var img = $("#imgurl").val();
+        $("#save").click(function () {
+            var isshow = false;
+            if ($("#isshow").val() == "on") { isshow = true; };
+            var obj = [];
+            obj = { id: "@flash.id", url: $("#url").val(), imgurl: img, imgclass: $("#imgclass").val(), descript: $("#descript").val(), isShow: isshow, createtime: "@flash.createtime", updatetime: "@flash.updatetime" };
+            var str = JSON.stringify(obj);
+            var optstr;
+            if ($("#txtid").val() == 0) {
+                optstr = "/Admin/Flash/AddFlash";
+            } else {
+                optstr = "/Admin/Flash/UpdateFlash";
+            }
+            $.ajax({
+                type: "POST",
+                url: optstr,
+                datatype: "json",
+                data: { model: str },
+                success: function (data) {
+                    if (data == true) {
+                        var t = $.Zebra_Dialog("Success，恭喜操作成功！", {
+                            'type': 'information ',
+                            'title': '提示',
+                            'buttons': [
+                        {
+                            caption: 'Ok', callback: function () {
+                                location.href = "/Admin/Flash";
+                            }
+                        }]
+                        });
+                    } else {
+                        var t = $.Zebra_Dialog("Sorry！修改失败！", {
+                            'type': 'error ',
+                            'title': '异常',
+                            'buttons': [
+                        {
+                            caption: 'Ok', callback: function () {
+                                location.href = "/Admin/Flash";
+                            }
+                        }]
+                        });
+                    }
+                },
+                error: function (mesg) {
+                    alert(mesg);
+                }
+            });
+        });
+        $("#files").kendoUpload({
+            async: {
+                saveUrl: "/Admin/Flash/FileSave",
+                removeUrl: "/Admin/Flash/FileRemove",
+                autoUpload: true
+            },
+            upload: onUpload,
+            success: onSuccess,
+            error: onError
+        });
+        function onSuccess(e) {
+            if (e.operation == "upload") {
+                filesize = e.files[0].size;
+                filename = e.files[0].name;
+                downloadpath = JSON.parse(e.XMLHttpRequest.response);
+                $("#flashimg").attr("src", downloadpath[0]);
+                $("#imgurl").val(downloadpath[0]);
+                img = downloadpath[0];
+            }
+            if (e.operation == "remove") {
+                $("#flashimg").remove();
+                img = oldimg;
+            }
+        }
+        function onError(e) {
+            var files = e.files;
+            if (e.operation == "upload") {
+                alert("Failed to upload " + files.length + " files");
+            }
+        }
+        function onUpload(e) {
+            var files = e.files;
+            $.each(files, function () {
+                if (this.extension.toLowerCase() == ".exe" || this.extension.toLowerCase() == ".msi" || this.extension.toLowerCase() == ".dll" || this.extension.toLowerCase() == ".bat") {
+                    alert("该格式非法，禁止上传")
+                    e.preventDefault();
+                }
+            })
+        };
+    });
+</script>

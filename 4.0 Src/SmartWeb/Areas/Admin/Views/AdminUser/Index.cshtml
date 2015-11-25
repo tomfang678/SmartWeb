@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="filegrid"></div>
+<script>
+    $(document).ready(function () {
+        var crudServiceBaseUrl = "/Admin/AdminUser",
+            dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        url: crudServiceBaseUrl + "/Get",
+                        dataType: "json"
+                    },
+                    update: {
+                        url: crudServiceBaseUrl + "/Update",
+                        dataType: "json",
+                        type: "POST"
+                    },
+                    destroy: {
+                        url: crudServiceBaseUrl + "/Delete",
+                        dataType: "json",
+                        type: "POST"
+                    },
+                    create: {
+                        url: crudServiceBaseUrl + "/Add",
+                        type: "POST",
+                        dataType: "json",
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        }
+                    }
+                },
+                batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+                cache: false,
+                pageSize: 20,
+                schema: {
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                            admin_type: { editable: true },
+                            admin_id: { editable: true },
+                            admin_name: { editable: true },
+                            admin_pass: { editable: true },
+                            admin_sex: { editable: true },
+                            admin_email: { editable: true, nullable: true },
+                            admin_login: { editable: true, type: "number", validation: { required: true, min: 0 } },
+                            usertype: { editable: true, type: "number", validation: { required: true, min: 0 } },
+                            checkid: { editable: true, type: "number", validation: { required: true, min: 0 } },
+                            admin_shortcut: { editable: true },
+                        }
+                    }
+                }
+            });
+
+        $("#filegrid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 520,
+            toolbar: ["create", "save", "cancel"],
+            columns: [
+               { field: "id", title: "编号", width: "100px" },
+                { field: "admin_type", title: "用户类型", width: "160px" },
+                { field: "admin_id", title: "用户编号", width: "140px" },
+                 { field: "admin_name", title: "用户名", width: "130px" },
+                { field: "admin_sex", title: "性别", width: "120px" },
+                { field: "admin_email", title: "邮箱", width: "120px" },
+                { field: "admin_login", title: "允许登录", width: "120px" },
+                { field: "checkid", title: "审核", width: "130px" },
+                { field: "admin_shortcut", title: "备注", width: "130px" },
+                { command: ["destroy"], title: "&nbsp;", width: "90px" }
+            ],
+            editable: "popup"
+        });
+    });
+</script>

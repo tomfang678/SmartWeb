@@ -1,0 +1,88 @@
+﻿@using Smart.Framework.Model;
+    @{
+        ViewBag.Title = "Add";
+        Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+        sd_studentshare studentshare = new sd_studentshare();
+        if (ViewData["studentshareinfo"] != null)
+        {
+            studentshare = ViewData["studentshareinfo"] as sd_studentshare;
+        }
+    }
+    <input type="hidden" id="shareid" value="@studentshare.id">
+    <div class="page-title ui-widget-content ui-corner-all">
+        <h3>学员分享</h3>
+        <div class="other" id="addstudentshare">
+            <table class="table table-hover">
+                <thead></thead>
+                <tbody id="flash">
+                    <tr>
+                        <td colspan="2">
+                            <label for="title" class="required">首页标题：</label>
+                            <input type="text" id="title" value="@studentshare.title" name="title" style="width:500px" class="k-textbox" placeholder="首页标题" required validationmessage="请输入 {0}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="title" class="required">学习课程：</label>
+                            <input type="text" id="studyclass" value="@studentshare.studyclass" name="title" style="width:500px" class="k-textbox" placeholder="学习课程" required validationmessage="请输入 {0}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="title" class="required">学员名称：</label><input type="text" id="name" value="@studentshare.name" name="name" style="width:200px" class="k-textbox" placeholder="姓名" required validationmessage="请输入 {0}" />
+                            <label for="title" class="required">所属公司：</label>
+                            <input type="text" id="company" value="@studentshare.name" name="company" style="width:200px" class="k-textbox" placeholder="公司" required validationmessage="请输入 {0}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <label for="newstime" class="required">培训时间：</label>
+                            <input name="newstime" id="newstime" value="@studentshare.newstime" />
+                            <label>排序</label><input id="orderno" type="text" value="@studentshare.orderno" /><label>是否有效</label><input id="valid" type="checkbox" checked="@studentshare.valid" />
+                        </td>
+                    </tr>
+                    <tr><td colspan="2">
+                            <label>视频地址：</label>
+                            <input id="vediourl" value="@studentshare.vediourl" style="width: 60    %"  />
+                        </td></tr>
+                    <tr>
+                        <td colspan="2"><label for="title" class="required">分享内容：</label>
+                            <script type="text/plain" id="says" style="width: 99%; height: 300px;"> @Html.Raw(studentshare.says) </script>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#newstime").kendoDatePicker({
+        studentsharet: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#orderno").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    //实例化富文本编辑器
+    var umdes = UM.getEditor('says');
+</script>
+<script src="~/Areas/Admin/Script/plugin/studentshare.js"></script>

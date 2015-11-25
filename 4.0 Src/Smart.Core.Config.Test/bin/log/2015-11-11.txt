@@ -1,0 +1,4 @@
+*********【Begin】*********
+记录时间：2015-11-11 11:21:43,704 线程id:[10] 日志级别：ERROR 出错类：Smart.Core.Config.Test.UnitTest1 property:[(null)] - 错误描述：text
+System.Exception: test2
+*********【End】*********

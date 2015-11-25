@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="page-title ui-widget-content ui-corner-all">
+    <div class="other" id="add">
+        <h3 class="header smaller lighter blue">客户案例编辑</h3>
+        <p>
+            <a class="btn" href="/Admin/Case"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+            <a class="btn" href="/Admin/Case/Add"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+            <a class="btn btn-success" href="/Admin/Case/Add"><i class="icon-edit align-top bigger-125"></i>添加</a>
+        </p>
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody id="flash">
+                <tr>
+                    <td><label for="title" class="required">标题：</label></td>
+                    <td>
+                       <input type="text" id="title" name="title" style="width:80%" class="k-textbox" placeholder="标题" required validationmessage="请输入 {0}" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="keywords" class="required">搜索关键词</label></td>
+                    <td><input type="text" id="keywords" style="width:80%" name="keyword" class="k-textbox" placeholder="请输入关键词" required validationmessage="请输入 {0}" value="" /></td>
+                </tr>
+                <tr>
+                    <td><label for="no_order" class="required">排序：</label></td>
+                    <td>
+                        <input type="number" id="no_order" name="title" value="" style="width:80%" class="k-textbox" placeholder="排序" />
+                    </td>
+                </tr>
+
+                <tr>
+                    <td><label class="required">设置：</label></td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-sm-9">
+                                <span class="help-inline col-xs-12 col-sm-5">
+                                    <label class="middle">
+                                        <input class="ace" type="checkbox" id="access" />
+                                        <span class="lbl"> 审核通过并显示</span>
+                                        <label class="middle">
+                                            <input class="ace" id="top_ok" type="checkbox" />
+                                            <span class="lbl"> 置顶</span>
+                                        </label>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="required">缩略图：</label></td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td><img id="img" src="" alt="" /><input type="hidden" id="imgpath" value="" /></td>
+                                <td><input name="files" id="files" type="file" /></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label class="required">描述：</label>
+                    <td><textarea id="descripteditor" name="keyword" class="k-textbox" placeholder="请输入关键词" style="width:90%;height:100px;"></textarea></td>
+                </tr>
+                <tr>
+                <tr><td colspan="2"><label class="required">内容：</label></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <script type="text/plain" id="contenteditor" style="width: 90%; height: 300px;"></script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //实例化编辑器
+    var umdes = UM.getEditor('contenteditor');
+    $(document).ready(function () {
+        $("#datepicker").kendoDatePicker({
+            format: "yyyy-MM-dd"
+        });
+    });
+</script>
+<script src="~/Areas/Admin/Script/plugin/fileupload.js"></script>
+<script type="text/javascript">
+    var validator = $("#add").kendoValidator().data("kendoValidator"), status = $(".status");
+    $(document).ready(function () {
+        $("#save").click(function () {
+            if (validator.validate()) {
+                var obj = [];
+                obj = {
+                    id: "0",
+                    title: $("#title").val(),
+                    keywords: $("#keywords").val(),
+                    description: $("#descripteditor").val(),
+                    content: $("#contenteditor").html(),
+                    no_order: $("#no_order").val(),
+                    imgurl: $("#imgpath").val(),
+                    displayimg: $("#imgpath").val(),
+                    access: $("#access").val() == "on" ? 1 : 0,
+                    top_ok: $("#top_ok").val() == "on" ? 1 : 0,
+                    addtime: $("#addtime").val(),
+                };
+                var str = JSON.stringify(obj);
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/Case/Add",
+                    datatype: "json",
+                    data: { models: str },
+                    success: function (data) {
+                        if (data == true) {
+                            var result = $.Zebra_Dialog('<strong>恭喜！</strong> 添加成功', {
+                                'type': 'information ',
+                                'title': '提示',
+                                'buttons': [
+                            { caption: 'Ok', callback: function () { location.reload(); } },
+                                ]
+                            });
+
+                        } else {
+                            $.Zebra_Dialog('<strong>Sorry！</strong>添加失败', {
+                                'type': 'error ',
+                                'title': '异常提示'
+                            });
+                        }
+                    },
+                    error: function (mesg) {
+                        $.Zebra_Dialog('<strong>Sorry！</strong>执行失败' + mesg, {
+                            'type': 'error ',
+                            'title': '异常提示'
+                        });
+                    }
+                });
+            }
+        })
+
+    });
+
+</script>

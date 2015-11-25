@@ -1,0 +1,107 @@
+﻿@using Smart.Framework.Model
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_staffstar star = new sd_staffstar();
+    string startypename = "";
+    int starid = 0;
+    if (ViewData["star"] != null)
+    {
+        star = ViewData["star"] as sd_staffstar;
+        startypename = star.stafftype == 0 ? "杰络之星" : "领导风采";
+        starid = star.id;
+    }
+}
+<input type="hidden" id="starid" value="@starid" />
+<div class="page-title ui-widget-content ui-corner-all">
+    <h3></h3>
+    <div class="other" id="addStar">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody id="flash">
+                <tr>
+                    <td>
+                        <img id="img" style="width:150px; height:150px;" src="@star.imgurl" alt="" />
+                    </td>
+                    <td>
+                        <input name="files" id="files" type="file" />
+                        <input type="hidden" id="imgpath" value="@star.imgurl" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="staffType" class="required">类别</label>
+                    </td>
+                    <td>
+                        <select name="staffType" id="staffType" style="width:300px" required data-required-msg="请选择类别">
+                            <option value="@star.stafftype">@startypename</option>
+                            <option value="0">杰络之星</option>
+                            <option value="1">领导风采</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="title" class="required">标题：</label></td>
+                    <td>
+                        <input type="text" id="title" value="@star.title" name="title" style="width:500px" class="k-textbox" placeholder="中文名" required validationmessage="请输入 {0}" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="selecttime" class="required">新闻时间：</label></td>
+                    <td>
+                        <input name="selecttime" id="selecttime" value="@star.selecttime" />
+                    </td>
+                </tr>
+                <tr><td colspan="2"><label for="title" class="required">摘要：</label></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <script type="text/plain" id="shortdesc" style="width: 800px; height: 200px;"> @Html.Raw(star.shortdesc)</script>
+                </td>
+            </tr>
+            <tr><td colspan="2"><label for="title" class="required">详细内容：</label></td></tr>
+            <tr>
+                <td colspan="2">
+                    <script type="text/plain" id="story" style="width: 800px; height: 300px;"> @Html.Raw(star.story)</script>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <label>排序</label><input id="orderno" type="text" value="@star.orderno" /><label>是否有效</label><input id="isvalide" type="checkbox" checked="@star.isvalide" />
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="clearfix form-actions">
+    <div class="col-md-offset-3 col-md-9">
+        <button class="btn btn-info" type="button" id="save">
+            <i class="icon-ok bigger-110"></i>
+            提交
+        </button>
+
+        &nbsp; &nbsp; &nbsp;
+        <button class="btn" type="reset" id="cancel">
+            <i class="icon-undo bigger-110"></i>
+            取消
+        </button>
+    </div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    $("#selecttime").kendoDatePicker({
+        start: "month",
+        depth: "year",
+        format: "yyyy/MM/dd"
+    });
+    $("#orderno").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    //实例化富文本编辑器
+    var umdes = UM.getEditor('story');
+    var umdes = UM.getEditor('shortdesc');
+</script>
+<script src="~/Areas/Admin/Script/plugin/fileupload.js"></script>
+<script src="~/Areas/Admin/Script/plugin/staffstarmanage.js"></script>

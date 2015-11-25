@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    List<Smart.Framework.Model.sd_companyevent> events = new List<Smart.Framework.Model.sd_companyevent>();
+    if (ViewData["eventlist"] != null)
+    {
+        events = ViewData["eventlist"] as List<Smart.Framework.Model.sd_companyevent>;
+    }
+}
+<div>
+    <h3>公司大事记</h3><a href="/Admin/CompanyEvent/Edit" class="bt_green"><span class="bt_green_lft"></span><strong>添加</strong><span class="bt_green_r"></span></a>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="rounded">Id</th>
+                <th scope="col" class="rounded">新闻时间</th>
+                <th scope="col" class="rounded">新闻</th>
+                <th scope="col" class="rounded">修改</th>
+                <th scope="col" class="rounded">删除</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (events != null)
+            {
+                foreach (var item in events)
+                {
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.newstime.Value.ToString("yyyy-MM-dd")</td>
+                        <td>@item.title</td>
+                        <td><a href="/Admin/CompanyEvent/Edit?id=@item.id"><img src="~/Areas/Admin/Script/pine/images/user_edit.png" alt="" title="" border="0" /></a></td>
+                        <td><a href="#" onclick="btnDelte(@item.id)" class="ask"><img src="~/Areas/Admin/Script/pine/images/trash.png" alt="" title="" border="0" /></a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div class="clear"></div>
+<script type="text/javascript">
+    function btnDelte(id) {
+        var tmp = id;
+        alert("你确定要删除[编号：" + id + "]该数据吗？");
+        if (id != undefined) {
+            $.post("/Admin/CompanyEvent/Delete", { "id": id }, function (data, state) {
+                location.reload();
+            });
+        }
+    }
+</script>

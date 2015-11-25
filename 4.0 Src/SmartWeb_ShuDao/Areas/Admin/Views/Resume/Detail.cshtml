@@ -1,0 +1,81 @@
+﻿@using Smart.Framework.Model
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_resume resume = new sd_resume();
+    if (ViewData["model"] != null)
+    {
+        resume = ViewData["model"] as sd_resume;
+    }
+}
+<h3 class="header smaller lighter blue">简历详细</h3>
+<p>
+    <a class="btn" href="/Admin/Resume"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="javascript:window.print()">打印此页 </a>
+</p>
+<div class="sb_box">
+    <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <td colspan="4"><h1>简历</h1></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><label for="name">姓名：</label></td>
+                <td colspan="3">
+                    @resume.username
+                </td>
+            </tr>
+            <tr>
+                <td><label for="sex">性别：</label></td>
+                <td>
+                    @resume.sex
+                </td>
+                <td><label for="age">年龄：</label></td>
+                <td>
+                    @resume.age
+                </td>
+            </tr>
+            <tr>
+                <td><label for="tel" class="required">手机</label></td>
+                <td>
+                    @resume.phone
+                </td>
+                <td><label for="email" class="required">邮箱</label></td>
+                <td>
+                    @resume.email
+                </td>
+            </tr>
+            <tr>
+                <td><label for="postation" class="required">应聘职位：</label></td>
+                <td>
+                    @resume.postation
+                </td>
+                <td><label for="workyears" class="required">工作年限：</label></td>
+                <td>
+                    @resume.workyears
+                </td>
+            </tr>
+            <tr>
+                <td><label for="education" class="required">学历：</label></td>
+                <td colspan="3">
+                    @resume.education
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><label for="speciality">技能</label></td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    @Html.Raw(@resume.speciality)
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><label for="remark">简历详细</label></td>
+            </tr>
+            <tr><td colspan="4"> @Html.Raw(resume.remark)</td></tr>
+        </tbody>
+    </table>
+</div>
+

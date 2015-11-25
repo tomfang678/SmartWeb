@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="首页" controller="Home" action="Index">
+    <mvcSiteMapNode title="关于我们" controller="Home" action="About"/>
+    <mvcSiteMapNode title="在线预约" controller="Appointment" action="Index"/>
+    <mvcSiteMapNode title="联系我们" controller="ContactUs" action="Index"/>
+    <mvcSiteMapNode title="招聘信息" controller="Recruitment" action="Index">
+      <mvcSiteMapNode title="投递简历" controller="Recruitment" action="SendResume"/>
+      <mvcSiteMapNode title="职位详细" controller="Recruitment" action="Detail"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="新闻动态" controller="News" action="Index">
+      <mvcSiteMapNode title="新闻详细" controller="News" action="Detail"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="客户案例" controller="Case" action="Index">
+      <mvcSiteMapNode title="案例详细" controller="Case" action="Detail"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="培训课程" controller="Product" action="Index">
+      <mvcSiteMapNode title="课程详细" controller="Product" action="Detail"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="核心讲师" controller="AdvisoryTeam" action="Index">
+      <mvcSiteMapNode title="讲师详细" controller="AdvisoryTeam" action="Detail"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="企业内训" controller="Train" action="Index"/>
+    <mvcSiteMapNode title="公开课" controller="Train" action="OpenClass"/>
+    <mvcSiteMapNode title="资料下载" controller="Download" action="Index"/>
+    <mvcSiteMapNode title="课程安排" controller="Curriculum" action="Index">
+      <mvcSiteMapNode title="课程安排详细" controller="Curriculum" action="Detail"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="招商加盟" controller="JoinUs" action="Index"/>
+    <mvcSiteMapNode title="学员分享" controller="StudentShare" action="Index"/>
+  </mvcSiteMapNode>
+</mvcSiteMap>

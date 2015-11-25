@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: 
+Disallow: /bin/
+Disallow: /images
+Disallow: /upload
+Disallow: /Areas
+Disallow: /umeditor
+Disallow: /assets

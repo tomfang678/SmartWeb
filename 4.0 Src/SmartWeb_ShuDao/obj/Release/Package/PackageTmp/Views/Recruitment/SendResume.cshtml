@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = "SendResume";
+    Layout = "~/Views/Shared/_Main.cshtml";
+    List<Smart.Framework.Model.sd_job> list = new Smart.Framework.BLL.Recruitment().FindALL().ToList();
+}
+<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
+    <div class="container">
+        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
+            <div class="entry-content-wrapper clearfix">
+                <section class="av_textblock_section">
+                    <div class="avia_textblock " itemprop="text">
+                        <h1 style="text-align: center;">在线简历</h1>
+                    </div>
+                </section>
+                <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
+            </div>
+
+            <div class="content cbox-c">
+                <div class="sb_box">
+                    <div id="resume">
+                        <table class="table table-hover">
+                            <thead></thead>
+                            <tbody>
+                                <tr>
+                                    <td><label for="name">姓名：</label></td>
+                                    <td colspan="3">
+                                        <input type="text" id="name" name="您的姓名" style="width: 60%" class="k-textbox" placeholder="请输入您的姓名" required validationmessage="请输入 {0}" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="sex">性别：</label></td>
+                                    <td>
+                                        <select id="sex">
+                                            <option value="1">先生</option>
+                                            <option value="0">女士</option>
+                                        </select>
+                                    </td>
+                                    <td><label for="age">年龄：</label></td>
+                                    <td>
+                                        <select id="age">
+                                            <option>22</option>
+                                            <option>23</option>
+                                            <option>24</option>
+                                            <option>25</option>
+                                            <option>26</option>
+                                            <option>27</option>
+                                            <option>28</option>
+                                            <option>29</option>
+                                            <option>30</option>
+                                            <option>31</option>
+                                            <option>32</option>
+                                            <option>33</option>
+                                            <option>34</option>
+                                            <option>35</option>
+                                            <option>36</option>
+                                            <option>37</option>
+                                            <option>38</option>
+                                            <option>39</option>
+                                            <option>40</option>
+                                            <option>41</option>
+                                            <option>42</option>
+                                            <option>43</option>
+                                            <option>45</option>
+                                        </select>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="tel">手机</label></td>
+                                    <td><input type="tel" id="tel" name="tel" style="width: 60%" class="k-textbox" pattern="\d{11}" placeholder="请输入手机号码" required validationmessage="请输入正确的手机号码" /> </td>
+                                    <td><label for="email">邮箱</label></td>
+                                    <td><input type="email" id="email" name="Email" style="width: 220px" class="k-textbox" placeholder="e.g. myname@example.net" required data-email-msg="您输入的邮件格式不正确" /></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="postation">应聘职位：</label></td>
+                                    <td>
+                                        <select id="postation" style="width: 220px">
+                                            @foreach (dynamic job in list)
+                                            {
+                                                <option>@job.position (@job.place)</option>
+                                            }
+                                        </select>
+                                    <td><label for="workyears">工作年限：</label></td>
+                                    <td><input id="workyears" name="workyears" style="width: 220px" type="text" min="0" max="40" value="1" required data-max-msg="工作年限必须在 0 到 40之间的数字" /><span class="k-invalid-msg" data-for="workyears"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="education">毕业院校：</label></td>
+                                    <td><input type="text" id="education" name="毕业院校" style="width: 220px" class="k-textbox" placeholder="请输入您的毕业院校" required validationmessage="请输入 {0}" /></td>
+                                    <td><label for="degree">最高学历：</label></td>
+                                    <td>
+                                        <select id="degree" style="width: 220px">
+                                            <option>本科</option>
+                                            <option>大专</option>
+                                            <option>硕士</option>
+                                            <option>博士</option>
+                                            <option>中专</option>
+                                            <option>高中</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><label for="speciality">技能简要描述：</label></td>
+                                    <td colspan="3"><textarea id="speciality" name="remark" class="k-textbox" placeholder="请限制在500字以内" style="width:100%; height: 100px;" maxlength="500"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="remark">简历详细：</label>
+                                    <td colspan="3"><textarea id="remark" name="remark" class="k-textbox" style="width:100%; height: 220px;" maxlength="20000"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="remark">简历附件：</label></td>
+                                    <td colspan="3">
+                                        <span>如果您有简历附件请将简历文件压缩为.rar文件，以“姓名+应聘职位” 格式，发送至我们的hr邮箱。</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="3">
+                                        <input id="save" type="button" class="btn btn-primary " value="提交" />&nbsp;
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<script src="~/Scripts/Common/resume.js"></script>

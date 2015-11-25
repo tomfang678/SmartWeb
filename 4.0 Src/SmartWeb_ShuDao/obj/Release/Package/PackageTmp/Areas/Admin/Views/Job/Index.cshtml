@@ -1,0 +1,163 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<h3 class="header smaller lighter blue">招聘信息</h3>
+<p>
+    <a class="btn" href="/Admin"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+    <a class="btn btn-info" href="/Admin/Job"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+    <a class="btn btn-success" href="/Admin/Job/JobAdd"><i class="icon-edit align-top bigger-125"></i>添加</a>
+</p>
+<div id="grid"></div>
+<div id="details"></div>
+<script>
+    var wnd, detailsTemplate;
+    $(document).ready(function () {
+        var crudServiceBaseUrl = "",
+            dataSource = new kendo.data.DataSource({
+                transport: {
+                    read: {
+                        type: "POST",
+                        url: "/Admin/Job/GetJobList",
+                        dataType: "json",
+                        contentType: "application/json"
+                    },
+                    update: {
+                        url: "/Admin/Job/UpdateJob",
+                        dataType: "json",
+                        type: "POST",
+                    },
+                    destroy: {
+                        url: "/Admin/Job/Destroy",
+                        dataType: "json",
+                        type: "POST",
+                    },
+                    create: {
+                        url: "/Admin/Job/JobRelease",
+                        dataType: "json",
+                        type: "POST"
+                    },
+                    parameterMap: function (options, operation) {
+                        if (operation !== "read" && options.models) {
+                            return { models: kendo.stringify(options.models) };
+                        } else if (operation == "read") {
+                            var parameter = {
+                                page: options.page,
+                                pageSize: options.pageSize
+                            };
+                            return kendo.stringify(parameter);
+                        }
+                    }
+                },
+                batch: true,//设置此 只有当点击save的时候才触发后台数据保存
+                cache: false,
+                pageSize: 20,
+                schema: {
+                    data: function (d) {
+                        return d.Data;
+                    },
+                    total: function (d) {
+                        return d.TotalCount;
+                    },
+                    model: {
+                        id: "id",
+                        fields: {
+                            id: { editable: false, type: "number", validation: { required: true, min: 1 } },
+                            position: { editable: true, nullable: true },
+                            count: { editable: true, type: "number", validation: { required: true, min: 1 } },
+                            place: { editable: true, validation: { required: true } },
+                            deal: { editable: true, nullable: true },
+                            addtime: { editable: false, type: "date" },
+                            useful_life: { editable: true, type: "number", validation: { required: true, min: 1 } },
+                            content: { editable: true, nullable: true },
+                            access: { editable: true, nullable: true },
+                            no_order: { editable: true, type: "number", validation: { required: true, min: 1 } },
+                            top_ok: { editable: true, type: "number", validation: { required: true, min: 1 } },
+                            email: { editable: true, nullable: true },
+                            filename: { editable: true, nullable: true },
+                            ShortDescript: { editable: true, nullable: true }
+                        }
+                    }
+                },
+                serverPaging: true
+            });
+
+        $("#grid").kendoGrid({
+            dataSource: dataSource,
+            navigatable: true,
+            pageable: true,
+            height: 550,
+            toolbar: [{
+                template: '<a class="k-button" href="/Admin/Job/JobAdd"  target="_self">添 加</a>'
+            }, "save", "cancel"],
+            columns: [
+                {
+                    command: [
+                   { text: "预览", click: showDetails, },
+                   { name: "修改", click: function (e) { var tr = $(e.target).closest("tr"); var data = this.dataItem(tr); location.href = "/Admin/Job/JobAdd?id=" + data.id; } },
+                   { name: "destroy" }], width: "300px"
+                },
+               { field: "id", title: "编号", width: "100px" },
+                { field: "position", title: "职位", width: "160px" },
+                { field: "count", title: "人数", width: "110px" },
+                { field: "place", title: "工作地点", width: "160px" },
+                { field: "deal", title: "薪资", width: "120px" },
+                { field: "addtime", title: "添加时间", width: "120px", format: "{0: yyyy/MM/dd}" },
+                { field: "useful_life", title: "截止天数", width: "120px" },
+                { field: "access", title: "权限", width: "130px" },
+                { field: "no_order", title: "排序", width: "100px" },
+                { field: "top_ok", title: "置顶", width: "100px" },
+                { field: "email", title: "邮箱", width: "160px" }
+            ],
+            messages: {
+                commands: {
+                    destroy: "Delete"
+                }
+            },
+            editable: true,
+            saveChanges: function (e) {
+                var t = $.Zebra_Dialog("Success！数据已成功保存。", {
+                    'type': 'information ',
+                    'title': '提示',
+                    'buttons': [
+                    {
+                        caption: 'Ok', callback: function () {
+                            e.preventDefault();
+                        }
+                    },
+                    ]
+                });
+            }
+        });
+        wnd = $("#details")
+                      .kendoWindow({
+                          title: "招聘信息",
+                          modal: true,
+                          visible: false,
+                          resizable: false,
+                          width: 700
+                      }).data("kendoWindow");
+
+        detailsTemplate = kendo.template($("#template").html());
+
+        function showDetails(e) {
+            e.preventDefault();
+            var dataItem = this.dataItem($(e.currentTarget).closest("tr"));
+            wnd.content(detailsTemplate(dataItem));
+            wnd.center().open();
+        }
+    });
+</script>
+<script type="text/x-kendo-template" id="template">
+    <div id="details-container">
+        <h2>#= position #</h2>
+        <em>招聘人数：#= count #</em>&nbsp;&nbsp;
+        <em>薪资: #= deal #</em> &nbsp;&nbsp;
+        <em>投递邮箱：#= email #</em>&nbsp;&nbsp;
+        <em> #= kendo.toString(addtime, "yyyy/MM/dd") #</em>&nbsp;&nbsp;
+        <dl>
+            <dt> #= ShortDescript #</dt>
+            <dt> #= content #</dt>
+        </dl>
+    </div>
+</script>

@@ -1,0 +1,160 @@
+﻿@using Smart.Framework.Model
+@{
+    ViewBag.Title = "Staff Add";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_staff staff = new sd_staff();
+    if (ViewData["stafflist"] != null)
+    {
+        staff = ViewData["stafflist"] as sd_staff;
+    }
+}
+<div class="page-title ui-widget-content ui-corner-all">
+   <h3 class="header smaller lighter blue">员工中心</h3>
+ <p>
+     <a class="btn" href="/Admin/Staff"><i class="icon-undo align-top bigger-125"></i> 返回 </a>
+  <a class="btn btn-primary" href="/Admin/Staff"><i class="icon-refresh align-top bigger-125"></i> 刷新 </a>
+ </p>
+    <div class="other" id="addnews">
+        <table class="table table-hover">
+            <tbody>
+                <tr>
+                    <td>
+                        <img id="img" src="@staff.imgurl" alt="" style="width: 130px; height: 130px; " />
+                    </td>
+                    <td>
+                        <p><input type="hidden" id="imgpath" value="@staff.imgurl" /></p>(请上传图片长130px;宽130px)
+                        <input name="files" id="files" type="file" />
+                    </td>
+                    <td><label for="count">编号</label></td>
+                    <td colspan="3">
+                        @staff.id <span style="color:red">（为0则标示系统会自动生成）</span><input type="hidden" id="staffid" readonly="readonly" value="@staff.id">
+                    <input type="hidden" id="addtime" value="@staff.addtime" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name" class="required">姓名</label>
+                </td>
+                <td>
+                    <input id="name" type="text" name="姓名" class="k-textbox" placeholder="姓名" required validationmessage="请输入 {0}" value="@staff.name" />
+                </td>
+                <td>
+                    <label for="sex">性别</label>
+                </td>
+                <td>
+                    <select id="sex">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </td>
+                <td><label for="idcard">证件号码</label></td>
+                <td>
+                    <input id="idcard" type="text" class="k-textbox" placeholder="证件号码" required validationmessage="请输入 {0}" name="deal" value="@staff.idcard" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="professional">专业</label>
+                </td>
+                <td>
+                    <input id="professional" type="text" name="专业" class="k-textbox" placeholder="专业" required validationmessage="请输入 {0}" value="@staff.professional" />
+                </td>
+                <td>
+                    <label for="education">学历</label>
+                </td>
+                <td>
+                    <select id="education">
+                        <option value="0">博士</option>
+                        <option value="1">硕士 </option>
+                        <option value="2">研究生</option>
+                        <option value="3">本科</option>
+                        <option value="4">大专</option>
+                        <option value="5">高中</option>
+                        <option value="6">中专</option>
+                        <option value="7">无</option>
+                    </select>
+                </td>
+                <td>
+                    <label for="department">部门</label>
+                </td>
+                <td>  <input id="department" type="text" name="部门" class="k-textbox" placeholder="部门" required validationmessage="请输入 {0}" value="@staff.department" /></td>
+            </tr>
+            <tr>
+                <td> <label for="postion">职位</label> </td>
+                <td> <input id="position" type="text" name="职位" class="k-textbox" placeholder="职位" required validationmessage="请输入 {0}" value="@staff.position" /></td>
+                <td><label for="place">手机号码</label></td>
+                <td colspan="4"><input id="phone" type="text" name="手机号码" class="k-textbox" placeholder="手机号码" value="@staff.phone" /></td>
+            </tr>
+            <tr>
+                <td><label for="entrytime">入职时间</label></td>
+                <td><input id="entrytime" value="@DateTime.Now.ToShortDateString()" /></td>
+                <td><label for="place">转正日期</label></td>
+                <td><input id="conversiontime" type="text" name="转正时间" value="@staff.conversiontime" /></td>
+                <td><label for="state">状态</label></td>
+                <td>
+                    <select id="state">
+                        <option value="@staff.state">@staff.state</option>
+                        <option value="0">在职</option>
+                        <option value="1">离职</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="title" class="required">设置</label></td>
+                <td colspan="5">
+                    <input id="homeshow" type="checkbox" checked="@staff.homeshow" /><span style="color:red">是否在首页显示</span>
+                    <input id="managergroup" type="checkbox" checked="@staff.managergroup" /><span style="color:red">是否为管理团队成员</span>
+                    <input id="doctorgroup" type="checkbox" checked="@staff.doctorgroup" /><span style="color:red">是否为专家讲师</span>
+                    排序<input id="orderno" type="text" value="@staff.orderno" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="address">家庭住址</label></td>
+                <td colspan="5"><input id="address" type="text" name="家庭住址" class="k-textbox" placeholder="家庭住址" required validationmessage="请输入 {0}" value="@staff.address" style="width:80%;" /></td>
+            </tr>
+            <tr><td colspan="6"><label for="title" class="required">摘要：</label></td></tr>
+            <tr>
+                <td colspan="6">
+                    <script type="text/plain" id="descripteditor" style="width: 99%; height: 200px;">@Html.Raw(staff.summary)</script>
+                </td>
+            </tr>
+            <tr><td colspan="6"><label for="title" class="required">详细描述：</label></td></tr>
+            <tr>
+                <td colspan="6">
+                    <script type="text/plain" id="contenteditor" style="width: 99%; height: 300px;">@Html.Raw(staff.remark)</script>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="button" id="save">
+                <i class="icon-ok bigger-110"></i>
+                提交
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset" id="cancel">
+                <i class="icon-undo bigger-110"></i>
+                取消
+            </button>
+        </div>
+    </div>
+</div>
+</div>
+<script type="text/javascript">
+    $("#entrytime").kendoDatePicker({
+        fomart: "yyyy-MM-dd"
+    });
+    $("#conversiontime").kendoDatePicker();
+    $("#orderno").kendoNumericTextBox({
+        format: "0",
+        min: 0,
+        step: 1
+    });
+    //实例化编辑器
+    var umdes = UM.getEditor('descripteditor');
+    var umdes = UM.getEditor('contenteditor');
+</script>
+<script src="~/Areas/Admin/Script/plugin/fileupload.js"></script>
+<script src="~/Areas/Admin/Script/plugin/staffmanger.js"></script>

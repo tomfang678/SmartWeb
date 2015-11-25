@@ -1,0 +1,129 @@
+﻿@using Smart.Framework.Model;
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    sd_companyevent events = new sd_companyevent();
+    if (ViewData["events"] != null)
+    {
+        events = ViewData["events"] as sd_companyevent;
+    }
+}
+<input type="hidden" value="@events.isparent" id="hparent" />
+<input type="hidden" value="@events.newstime" id="hnewstime" />
+<div class="page-title ui-widget-content ui-corner-all">
+    <h2>公司大事记</h2>
+    <div class="other">
+        <table class="table table-hover">
+            <thead></thead>
+            <tbody id="flash">
+                <tr>
+                    <td>编号</td>
+                    <td>
+                        <span id="id">@events.id</span><span style="color:red;"> (当编号为0,系统会自动设置编号)</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>事件标题</td>
+                    <td><input type="text" id="title" style="width:80%" value="@events.title" /></td>
+                </tr>
+                <tr>
+                    <td>新闻时间</td>
+                    <td>
+                        <input id="datepicker" value="@events.newstime" style="width:260px" />
+                        <span>是否为年度节点</span><input type="checkbox" id="isckparent" name="isckparent" checked="@events.isparent" />
+                    </td>
+                </tr>
+                <tr>
+                <tr><td colspan="2">内容：</td></tr>
+                <tr>
+                    <td colspan="2">
+                        <script type="text/plain" id="contenteditor" style="width:99%; height: 300px;">
+                            @Html.Raw(events.content)
+                        </script>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="button" id="save">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset" id="cancel">
+                    <i class="icon-undo bigger-110"></i>
+                    取消
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //实例化编辑器
+    var umdes = UM.getEditor('contenteditor');
+    $("#datepicker").kendoDatePicker({
+        format: "yyyy-MM-dd",
+        value: "@events.newstime"
+    });
+    if ($("#hparent").val() == true) {
+        $("#isckparent").attr("checked", true);
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#save").click(function () {
+            var parent = false;
+            if ($("#isckparent").prop("checked")) {
+                parent = true;
+            }
+            if ($("#datepicker").val() == "" || $("#title").val() == "") {
+                $.Zebra_Dialog('<strong>提示！</strong>日期和标题不能为空', {
+                    'type': 'error ',
+                    'title': '异常提示'
+                });
+                return;
+            } else {
+                var obj = [];
+                obj = {
+                    id: "@events.id",
+                    title: $("#title").val(),
+                    newstime: $("#datepicker").val(),
+                    content: $("#contenteditor").html(),
+                    isparent: parent
+                };
+                var str = JSON.stringify(obj);
+                var id = "@events.id";
+                var ulr;
+                if (id == "0") {
+                    ulr = "/Admin/CompanyEvent/Add";
+                } else {
+                    ulr = "/Admin/CompanyEvent/Update";
+                }
+                $.ajax({
+                    type: "POST",
+                    url: ulr,
+                    datatype: "json",
+                    data: { models: str },
+                    success: function (statu) {
+                        if (statu == true) {
+                            var t = $.Zebra_Dialog('<strong>恭喜！</strong>, 执行成功', {
+                                'type': 'information ',
+                                'title': '提示'
+                            });
+                            location.href = "/Admin/CompanyEvent";
+                        } else {
+                            $.Zebra_Dialog('<strong>Sorry！</strong>,  执行失败', {
+                                'type': 'error ',
+                                'title': '异常提示'
+                            });
+                        }
+                    },
+                    error: function (mesg) {
+                        alert(mesg);
+                    }
+                });
+            }
+        });
+    });
+</script>
