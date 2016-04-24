@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_EmptyLayout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <title>小租乐</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <link href="~/Content/login.css" rel="stylesheet" />
+    <link href="~/Content/common.css" rel="stylesheet" />
+    <!--[if lt IE 9]><script type="text/javascript" src="js/html5.js?_v=20150514201547"></script><![endif]-->
+</head>
+<body>
+    <div class="user-login">
+        <div class="back">
+            <a href="/Home" class="fl">返回网首页</a>
+            <div class="fr">
+                没有账号？<a href="/Account/Register">马上注册</a>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="bg-image">
+                <img src="~/Images/login-bg.jpg" />
+            </div>
+            <div class="reset-pwd registerred">
+                <form action="#" method="post" id="registerForm">
+                    <input type="hidden" name="redirect" id="r" value="#">
+                    <ul>
+                        <li><input type="text" name="nickName" placeholder="手机号/用户名/邮箱"><i>*</i></li>
+                        <li><input type="password" name="password" id="password" placeholder="请输入密码" validate="notNull,minLength" validatedata="minLength=6" validatename="密码"><i>*</i></li>
+                        <li class="">
+                            <input type="text" name="mobile" placeholder="验证码" validate="notNull,isTel" validatename="验证码" class="phonecode"><a onclick="javascript:;" class="send actRegisterSMS">刷新</a><i>*</i>
+                        </li>
+                        <li><input type="submit" value="登录" class="up-pwd actSubmit"></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

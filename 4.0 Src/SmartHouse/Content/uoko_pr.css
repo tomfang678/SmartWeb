@@ -1,0 +1,163 @@
+﻿@charset "UTF-8";
+
+.newBox {
+    margin: 40px auto;
+    width: 79%;
+    /*min-width: 1040px;*/
+}
+
+    .newBox .news {
+        margin-right: 2%;
+        width: 74%;
+    }
+
+        .newBox .news .headerNews a {
+            position: relative;
+            display: block;
+            width: 100%;
+            min-height: 193px;
+        }
+
+            .newBox .news .headerNews a span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: block;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 386px;
+                height: 195px;
+            }
+
+                .newBox .news .headerNews a span img {
+                    width: 100%;
+                    height: auto;
+                    clip: rect(0,386px,195px,0);
+                }
+
+            .newBox .news .headerNews a .newContent {
+                margin-left: 410px;
+            }
+
+                .newBox .news .headerNews a .newContent h3 {
+                    margin-top: 8px;
+                    color: #333;
+                    line-height: 1.2;
+                }
+
+                    .newBox .news .headerNews a .newContent h3 time {
+                        display: block;
+                        margin-top: 8px;
+                        font-size: 14px;
+                        color: #8f8f8f;
+                    }
+
+                .newBox .news .headerNews a .newContent p {
+                    line-height: 1.5;
+                }
+
+                .newBox .news .headerNews a .newContent i {
+                    float: right;
+                    font-style: normal;
+                }
+
+        .newBox .news .newsList {
+            margin-top: 64px;
+        }
+
+            .newBox .news .newsList ul {
+                float: none;
+                padding-left: 0;
+                  list-style: none;
+            }
+
+                .newBox .news .newsList ul li {
+                    float: none;
+                    border-top: 1px solid #e8e8e8;
+                    padding: 24px 0;
+                    width: 100%;
+                      list-style: none;
+                }
+
+                    .newBox .news .newsList ul li:last-child {
+                        border-bottom: 1px solid #e8e8e8;
+                    }
+
+                    .newBox .news .newsList ul li a {
+                        position: relative;
+                    }
+
+                        .newBox .news .newsList ul li a img {
+                            position: absolute;
+                            width: 140px;
+                            height: 70px;
+                        }
+
+                        .newBox .news .newsList ul li a .newContent {
+                            position: relative;
+                            padding-left: 156px;
+                            line-height: 1.5;
+                            width: 100%;
+                        }
+
+                            .newBox .news .newsList ul li a .newContent time {
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                font-size: 13px;
+                                color: #adadad;
+                            }
+
+                            .newBox .news .newsList ul li a .newContent h4 {
+                                margin-top: 0;
+                                margin-bottom: 8px;
+                                color: #333;
+                            }
+
+                            .newBox .news .newsList ul li a .newContent p {
+                                margin-bottom: 0;
+                                width: 85%;
+                            }
+
+    .newBox .others {
+        padding-left: 8px;
+        width: 24%;
+    }
+
+        .newBox .others .note:last-child {
+            margin-top: 80px;
+        }
+
+        .newBox .others .note h4 {
+            position: relative;
+            width: 100%;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+            .newBox .others .note h4 a {
+                position: absolute;
+                right: 0;
+                font-size: 14px;
+            }
+
+        .newBox .others .note ul {
+            float: none;
+            margin-top: 24px;
+            padding-left: 0;
+        }
+
+            .newBox .others .note ul li {
+                margin: 12px 0;
+                float: none;
+                width: 100%;
+                list-style: square inside;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+    .newBox .page .pager li a:hover {
+        background-color: #fff;
+        border: 1px solid #3fcbc0;
+    }
