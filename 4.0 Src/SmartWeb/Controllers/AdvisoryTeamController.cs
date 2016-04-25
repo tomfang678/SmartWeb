@@ -9,7 +9,7 @@ using Smart.Framework.Model;
 
 namespace SmartWeb.Controllers
 {
-    public class AdvisoryTeamController : BaseApi<Staff, sd_staff>
+    public class AdvisoryTeamController :BaseController// BaseApi<Staff, sd_staff>
     {
         //
         // GET: /AdvisoryTeam/

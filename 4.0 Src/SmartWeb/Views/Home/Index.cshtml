@@ -1,212 +1,115 @@
 ﻿@{
-    var online = this.ApplicationInstance.Application["OnLine"];
-    var count = this.ApplicationInstance.Application["Count"];
+    var Smart_About = ViewBag.Smart_About;
+    var Smart_Product = ViewBag.Smart_Product;
+    var Smart_Case = ViewBag.Smart_Case;
 }
-<style type="text/css">
-    #slide {
-        width: 940px;
-        height: 330px;
-        overflow: hidden;
-        padding: 0;
-        position: relative;
-        z-index: 10;
-    }
-
-        #slide ul {
-            height: 100%;
-            position: absolute;
-        }
-
-        #slide li {
-            float: left;
-            width: 940px;
-            height: 100%;
-            overflow: hidden;
-            position: relative;
-            background: rgba(0,0,0,0);
-            color: #fff;
-        }
-
-            #slide li img {
-                width: 60%;
-                height: 100%;
-            }
-
-        #slide .slide-con {
-            position: absolute;
-            top: 0;
-            right: 0;
-            overflow: hidden;
-            width: 34%;
-            height: 100%;
-            background: #08c;
-            padding: 0 3%;
-        }
-
-            #slide .slide-con h2 {
-                font-size: 20px;
-                line-height: 25px;
-                color: #fff;
-                padding: 40px 0 15px 0;
-                border-bottom: 1px solid #ccc;
-                margin-bottom: 20px;
-            }
-
-                #slide .slide-con h2 a {
-                    color: #fff;
-                }
-
-            #slide .slide-con p {
-                font-size: 14px;
-            }
-
-        #slide .detail {
-            margin-top: 10px;
-            padding: 5px 0;
-            display: block;
-            float: left;
-            color: #fff;
-        }
-
-        #slide .btnBg {
-            position: absolute;
-            width: 100%;
-            left: 0;
-            bottom: 0;
-            background: #000;
-        }
-
-        #slide .btn {
-            display: none;
-            position: absolute;
-            width: 100%;
-            background: #000;
-            text-align: center;
-            opacity: .5;
-            filter: alpha(opacity=50);
-            right: 0;
-            bottom: 0;
-        }
-
-            #slide .btn span {
-                display: inline-block;
-                _display: inline;
-                _zoom: 1;
-                width: 25px;
-                height: 10px;
-                _font-size: 0;
-                margin-left: 5px;
-                cursor: pointer;
-                background: #fff;
-            }
-
-                #slide .btn span.select {
-                    background: #0088cc;
-                }
-
-        #slide .preNext {
-            width: 45px;
-            height: 100px;
-            position: absolute;
-            top: 50%;
-            margin-top: -22.5px;
-            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAMAAABHPGVmAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAxQTFRFAAAA6Ojo/f39////uWe0ggAAAAR0Uk5T////AEAqqfQAAAEkSURBVHja7JhBFsMgCEQ1vf+du+trExgGTaeLjtsAP08RRsborMdrje8tQwwxxBBDDDHEkH+FTAyZtzAqyLyXEW/XPuUzQnwmu5STf3Lwe5Szd5ZdO5SLb5rC65SrZ35PVimBH7iMa5TIC934FUroA8tKnxJ74NrVpST2RYHsUTLrqgp3KKltWep5Sm5Z9xOWAuyIpsVRkBXTGRkKtKHab03BFlyPryjFd1JI4CjVP7BqBcUpd5OWRHmk+sR43ZXFInKvIe7iaAeR3x0FOY9fQSTbpTl4TQprLqOmrGgKpKbUa5qWpv1qhIRGEmnEnUamagS35umgeQRpnnOah6nmia0ZFmjGHpoBjmYUpRmqacaDqwrSEEMMMcQQQwwxxJD39RRgAGi9DIlUh+TMAAAAAElFTkSuQmCC) no-repeat 0 0;
-            cursor: pointer;
-            /* animate */
-            -webkit-transition: all 0.5s ease;
-            -moz-transition: all 0.5s ease;
-            -o-transition: all 0.5s ease;
-            -ms-transition: all 0.5s ease;
-            transition: all 0.5s ease;
-        }
-
-        #slide .pre {
-            left: -45px;
-        }
-
-        #slide .next {
-            right: -45px;
-            background-position: right top;
-        }
-
-        #slide:hover > .pre {
-            left: 0;
-        }
-
-        #slide:hover > .next {
-            right: 0;
-        }
-</style>
-<link href="~/assets/css/news.css" rel="stylesheet" />
-<script src="~/assets/css/common.js"></script>
 <!-- Banner -->
-@*<section id="banner">
-        <div>
-        </div>
-    </section>*@
-<section style="margin-top:100px">
-    <div class="content">
-        <div id="slide">
-            <ul style="left: 0px; width: 4700px;">
-                <li>
-                    <a href="http://news.neusoft.edu.cn/2015/1030/5140.shtml"><img src="http://upload.neusoft.edu.cn/2015/1030/thumb_564_330_1446187980488.jpg" alt=""></a>
-                    <div class="slide-con">
-                        <h2><a href="http://news.neusoft.edu.cn/2015/1030/5140.shtml">我校2014—2015学年实践教学成果...</a></h2>
-                        <p>10月28日，我校2014—2015学年实践教学成果展亮相各系教学楼。与去年相比，今年教学成果展不仅包括今年实践学期课程的优秀项目，还包括学生学科竞赛获奖作品、校企合作项目...</p>
-                        <a href="http://news.neusoft.edu.cn/2015/1030/5140.shtml" class="detail">详细内容&gt;&gt;</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="http://news.neusoft.edu.cn/2015/1029/5138.shtml"><img src="http://upload.neusoft.edu.cn/2015/0709/thumb_564_330_1436424192834.jpg" alt=""></a>
-                    <div class="slide-con">
-                        <h2><a href="http://news.neusoft.edu.cn/2015/1029/5138.shtml">2016届毕业生秋季校园双选会</a></h2>
-                        <p>为搭建毕业生与企业的沟通桥梁，促进2016届毕业生就业，11月7日举行大连东软信息学院2016届毕业生秋季校园双选会。</p>
-                        <a href="http://news.neusoft.edu.cn/2015/1029/5138.shtml" class="detail">详细内容&gt;&gt;</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="http://news.neusoft.edu.cn/2015/1027/5135.shtml"><img src="http://upload.neusoft.edu.cn/2015/1027/thumb_564_330_1445916004353.jpg" alt=""></a>
-                    <div class="slide-con">
-                        <h2><a href="http://news.neusoft.edu.cn/2015/1027/5135.shtml">我校首届国际文化节嗨翻东软校园</a></h2>
-                        <p>10月23日中午，由我校英语系举办的首届国际文化节“下一站，世界”亮相校园，引来众多东软师生参与其中。美国驻中国大使馆领事 LeeA Hilgartner应邀参加了活动。我校副校长...</p>
-                        <a href="http://news.neusoft.edu.cn/2015/1027/5135.shtml" class="detail">详细内容&gt;&gt;</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="http://news.neusoft.edu.cn/2015/1027/5123.shtml"><img src="http://upload.neusoft.edu.cn/2015/1023/thumb_564_330_1445590863849.jpg" alt=""></a>
-                    <div class="slide-con">
-                        <h2><a href="http://news.neusoft.edu.cn/2015/1027/5123.shtml">我校承办《中国大学生就业杂志》...</a></h2>
-                        <p>10月22日上午，由教育部全国高等学校学生信息咨询与就业指导中心主办，大连东软信息学院承办的“《中国大学生就业》杂志理事会2015年度会议”在大连昱圣苑国际酒店召开。中...</p>
-                        <a href="http://news.neusoft.edu.cn/2015/1027/5123.shtml" class="detail">详细内容&gt;&gt;</a>
-                    </div>
-                </li>
-                <li>
-                    <a href="http://news.neusoft.edu.cn/2015/1026/5128.shtml"><img src="http://upload.neusoft.edu.cn/2015/1026/thumb_564_330_1445844129693.jpg" alt=""></a>
-                    <div class="slide-con">
-                        <h2><a href="http://news.neusoft.edu.cn/2015/1026/5128.shtml">2014-2015学年实践教学成果展</a></h2>
-                        <p>为展示实践教学改革效果，交流实践教学改革经验，教务部于2015年10月-12月举办2014-2015学年实践教学成果展，展示地点为各系部教学楼，欢迎全校师生莅临参观、交流与指导！</p>
-                        <a href="http://news.neusoft.edu.cn/2015/1026/5128.shtml" class="detail">详细内容&gt;&gt;</a>
-                    </div>
-                </li>
-            </ul>
-            <div class="btnBg" style="opacity: 0.5;"></div><div class="btn"><span class="select" style="opacity: 1;"></span><span style="opacity: 0.4;" class=""></span><span style="opacity: 0.4;" class=""></span><span style="opacity: 0.4;" class=""></span><span style="opacity: 0.4;" class=""></span></div><div class="preNext pre" style="opacity: 0.8;"></div><div class="preNext next" style="opacity: 0.8;"></div>
-        </div>
+<section id="banner">
+    <div>
     </div>
 </section>
+<!-- Main -->
 <section id="main" class="container">
-    <h1>广告</h1>
-    <ul>
-        <li>在线：@online</li>
-        <li>总数：@count</li>
-    </ul>
+    @*<section style="padding-top: 18%"></section>*@
+    <section class="box special">
+        <header class="major">
+            <h3>
+                关于争光教育集团
+            </h3>
+            @if (Smart_About != null && string.IsNullOrEmpty(Smart_About[0].shortDesc))
+            {
+                <p>新常态召唤新生态，新生态孕育新生代，新生代引领新时代！争光教育集团是集新生代创业培训、项目招商、海外游学于一体的新生代创业平台。争光教育集团总部位于名校云集的美国波士顿，其运营中心设立于中国上海中欧商学院旁。我们的愿景是打造全球最具影响力的新生代平台；我们秉承正念、利他、自信、激情的企业价值观，希望让所有的新生代在时代的浪潮中突破自我，为家族争光！</p>
+                <ul>
+                    <li>企业定位：新生代创业服务平台</li>
+                    <li>企业愿景：打造全球最具影响力的新生代平台</li>
+                    <li>企业使命：让所有新生代为家族争光</li>
+                    <li>企业价值观：正念、利他、自信、激情</li>
+                </ul>
+            }
+            else
+            {
+                <p> @Smart_About[0].shortDesc </p>
+            }
+
+        </header>
+    </section>
+
+    <!--项目-->
+    <section class="box special features">
+        <h3>产品介绍</h3>
+        <div class="features-row">
+            @if (Smart_Product.Count > 0)
+            {
+                int count = 2;
+                for (int i = 0; i <= Smart_Product.Count; i++)
+                {
+                    string css = "accent" + (++count).ToString();
+                    if (i % 2 == 0 && i != 0)
+                    {
+                        string css1 = "accent" + (count - 2).ToString();
+                        string css2 = "accent" + (count - 1).ToString();
+                        <div class="features-row">
+                            <section>
+                                <span class="icon major fa-bolt @css1"></span>
+                                <a href="/product_detail.html?id=@Smart_Product[i-1].id"> <h3>@Smart_Product[i - 1].title</h3></a>
+                                <p>@Smart_Product[i - 1].keywords</p>
+                            </section>
+                            <section>
+                                <span class="icon major fa-bolt @css2"></span>
+                                <a href="/product_detail.html?id=@Smart_Product[i-2].id"> <h3>@Smart_Product[i - 2].title</h3></a>
+                                <p>@Smart_Product[i - 2].keywords</p>
+                            </section>
+                        </div>
+                    }
+                    else if (i == Smart_Product.Count)
+                    {
+                        <div class="features-row">
+                            <section>
+                                <a href="/product_detail.html?id=@Smart_Product[i-1].id">
+                                    <span class="icon major fa-bolt @css"></span>
+                                </a>
+                                <a href="/product_detail.html?id=@Smart_Product[i-1].id"> <h3>@Smart_Product[i - 1].title</h3></a>
+                                <p>@Smart_Product[i - 1].keywords</p>
+                            </section>
+                        </div>
+                    }
+
+                }
+            }
+            else
+            {
+                <p>暂无数据...</p>
+            }
+        </div>
+    </section>
+    <section class="box special features">
+        <h3>客户案例</h3>
+    </section>
+    <!--案例-->
+    <div class="row">
+        @foreach (var item in Smart_Case)
+        {
+            <div class="6u 12u(narrower)">
+                <section class="box special">
+                    <span class="image featured"><img src="@item.imgurl" alt="" /></span>
+                    <h3>@item.title</h3><p></p>
+                    <a class="button alt" href="/case_detail.html?id=@item.id">了解更多...</a>
+                </section>
+            </div>
+        }
+    </div>
 </section>
-<script src="~/assets/js/slider.js"></script>
-<script>
-    jQuery(document).ready(function ($) {
-        $("#slide .preNext").css("opacity", '.8').hover(function () {
-            $(this).stop(true, false).animate({ "opacity": "1" }, 300);
-        }, function () {
-            $(this).stop(true, false).animate({ "opacity": ".8" }, 300);
-        });
-    });
-</script>
+<!-- CTA -->
+<section id="cta">
+    <h3>在线报名</h3>
+    <form>
+        <div class="row uniform 50%">
+            <div class="8u 12u(mobilep)">
+                <input type="email" name="email" id="email" placeholder="Email Address" />
+            </div>
+            <div class="4u 12u(mobilep)">
+                <input type="submit" value="登录" class="fit" />
+            </div>
+        </div>
+    </form>
+</section>

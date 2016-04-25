@@ -30,3 +30,13 @@ D:\project\SmartWeb\v2.0\4.0 Src\UntilTool\obj\Debug\UntilTool.Properties.Resour
 D:\project\SmartWeb\v2.0\4.0 Src\UntilTool\obj\Debug\UntilTool.csproj.GenerateResource.Cache
 D:\project\SmartWeb\v2.0\4.0 Src\UntilTool\obj\Debug\UntilTool.exe
 D:\project\SmartWeb\v2.0\4.0 Src\UntilTool\obj\Debug\UntilTool.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\bin\Debug\UntilTool.exe
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\bin\Debug\UntilTool.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\bin\Debug\Smart.Framework.Utility.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\bin\Debug\Smart.Framework.Utility.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\obj\Debug\UntilTool.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\obj\Debug\UntilTool.Form1.resources
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\obj\Debug\UntilTool.Properties.Resources.resources
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\obj\Debug\UntilTool.csproj.GenerateResource.Cache
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\obj\Debug\UntilTool.exe
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\UntilTool\obj\Debug\UntilTool.pdb

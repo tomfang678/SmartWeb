@@ -1,48 +1,62 @@
 ﻿@{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Main.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     List<Smart.Framework.Model.sd_product> list = new List<Smart.Framework.Model.sd_product>();
     if (ViewData["product"] != null)
     {
         list = ViewData["product"] as List<Smart.Framework.Model.sd_product>;
     }
 }
-<div id="av_section_1" class="avia-section main_color avia-section-default avia-no-shadow avia-bg-style-scroll  avia-builder-el-0  el_before_av_section  avia-builder-el-first  container_wrap fullsize">
-    <div class="container">
-        <main role="main" itemprop="mainContentOfPage" class="template-page content  twelve alpha units">
-            <div class="post-entry post-entry-type-page post-entry-3799">
-                <div class="entry-content-wrapper clearfix">
-                    <section class="av_textblock_section">
-                        <div class="avia_textblock " itemprop="text">
-                            <h1 style="text-align: center;">课程中心</h1>
+<section style="padding-top: 18%"></section>
+<section id="main" class="container">
+    <header>
+        <h2>产品中心</h2>
+        <p>名家名师汇聚一堂，为企业家们带来思想上的饕餮盛宴！</p>
+    </header>
+    <section class="box special features" id="prodct_list">
+        <div class="features-row">
+            @if (list.Count > 0)
+            {
+                int count = 2;
+                for (int i = 0; i <= list.Count; i++)
+                {
+                    string css = "accent" + (++count).ToString();
+                    if (i % 2 == 0 && i != 0)
+                    {
+                        string css1 = "accent" + (count - 2).ToString();
+                        string css2 = "accent" + (count - 1).ToString();
+                        <div class="features-row">
+                            <section>
+                                <span class="icon major fa-bolt @css1"></span>
+                                <a href="/Product/Detail?id=@list[i - 1].id"> <h3>@list[i - 1].title</h3></a>
+                                <p>@list[i - 1].keywords</p>
+                            </section>
+                            <section>
+                                <span class="icon major fa-bolt @css2"></span>
+                                <a href="/Product/Detail?id=@list[i - 2].id"> <h3>@list[i - 2].title</h3></a>
+                                <p>@list[i - 2].keywords</p>
+                            </section>
                         </div>
-                    </section>
-                    <div class="hr hr-short hr-center  avia-builder-el-2  el_after_av_textblock  el_before_av_textblock "><span class="hr-inner"><span class="hr-inner-style"></span></span></div>
-                    <p></p><section class="av_textblock_section">
-                        <div class="container">
-                            <div class="text-center">
-                            </div>
-                            <div class="row">
-                                @foreach (var item in list)
-                                {
-                                    <div class="col-sm-6 col-md-4">
-                                        <div class="thumbnail">
-                                            <a href="/Product/Detail?id=@item.id">
-                                                <img src="@item.imgurl" style="width:305px;height:172px" alt="@item.title">
-                                            </a>
-                                            <div class="caption">
-                                                <h4>@item.title</h4>
-                                                <p>@item.description</p>
-                                                <p><a href="/Product/Detail?id=@item.id" class="btn btn-default" role="button">查看</a></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                }
-                            </div>
+                    }
+                    else if (i == list.Count)
+                    {
+                        <div class="features-row">
+                            <section>
+                                <a href="/product_detail.html?id=@list[i - 1].id">
+                                    <span class="icon major fa-bolt @css"></span>
+                                </a>
+                                <a href="/Product/Detail?id=@list[i - 1].id"> <h3>@list[i - 1].title</h3></a>
+                                <p>@list[i - 1].keywords</p>
+                            </section>
                         </div>
-                    </section>
-                </div>
-            </div>
-        </main>
-    </div>
-</div>
+                    }
+
+                }
+            }
+            else
+            {
+                <p>暂无数据...</p>
+            }
+        </div>
+    </section>
+</section>

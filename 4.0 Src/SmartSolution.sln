@@ -71,6 +71,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.Core.Config.Test", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Smart.Core.TemplateEngine", "Smart.Core.TemplateEngine\Smart.Core.TemplateEngine.csproj", "{E13F9DFE-97B4-4CB3-9A9F-B79FAEF7DBC4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHouse", "SmartHouse\SmartHouse.csproj", "{F6BB9C8C-F234-49AD-897C-07C515ED821A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -185,6 +187,10 @@ Global
 		{E13F9DFE-97B4-4CB3-9A9F-B79FAEF7DBC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E13F9DFE-97B4-4CB3-9A9F-B79FAEF7DBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E13F9DFE-97B4-4CB3-9A9F-B79FAEF7DBC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6BB9C8C-F234-49AD-897C-07C515ED821A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BB9C8C-F234-49AD-897C-07C515ED821A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BB9C8C-F234-49AD-897C-07C515ED821A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BB9C8C-F234-49AD-897C-07C515ED821A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -218,5 +224,6 @@ Global
 		{B7DDC738-3568-4979-8F52-228D732D8595} = {D29605E1-E535-4D99-8ADE-D08590DC3280}
 		{732A353F-C588-408A-AC80-4832952A1820} = {9CBEEC28-804C-4879-8172-521A10E1D376}
 		{E13F9DFE-97B4-4CB3-9A9F-B79FAEF7DBC4} = {3981AA82-C894-4EB7-89F8-5E2493541930}
+		{F6BB9C8C-F234-49AD-897C-07C515ED821A} = {D29605E1-E535-4D99-8ADE-D08590DC3280}
 	EndGlobalSection
 EndGlobal

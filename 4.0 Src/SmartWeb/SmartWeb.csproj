@@ -162,6 +162,7 @@
     <Compile Include="Areas\Admin\Controllers\SystemInfoController.cs" />
     <Compile Include="Controllers\AdvisoryTeamController.cs" />
     <Compile Include="Controllers\AppointmentController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaseController.cs" />
     <Compile Include="Controllers\ContactUsController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
@@ -399,6 +400,8 @@
     <Content Include="assets\js\biz\job.js" />
     <Content Include="assets\js\biz\leadership.js" />
     <Content Include="assets\js\biz\case.js" />
+    <Content Include="assets\js\biz\menus.js" />
+    <Content Include="assets\js\biz\project.js" />
     <Content Include="assets\js\biz\qqonline.js" />
     <Content Include="assets\js\biz\news.js" />
     <Content Include="assets\js\biz\product.js" />
@@ -670,15 +673,6 @@
     <Content Include="umeditor\umeditor.config.js" />
     <Content Include="umeditor\umeditor.js" />
     <Content Include="umeditor\umeditor.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="umeditor\net\getContent.ashx" />
     <Content Include="umeditor\net\imageUp.ashx" />
     <Content Include="umeditor\third-party\mathquill\font\stixgeneral-bundle\stixgeneral-webfont.eot" />
@@ -702,6 +696,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Product\Detail.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Account\Models\" />

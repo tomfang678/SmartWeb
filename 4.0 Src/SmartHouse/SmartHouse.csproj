@@ -170,6 +170,24 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\themes\arcana\assets\css\font-awesome.min.css" />
+    <Content Include="Content\themes\arcana\assets\css\ie8.css" />
+    <Content Include="Content\themes\arcana\assets\css\ie9.css" />
+    <Content Include="Content\themes\arcana\assets\css\images\bg01.png" />
+    <Content Include="Content\themes\arcana\assets\css\images\bg02.png" />
+    <Content Include="Content\themes\arcana\assets\css\images\bg03.png" />
+    <Content Include="Content\themes\arcana\assets\css\main.css" />
+    <Content Include="Content\themes\arcana\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\themes\arcana\assets\js\ie\backgroundsize.min.htc" />
+    <Content Include="Content\themes\arcana\assets\js\ie\html5shiv.js" />
+    <Content Include="Content\themes\arcana\assets\js\ie\PIE.htc" />
+    <Content Include="Content\themes\arcana\assets\js\ie\respond.min.js" />
+    <Content Include="Content\themes\arcana\assets\js\jquery.dropotron.min.js" />
+    <Content Include="Content\themes\arcana\assets\js\jquery.min.js" />
+    <Content Include="Content\themes\arcana\assets\js\main.js" />
+    <Content Include="Content\themes\arcana\assets\js\skel.min.js" />
+    <Content Include="Content\themes\arcana\assets\js\util.js" />
     <Content Include="Content\common.css" />
     <Content Include="Content\common.min.css" />
     <Content Include="Content\datouwang.min.css" />
@@ -234,7 +252,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout- new.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -313,6 +331,23 @@
     <Content Include="Content\chuzu\assets\sass\libs\_skel.scss" />
     <Content Include="Content\chuzu\assets\sass\libs\_vars.scss" />
     <Content Include="Content\chuzu\assets\sass\main.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\themes\arcana\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\themes\arcana\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\themes\arcana\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\themes\arcana\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\themes\arcana\assets\fonts\FontAwesome.otf" />
+    <Content Include="Content\themes\arcana\assets\sass\ie8.scss" />
+    <Content Include="Content\themes\arcana\assets\sass\ie9.scss" />
+    <Content Include="Content\themes\arcana\assets\sass\libs\_functions.scss" />
+    <Content Include="Content\themes\arcana\assets\sass\libs\_mixins.scss" />
+    <Content Include="Content\themes\arcana\assets\sass\libs\_skel.scss" />
+    <Content Include="Content\themes\arcana\assets\sass\libs\_vars.scss" />
+    <Content Include="Content\themes\arcana\assets\sass\main.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

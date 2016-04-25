@@ -1,7 +1,7 @@
 ﻿var PageSize, TotalPage, TotalCount;
 var stfid = $("#stafftype").val();
 $.get("/Staff/GetStaffStarList?stafftype=" + stfid, { PageIndex: "1", PageSize: "15" }, function (data, state) {
-    createList(data);
+    createList(data.Data);
     PageSize = data.PageSize;
     TotalCount = data.TotalCount;
     TotalPage = data.TotalPage;

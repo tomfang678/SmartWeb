@@ -1,6 +1,6 @@
 ﻿var PageSize, TotalPage, TotalCount;
 $.getJSON("/Download/GetDownloadList", { PageIndex: "1", PageSize: "10" }, function (data, state) {
-    createList(data);
+    createList(data.Data);
     PageSize = data.PageSize;
     TotalCount = data.TotalCount;
     TotalPage = data.TotalCount / data.PageSize;

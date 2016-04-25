@@ -1,6 +1,6 @@
 ﻿var PageSize, TotalPage, TotalCount;
-$.getJSON("/News/GetByPage", { PageIndex: "1", PageSize: "15" }, function (data, state) {
-    createList(data);
+$.getJSON("/News/GetNewsList", { PageIndex: "1", PageSize: "15" }, function (data, state) {
+    createList(data.Data);
     PageSize = data.PageSize;
     TotalCount = data.TotalCount;
     TotalPage = data.TotalPage;

@@ -2,3 +2,7 @@ D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.Oracle\bin\Debug\Smart.Fram
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.Oracle\bin\Debug\Smart.Framework.DAL.Oracle.pdb
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.Oracle\obj\Debug\Smart.Framework.DAL.Oracle.dll
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.Oracle\obj\Debug\Smart.Framework.DAL.Oracle.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.Oracle\bin\Debug\Smart.Framework.DAL.Oracle.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.Oracle\bin\Debug\Smart.Framework.DAL.Oracle.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.Oracle\obj\Debug\Smart.Framework.DAL.Oracle.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.Oracle\obj\Debug\Smart.Framework.DAL.Oracle.pdb

@@ -1,6 +1,6 @@
 ﻿var PageSize, TotalPage, TotalCount;
 $("#share li").remove();
-$.getJSON("/TraineeShare/GetByPage", { PageIndex: "1", PageSize: "15" }, function (data, state) {
+$.getJSON("/TraineeShare/GetValidList", { PageIndex: "1", PageSize: "15" }, function (data, state) {
     createList(data.Data);
     PageSize = data.PageSize;
     TotalCount = data.TotalCount;

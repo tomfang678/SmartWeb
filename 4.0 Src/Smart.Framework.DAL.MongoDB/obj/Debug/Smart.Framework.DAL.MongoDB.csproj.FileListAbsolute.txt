@@ -2,3 +2,7 @@ D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.MongoDB\bin\Debug\Smart.Fra
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.MongoDB\bin\Debug\Smart.Framework.DAL.MongoDB.pdb
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.MongoDB\obj\Debug\Smart.Framework.DAL.MongoDB.dll
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.DAL.MongoDB\obj\Debug\Smart.Framework.DAL.MongoDB.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.MongoDB\bin\Debug\Smart.Framework.DAL.MongoDB.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.MongoDB\bin\Debug\Smart.Framework.DAL.MongoDB.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.MongoDB\obj\Debug\Smart.Framework.DAL.MongoDB.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.DAL.MongoDB\obj\Debug\Smart.Framework.DAL.MongoDB.pdb

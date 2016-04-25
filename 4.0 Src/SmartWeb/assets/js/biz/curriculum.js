@@ -1,6 +1,6 @@
 ﻿var PageSize, TotalPage, TotalCount;
 $.getJSON("/Scheduler/Get", { PageIndex: "1", PageSize: "35" }, function (data, state) {
-    createList(data);
+    createList(data.Data);
     PageSize = data.PageSize;
     TotalCount = data.TotalCount;
     TotalPage = data.TotalPage;

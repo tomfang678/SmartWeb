@@ -1,6 +1,6 @@
 ﻿var PageSize, TotalPage, TotalCount;
-$.getJSON("/Case/GetByPage", { PageIndex: "1", PageSize: "10" }, function (data, state) {
-    createList(data);
+$.getJSON("/Case/GetList", { PageIndex: "1", PageSize: "10" }, function (data, state) {
+    createList(data.Data);
     PageSize = data.PageSize;
     TotalCount = data.TotalCount;
     TotalPage = data.TotalPage;

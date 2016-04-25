@@ -12,6 +12,8 @@
     <meta name="description" content="提供重庆合租房,小租乐！">
     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <link href="~/Content/common.min.css" rel="stylesheet" />
+    @*<link href="~/Content/assets/css/main.css" rel="stylesheet" />*@
+
     <script src="~/Scripts/common.js"></script>
     <!--[if lt IE 8]>
         <script type="text/javascript">
@@ -82,16 +84,29 @@
     <div class="clearfix"></div>
 
     <footer id="footer">
+        
         <div class="footer-bg">
             <div class="container">
+               
                 <div class="pull-left f-setup">
-                      <img src="./成都合租房,成都租房网,成都房屋出租信息-优客逸家 轻时尚单身公寓_files/footer-setup2.png">
+                    <section class="3u 6u(narrower) 12u$(mobilep)">
+                        <h3>Links to Stuff</h3>
+                        <ul class="links">
+                            <li><a href="#">Mattis et quis rutrum</a></li>
+                            <li><a href="#">Suspendisse amet varius</a></li>
+                            <li><a href="#">Sed et dapibus quis</a></li>
+                            <li><a href="#">Rutrum accumsan dolor</a></li>
+                            <li><a href="#">Mattis rutrum accumsan</a></li>
+                            <li><a href="#">Suspendisse varius nibh</a></li>
+                            <li><a href="#">Sed et dapibus mattis</a></li>
+                        </ul>
+                    </section>
+                      @*<img src="./成都合租房,成都租房网,成都房屋出租信息-优客逸家 轻时尚单身公寓_files/footer-setup2.png">*@
                 </div>
                 <div class="pull-left f-follow">
-                    <a href="http://weibo.com/iuoko" target="_blank" rel="nofollow"><span class="sprite-f-weibo"></span>关注新浪微博</a>
-
-                    <a href="/mail.aspx" target="_blank" rel="nofollow"><span class="sprite-f-email"></span>有新房源通知我</a>
-                    <a data-toggle="modal" href="/allother/weixinfoot/" data-target="#weixin_home" rel="nofollow"><span class="sprite-f-weixin"></span>订阅微信公众平台</a>
+                    <a href="#" target="_blank" rel="nofollow"><span class="sprite-f-weibo"></span>关注新浪微博</a>
+                    <a href="#" target="_blank" rel="nofollow"><span class="sprite-f-email"></span>有新房源通知我</a>
+                    <a data-toggle="modal" href="#" data-target="#" rel="nofollow"><span class="#"></span>订阅微信公众平台</a>
                     <a><span class="sprite-f-tel"></span>400-000-4170</a>
                 </div>
                 <div class="clearfix"></div>
@@ -110,107 +125,6 @@
             </div>
         </div>
     </footer>
-    @*<div class="fix-right-v2" id="back-top" >
-            <table>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="sidebar-wrap">
-                                <ul id="ul_myfav">
-                                    <li class="myfav">
-                                        <a title="我关注的房源" href="javascript:;" id="link_myFav">我关注的房源</a>
-                                        <span class="popup" style="opacity: 0; display: none; right: 48px;"><i></i>我关注的房源</span>
-                                    </li>
-                                </ul>
-                                <div class="sidebar-line" id="line_myfav"></div>
-                                <ul>
-
-                                    <li class="sell">
-                                        <a title="在线卖房" href="/yezhu/" target="_blank">在线卖房</a>
-                                        <span class="popup" style="opacity: 0; display: none; right: 48px;"><i></i>在线卖房</span>
-                                    </li>
-                                </ul>
-                                <div class="sidebar-line"></div>
-                                <ul>
-                                    <li class="baodan">
-                                        <a href="http://www.lianjia.com/zhuanti/baodan#310000" title="安心保单" target="_blank">安心保单</a>
-                                        <span class="popup" style="opacity: 0; display: none; right: 48px;"><i></i>安心保单</span>
-                                    </li>
-                                    <li class="download">
-                                        <a href="/client?source=pccbl" title="" target="_blank">下载上海链家APP</a>
-                                        <span class="popup popup-qr" style="opacity: 0; display: none; right: 48px;">
-                                            <i></i>
-                                            <div class="js_downAppEwmStatic_img" source="cbewm" ewmimgw="80" ewmimgh="80" style="position: relative;"><canvas width="80" height="80"></canvas><img class="js_qrCodeIcon" src="http://sh.lianjia.com/public/img/qrCodeIcon.png" style="border: 2px solid rgb(255, 255, 255); border-radius: 5px; width: 26px; height: 26px; position: absolute; top: 50%; left: 50%; margin-top: -15px; margin-left: -15px; background: rgb(255, 255, 255);"></div>
-                                            <em class="qr-title">上海链家APP</em>
-                                        </span>
-                                    </li>
-                                    <li class="phone">
-                                        <a title="客服热线">客服热线</a>
-                                        <span class="popup" style="opacity: 0; display: none; right: 48px;"><i></i>客服热线 4007 001 001</span>
-                                    </li>
-                                    <li class="feedback" id="feedback">
-                                        <a title="意见反馈">意见反馈</a>
-                                        <span class="popup" style="opacity: 0; display: none; right: 48px;"><i></i>意见反馈</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <ul>
-                <li class="gotop" id="gotop" style="display: list-item;">
-                    <a title="返回顶部" href="#top">返回顶部</a>
-                    <span class="popup" style="opacity: 0; display: none; right: 48px;"><i></i>返回顶部</span>
-                </li>
-            </ul>
-        </div>
-        <script type="text/javascript">
-            //fix-right - hover - tips
-            $(".fix-right-v2 ul").on("mouseenter", "li", function () {
-                var index = $(".fix-right-v2 ul li").index($(this));
-
-                //显示
-                $(".fix-right-v2 ul li span.popup").eq(index).css({
-                    opacity: 0,
-                    display: 'block',
-                    right: '48px'
-                }).animate({
-                    opacity: 1,
-                    right: '38px'
-                }, 300);
-            }).on("mouseleave", "li", function () {
-                $(".fix-right-v2 ul li span.popup").css({
-                    opacity: 0,
-                    display: 'none',
-                    right: '48px'
-                });
-            });
-
-            //fix-right - go top
-            function resetGotop() {
-                var h = $(window).height(),
-                    t = $(document).scrollTop();
-                if (t > h) {
-                    $("#gotop").show();
-                    $(".fix-right .tips,.fix-right .has-ask").show();
-                }
-                else {
-                    $("#gotop").hide();
-                    $(".fix-right .tips,.fix-right .has-ask").hide();
-                }
-            }
-            resetGotop();
-            $("#gotop").click(function () {
-                $("body").css({
-                    scrollTop: 0
-                });
-            });
-
-            $(window).scroll(function (e) {
-                resetGotop();
-            });
-
-        </script>*@
+    <script src="~/Content/assets/js/main.js"></script>
 </body>
 </html>

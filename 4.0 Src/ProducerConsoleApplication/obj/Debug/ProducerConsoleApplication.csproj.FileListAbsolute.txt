@@ -36,3 +36,8 @@ D:\project\SmartWeb\v2.0\4.0 Src\ProducerConsoleApplication\bin\Debug\ProducerCo
 D:\project\SmartWeb\v2.0\4.0 Src\ProducerConsoleApplication\bin\Debug\ProducerConsoleApplication.pdb
 D:\project\SmartWeb\v2.0\4.0 Src\ProducerConsoleApplication\obj\Debug\ProducerConsoleApplication.exe
 D:\project\SmartWeb\v2.0\4.0 Src\ProducerConsoleApplication\obj\Debug\ProducerConsoleApplication.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\ProducerConsoleApplication\bin\Debug\ProducerConsoleApplication.exe
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\ProducerConsoleApplication\bin\Debug\ProducerConsoleApplication.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\ProducerConsoleApplication\obj\Debug\ProducerConsoleApplication.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\ProducerConsoleApplication\obj\Debug\ProducerConsoleApplication.exe
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\ProducerConsoleApplication\obj\Debug\ProducerConsoleApplication.pdb

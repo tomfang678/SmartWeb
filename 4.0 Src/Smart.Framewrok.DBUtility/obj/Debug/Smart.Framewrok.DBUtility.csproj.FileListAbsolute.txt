@@ -11,3 +11,8 @@ D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framewrok.DBUtility\bin\Debug\Smart.Frame
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framewrok.DBUtility\bin\Debug\Smart.Framewrok.DBUtility.pdb
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framewrok.DBUtility\obj\Debug\Smart.Framewrok.DBUtility.dll
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framewrok.DBUtility\obj\Debug\Smart.Framewrok.DBUtility.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framewrok.DBUtility\bin\Debug\Smart.Framewrok.DBUtility.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framewrok.DBUtility\bin\Debug\Smart.Framewrok.DBUtility.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framewrok.DBUtility\obj\Debug\Smart.Framewrok.DBUtility.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framewrok.DBUtility\obj\Debug\Smart.Framewrok.DBUtility.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framewrok.DBUtility\obj\Debug\Smart.Framewrok.DBUtility.csprojResolveAssemblyReference.cache

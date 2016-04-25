@@ -1,6 +1,6 @@
 ﻿var PageSize, TotalPage, TotalCount;
-$.get("/Staff/GetByPage", { PageIndex: "1", PageSize: "15" }, function (data, state) {
-    createList(data);
+$.get("/Staff/GetStaffStarList", { PageIndex: "1", PageSize: "15" }, function (data, state) {
+    createList(data.Data);
     PageSize = data.PageSize;
     TotalCount = data.TotalCount;
     TotalPage = data.TotalPage;

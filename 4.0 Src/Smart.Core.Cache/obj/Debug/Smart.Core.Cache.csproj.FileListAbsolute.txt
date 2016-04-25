@@ -5,3 +5,12 @@ D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Cache\obj\Debug\Smart.Core.Cache.dll
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Cache\obj\Debug\Smart.Core.Cache.pdb
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Framework.Utility.dll
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Framework.Utility.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Core.Cache.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Core.Cache.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Core.Config.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Framework.Utility.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Core.Config.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\bin\Debug\Smart.Framework.Utility.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\obj\Debug\Smart.Core.Cache.csprojResolveAssemblyReference.cache
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\obj\Debug\Smart.Core.Cache.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Core.Cache\obj\Debug\Smart.Core.Cache.pdb

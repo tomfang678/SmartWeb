@@ -29,3 +29,11 @@ D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.xml
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.dll
 D:\project\SmartWeb\v2.0\4.0 Src\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\bin\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.dll
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.pdb
+D:\project\SmartWeb\v2.0\SmartWeb\4.0 Src\Smart.Framework.Model\obj\Debug\Smart.Framework.Model.csprojResolveAssemblyReference.cache

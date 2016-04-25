@@ -51,7 +51,7 @@ namespace Smart.Framework.Model
         //[StringLength(20)]
         //public string state { get; set; }
 
-        public int isaccess { get; set; }
+        public int? isaccess { get; set; }
 
         public bool? homeshow { get; set; }
 

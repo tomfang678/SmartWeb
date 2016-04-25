@@ -9,15 +9,29 @@ using Smart.Framework.Utility;
 using System.Drawing;
 using Smart.Framework.Contract;
 using Smart.Framework.Web;
+using System.Threading.Tasks;
 
 namespace SmartWeb.Controllers
 {
-    public class HomeController : SmartControllerBase
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/
         public ActionResult Index()
         {
+            try
+            {
+                Parallel.Invoke(() =>
+                {
+                    ViewBag.Smart_About = new Smart.Framework.BLL.About().FindByPage(1, 1);
+                    ViewBag.Smart_Product = new Smart.Framework.BLL.Product().FindByPage(10, 1);
+                    ViewBag.Smart_Case = new Smart.Framework.BLL.Case().FindByPage(10, 1);
+                });
+            }
+            catch (Exception)
+            {
+                Response.Redirect("/index.html");
+            }
             //Response.Redirect("/index.html");
             return View("Index");
         }

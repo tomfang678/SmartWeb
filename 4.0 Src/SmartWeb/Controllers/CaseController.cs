@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace SmartWeb.Controllers
 {
-    public class CaseController : BaseApi<Case, sd_case>
+    public class CaseController : BaseController// BaseApi<Case, sd_case>
     {
 
         [HttpGet]

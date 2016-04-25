@@ -13,6 +13,12 @@ namespace SmartWeb.Controllers
 {
     public class ProductController : BaseApi<Product, sd_product>
     {
+        public ActionResult Index()
+        {
+            ViewData["product"] = new Smart.Framework.BLL.Product().FindByPage(100, 1);
+            return View();
+        }
+
         [HttpGet]
         public JsonResult GetList(int PageIndex, int PageSize)
         {
