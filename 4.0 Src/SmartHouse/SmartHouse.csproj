@@ -170,7 +170,44 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\about\assets\css\font-awesome.min.css" />
+    <Content Include="Content\about\assets\css\ie8.css" />
+    <Content Include="Content\about\assets\css\ie9.css" />
+    <Content Include="Content\about\assets\css\images\arrow.svg" />
+    <Content Include="Content\about\assets\css\images\dark-arrow.svg" />
+    <Content Include="Content\about\assets\css\images\overlay.png" />
+    <Content Include="Content\about\assets\css\images\poptrox-closer.svg" />
+    <Content Include="Content\about\assets\css\images\poptrox-nav.svg" />
+    <Content Include="Content\about\assets\css\main.css" />
+    <Content Include="Content\about\assets\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\about\assets\js\ie\backgroundsize.min.htc" />
+    <Content Include="Content\about\assets\js\ie\html5shiv.js" />
+    <Content Include="Content\about\assets\js\ie\PIE.htc" />
+    <Content Include="Content\about\assets\js\ie\respond.min.js" />
+    <Content Include="Content\about\assets\js\jquery.min.js" />
+    <Content Include="Content\about\assets\js\jquery.poptrox.min.js" />
+    <Content Include="Content\about\assets\js\jquery.scrollex.min.js" />
+    <Content Include="Content\about\assets\js\jquery.scrolly.min.js" />
+    <Content Include="Content\about\assets\js\main.js" />
+    <Content Include="Content\about\assets\js\skel.min.js" />
+    <Content Include="Content\about\assets\js\util.js" />
+    <Content Include="Content\about\images\fulls\01.jpg" />
+    <Content Include="Content\about\images\fulls\02.jpg" />
+    <Content Include="Content\about\images\fulls\03.jpg" />
+    <Content Include="Content\about\images\fulls\04.jpg" />
+    <Content Include="Content\about\images\fulls\05.jpg" />
+    <Content Include="Content\about\images\fulls\06.jpg" />
+    <Content Include="Content\about\images\intro.jpg" />
+    <Content Include="Content\about\images\one.jpg" />
+    <Content Include="Content\about\images\thumbs\01.jpg" />
+    <Content Include="Content\about\images\thumbs\02.jpg" />
+    <Content Include="Content\about\images\thumbs\03.jpg" />
+    <Content Include="Content\about\images\thumbs\04.jpg" />
+    <Content Include="Content\about\images\thumbs\05.jpg" />
+    <Content Include="Content\about\images\thumbs\06.jpg" />
+    <Content Include="Content\about\images\two.jpg" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Imagefocus.min.css" />
     <Content Include="Content\themes\arcana\assets\css\font-awesome.min.css" />
     <Content Include="Content\themes\arcana\assets\css\ie8.css" />
     <Content Include="Content\themes\arcana\assets\css\ie9.css" />
@@ -219,6 +256,11 @@
     <Content Include="Content\login.css" />
     <Content Include="Content\SerachMap.min.css" />
     <Content Include="Content\uoko_pr.css" />
+    <Content Include="Images\5.jpg" />
+    <Content Include="Images\6.jpg" />
+    <Content Include="Images\7.jpg" />
+    <Content Include="Images\contact.png" />
+    <Content Include="Images\img3.png" />
     <Content Include="Images\login-bg.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -233,6 +275,8 @@
     <Content Include="Images\loading.gif" />
     <Content Include="Images\sidebar_sprite%402x.png" />
     <Content Include="Images\sidebar_sprite.png" />
+    <Content Include="Images\wx.png" />
+    <Content Include="index.html" />
     <Content Include="Scripts\base.min.js" />
     <Content Include="Scripts\city.js" />
     <Content Include="Scripts\common.js" />
@@ -280,9 +324,6 @@
     <Content Include="Views\ZuFang\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\About\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -299,9 +340,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Jobs\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\ChuZu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\chuzu\assets\fonts\fontawesome-webfont.eot" />
@@ -349,9 +387,45 @@
   <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\about\assets\.sass-cache\431ccf47bb9651fa398632304796bdee9a381f7d\main.scssc" />
+    <Content Include="Content\about\assets\.sass-cache\60fae8a5dafa08d20202fa888216b5c160b73f58\v8.scssc" />
+    <Content Include="Content\about\assets\.sass-cache\60fae8a5dafa08d20202fa888216b5c160b73f58\v9.scssc" />
+    <Content Include="Content\about\assets\.sass-cache\de61229414eb9b5d090fbdc1602a938726674dbe\_functions.scssc" />
+    <Content Include="Content\about\assets\.sass-cache\de61229414eb9b5d090fbdc1602a938726674dbe\_mixins.scssc" />
+    <Content Include="Content\about\assets\.sass-cache\de61229414eb9b5d090fbdc1602a938726674dbe\_skel.scssc" />
+    <Content Include="Content\about\assets\.sass-cache\de61229414eb9b5d090fbdc1602a938726674dbe\_vars.scssc" />
+    <Content Include="Content\about\assets\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\about\assets\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\about\assets\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\about\assets\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\about\assets\fonts\FontAwesome.otf" />
+    <Content Include="Content\about\assets\sass\ie8.scss" />
+    <Content Include="Content\about\assets\sass\ie9.scss" />
+    <Content Include="Content\about\assets\sass\libs\_functions.scss" />
+    <Content Include="Content\about\assets\sass\libs\_mixins.scss" />
+    <Content Include="Content\about\assets\sass\libs\_skel.scss" />
+    <Content Include="Content\about\assets\sass\libs\_vars.scss" />
+    <Content Include="Content\about\assets\sass\main.scss" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\About\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ChuZu\Index - Copy.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ChuZu\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\test.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>index.html</ApplicationManifest>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
